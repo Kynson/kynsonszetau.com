@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300|Roboto:300,400">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>Kynson Szetau</title>
+  </head>
+  <body>
+    <main>
+      <div class="ks-flex ks-flex-row">
+        <div>
+          <div class="mdc-tab-bar" role="tablist">
+            <div class="mdc-tab-scroller mdc-tab-scroller--align-center">
+              <div class="mdc-tab-scroller__scroll-area">
+                <div class="mdc-tab-scroller__scroll-content">
+                  <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                    <span class="mdc-tab__content">
+                      <span class="mdc-tab__icon material-icons" aria-hidden="true">code</span>
+                      <span class="mdc-tab__text-label">Projects</span>
+                    </span>
+                    <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                      <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                    </span>
+                    <span class="mdc-tab__ripple"></span>
+                  </button>
+                  <button class="mdc-tab" role="tab" aria-selected="false" tabindex="0">
+                    <span class="mdc-tab__content">
+                      <span class="mdc-tab__icon material-icons" aria-hidden="true">comment</span>
+                      <span class="mdc-tab__text-label">Contact</span>
+                    </span>
+                    <span class="mdc-tab-indicator">
+                      <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                    </span>
+                    <span class="mdc-tab__ripple"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ks-flex ks-flex-row ks-flex-space-between ks-section-content">
+            <div>
+              <div class="ks-card mdc-card">
+                <div class="ks-card-content">
+                  <h2 class="ks-card-title mdc-typography mdc-typography--headline6">Random String Generator</h2>
+                  <h3 class="ks-card-subtile mdc-typography mdc-typography--subtitle2">by Kynson Szetau</h3>
+                  <p class="ks-card-body mdc-typography mdc-typography--body2">A simple tools for you to genterate a random string for you projects.</p>
+                </div>
+                <div class="mdc-card__actions">
+                  <button class="mdc-button mdc-card__action mdc-card__action--button ks-view-on-codepen-button" data-codepenlink='https://codepen.io/kynsonszetau/pen/wZzKRM/'>
+                    <span class="mdc-button__label">View on CodePen</span>
+                  </button>
+                </div>
+              </div>
+              <div class="ks-card mdc-card">
+                <div class="ks-card-content">
+                  <h2 class="ks-card-title mdc-typography mdc-typography--headline6">Tic Tac Toe</h2>
+                  <h3 class="ks-card-subtile mdc-typography mdc-typography--subtitle2">by Kynson Szetau</h3>
+                  <p class="ks-card-body mdc-typography mdc-typography--body2">A classical game written in JavaScript with WebGL libaray PIXI.js.</p>
+                </div>
+                <div class="mdc-card__actions">
+                  <button class="mdc-button mdc-card__action mdc-card__action--button ks-view-on-codepen-button" data-codepenlink='https://codepen.io/kynsonszetau/pen/MRjWPv/'>
+                    <span class="mdc-button__label">View on CodePen</span>
+                  </button>
+                </div>
+              </div>
+              <div class="ks-card mdc-card">
+                <div class="ks-card-content">
+                  <h2 class="ks-card-title mdc-typography mdc-typography--headline6">Roman Number Converter</h2>
+                  <h3 class="ks-card-subtile mdc-typography mdc-typography--subtitle2">by Kynson Szetau</h3>
+                  <p class="ks-card-body mdc-typography mdc-typography--body2">A tool for you to convert Arab number to Roman number or covert Roman number to Arab number.</p>
+                </div>
+                <div class="mdc-card__actions">
+                  <button class="mdc-button mdc-card__action mdc-card__action--button ks-view-on-codepen-button" data-codepenlink='https://codepen.io/kynsonszetau/pen/OGZMGy/'>
+                    <span class="mdc-button__label">View on CodePen</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ks-flex ks-flex-row ks-flex-space-between ks-section-content ks-hide">
+            <form autocomplete="off" novalidate>
+              <p class="mdc-typography--body1">Write down your message here!</p>
+              <div class="ks-flex ks-flex-row">
+                <div class="ks-flex-row-items">
+                  <div id="ks-name-text-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                    <i class="material-icons mdc-text-field__icon">person</i>
+                    <input id="ks-text-field-outlined" type="text" class="mdc-text-field__input" name="name" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label for="ks-text-field-outlined" class="mdc-floating-label">Name</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                  <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" aria-hidden="true">This field is required.</div>
+                  </div>
+                </div>
+                <div class="ks-flex-row-items">
+                  <div id="ks-email-text-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                    <i class="material-icons mdc-text-field__icon">email</i>
+                    <input id="ks-text-field-outlined" type="email" class="mdc-text-field__input" name="email" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label for="ks-text-field-outlined" class="mdc-floating-label">Email</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                  <div class="mdc-text-field-helper-line">
+                    <div id="ks-email-validation-msg" class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" aria-hidden="true">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div id="ks-message-text-field" class="mdc-text-field mdc-text-field--textarea">
+                <div class="mdc-text-field-character-counter">0 / 500</div>
+                <textarea id="ks-message-text-field-outlined" class="mdc-text-field__input" rows="8" cols="55" maxlength="500" name="message" required></textarea>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="ks-message-text-field-outlined" class="mdc-floating-label">Message</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <div class="mdc-text-field-helper-line">
+                <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" aria-hidden="true">This field is required.</div>
+              </div>
+              <button id="ks-send-button" class="mdc-button mdc-button--raised" type="button" disabled>
+                <span class="mdc-button__label">Send</span>
+                <span class="material-icons mdc-button__icon">send</span>
+              </button>
+            </form>
+          </div>
+          <span class="ks-copyright">Copyright &copy; Kynson Szetau.</span>
+        </div>
+        <div class="ks-flex">
+          <div class="ks-about-content">
+            <h4 class="mdc-typography mdc-typography--headline4">Kynson Szetau</h4>
+            <p class="mdc-typography mdc-typography--body1">Hello, I am Kynson Szetau, a teenager who likes computer programming. I have learnt JavaScript, Swift, Java, HTML and CSS. This site is built by me.</p>
+            <p class="mdc-typography mdc-typography--body1">Enjoy!</p>
+            <div id="ks-social-media-container" class="ks-flex ks-flex-column">
+              <!--
+              Font Awesome Free Icons by @fontawesome - https://fontawesome.com.
+              License - https://fontawesome.com/license/free
+              Unused attributes in the svg tag are removed and new classes are added. The orginal icon/svg file can be found at https://fontawesome.com/icons/facebook.
+              -->
+              <a href="https://facebook.com/kynson.szetau"><svg aria-hidden="true" focusable="false" class="ks-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" ></path></svg>Kynson Szetau</a>
+              <!--
+              Font Awesome Free Icons by @fontawesome - https://fontawesome.com.
+              License - https://fontawesome.com/license/free
+              Unused attributes in the svg tag are removed and new classes are added. The orginal icon/svg file can be found at https://fontawesome.com/icons/instagram.
+              -->
+              <a href="https://instagram.com/kynsonszetau"><svg aria-hidden="true" focusable="false" class="ks-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>@kynsonszetau</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-snackbar">
+        <div class="mdc-snackbar__surface">
+          <div class="mdc-snackbar__label" role="status" aria-live="polite">
+            Your message has been sent.
+          </div>
+          <div class="mdc-snackbar__actions">
+            <button type="button" class="mdc-button mdc-snackbar__action">Done</button>
+          </div>
+        </div>
+      </div>
+      <noscript>
+        <p>JavaScript is required for this website.</p>
+      </noscript>
+    </main>
+    <script src="/js/bundle.js" async></script>
+  </body>
+</html>

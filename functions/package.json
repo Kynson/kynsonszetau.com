@@ -1,0 +1,33 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "@types/express-rate-limit": "^3.3.3",
+    "@types/request-promise": "^4.1.42",
+    "express": "^4.17.1",
+    "express-rate-limit": "^3.4.0",
+    "firebase-admin": "^8.6.1",
+    "firebase-functions": "^3.3.0",
+    "request-promise": "^4.2.4",
+    "x-xss-protection": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.10.55",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "private": true
+}
