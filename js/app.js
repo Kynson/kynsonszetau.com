@@ -136,12 +136,15 @@ SEND_BUTTON.addEventListener('click', async (event) => {
            'Content-Type': 'application/json'
          },
          method: 'POST',
-         mode: 'no-cors'
+         mode: 'cors'
       });
     } catch (_error) {
       SNACK_BAR.labelText = 'En error has occoured, please try again.';
-    } finally {
+      SNACK_BAR.open();
+
       SEND_BUTTON_LABLE.textContent = 'Send';
+      SEND_BUTTON.removeAttribute('disabled', '');
+      return;
     }
 
     if (sendContactFormResponse.ok) {
@@ -155,7 +158,6 @@ SEND_BUTTON.addEventListener('click', async (event) => {
     }
 
     SNACK_BAR.open();
-    SEND_BUTTON.removeAttribute('disabled', '');
   } else {
     SEND_BUTTON_LABLE.textContent = 'Send';
     SNACK_BAR.labelText = 'Please fill in all fields.';
