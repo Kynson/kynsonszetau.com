@@ -22,7 +22,7 @@ const EMAIL_TEXT_FIELD = new MDCTextField(document.getElementById('ks-email-text
 const MESSAGE_TEXT_FIELD = new MDCTextField(document.getElementById('ks-message-text-field'));
 const EMAIL_VALIDATION_MSG = new MDCTextFieldHelperText(document.getElementById('ks-email-validation-msg'));
 
-const VIEW_ON_CODEPEN_BUTTONS = document.getElementsByClassName('ks-view-on-codepen-button');
+const PROJECT_DEMO_BUTTONS = document.getElementsByClassName('ks-project-demo-button');
 
 const SEND_BUTTON = document.getElementById('ks-send-button');
 const SEND_BUTTON_LABLE = document.getElementsByClassName('mdc-button__label')[3];
@@ -111,9 +111,9 @@ EMAIL_TEXT_FIELD.listen('input', (_event) => {
   }
 });
 
-for (const VIEW_ON_CODEPEN_BUTTON of VIEW_ON_CODEPEN_BUTTONS) {
-  VIEW_ON_CODEPEN_BUTTON.addEventListener('click', (_event) => {
-    window.location.replace(VIEW_ON_CODEPEN_BUTTON.dataset.codepenlink);
+for (const PROJECT_DEMO_BUTTON of PROJECT_DEMO_BUTTONS) {
+  PROJECT_DEMO_BUTTON.addEventListener('click', (_event) => {
+    window.location.replace(PROJECT_DEMO_BUTTON.dataset.projectdemolink);
   });
 }
 
@@ -157,10 +157,11 @@ SEND_BUTTON.addEventListener('click', async (event) => {
       SNACK_BAR.labelText = 'En error has occoured, please try again.';
     }
 
+    SEND_BUTTON_LABLE.textContent = 'Send';
     SNACK_BAR.open();
   } else {
-    SEND_BUTTON_LABLE.textContent = 'Send';
     SNACK_BAR.labelText = 'Please fill in all fields.';
+    SEND_BUTTON_LABLE.textContent = 'Send';
     SNACK_BAR.open();
   }
 });
