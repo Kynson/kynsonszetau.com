@@ -3,10 +3,9 @@ import { MDCTabBar } from '@material/tab-bar';
 
 import { MDCTextField } from '@material/textfield';
 import { MDCTextFieldHelperText } from '@material/textfield/helper-text';
+import { MDCTextFieldCharacterCounter } from '@material/textfield/character-counter';
 
 import { MDCSnackbar } from '@material/snackbar';
-
-import { MDCRipple } from '@material/ripple';
 
 import anime from 'animejs/lib/anime.es.js';
 
@@ -20,13 +19,13 @@ const SNACK_BAR = new MDCSnackbar(document.getElementsByClassName('mdc-snackbar'
 const NAME_TEXT_FIELD = new MDCTextField(document.getElementById('ks-name-text-field'));
 const EMAIL_TEXT_FIELD = new MDCTextField(document.getElementById('ks-email-text-field'));
 const MESSAGE_TEXT_FIELD = new MDCTextField(document.getElementById('ks-message-text-field'));
+const MESSAGE_TEXT_FIELD_CHARACTER_COUNTER = new MDCTextFieldCharacterCounter(document.getElementById('ks-message-text-field-character-counter'));
 const EMAIL_VALIDATION_MSG = new MDCTextFieldHelperText(document.getElementById('ks-email-validation-msg'));
 
 const PROJECT_DEMO_BUTTONS = document.getElementsByClassName('ks-project-demo-button');
 
-const SEND_BUTTON = document.getElementById('ks-send-button');
-const SEND_BUTTON_LABLE = document.getElementsByClassName('mdc-button__label')[3];
-new MDCRipple(document.getElementsByClassName('mdc-button')[0]);
+const SEND_CONTACT_FORM_BUTTON = document.getElementById('ks-send-contact-form-button');
+const SEND_CONTACT_FORM_BUTTON_LABLE = document.getElementById('ks-send-contact-form-button-label');
 
 // About page animation.
 function animateAboutPage() {
@@ -93,9 +92,9 @@ TAB_BAR.listen('MDCTab:interacted', (event) => {
 // Form button control.
 CONTACT_FORM.addEventListener('input', (_event) => {
   if (NAME_TEXT_FIELD.valid && EMAIL_TEXT_FIELD.valid && MESSAGE_TEXT_FIELD.valid) {
-    SEND_BUTTON.removeAttribute('disabled', '');
+    SEND_CONTACT_FORM_BUTTON.removeAttribute('disabled', '');
   } else {
-    SEND_BUTTON.setAttribute('disabled', '');
+    SEND_CONTACT_FORM_BUTTON.setAttribute('disabled', '');
   }
 });
 
@@ -113,15 +112,15 @@ EMAIL_TEXT_FIELD.listen('input', (_event) => {
 
 for (const PROJECT_DEMO_BUTTON of PROJECT_DEMO_BUTTONS) {
   PROJECT_DEMO_BUTTON.addEventListener('click', (_event) => {
-    window.location.replace(PROJECT_DEMO_BUTTON.dataset.projectdemolink);
+    window.location = PROJECT_DEMO_BUTTON.dataset.projectdemolink;
   });
 }
 
 // Submit control.
-SEND_BUTTON.addEventListener('click', async (event) => {
+SEND_CONTACT_FORM_BUTTON.addEventListener('click', async (event) => {
   event.preventDefault();
-  SEND_BUTTON.setAttribute('disabled', '');
-  SEND_BUTTON_LABLE.textContent = 'Sending';
+  SEND_CONTACT_FORM_BUTTON.setAttribute('disabled', '');
+  SEND_CONTACT_FORM_BUTTON_LABLE.textContent = 'Sending';
 
   if (NAME_TEXT_FIELD.valid && EMAIL_TEXT_FIELD.valid && MESSAGE_TEXT_FIELD.valid) {
     let sendContactFormResponse;
@@ -142,26 +141,32 @@ SEND_BUTTON.addEventListener('click', async (event) => {
       SNACK_BAR.labelText = 'En error has occoured, please try again.';
       SNACK_BAR.open();
 
-      SEND_BUTTON_LABLE.textContent = 'Send';
-      SEND_BUTTON.removeAttribute('disabled', '');
+      SEND_CONTACT_FORM_BUTTON_LABLE.textContent = 'Send';
+      SEND_CONTACT_FORM_BUTTON.removeAttribute('disabled', '');
       return;
     }
 
     if (sendContactFormResponse.ok) {
       SNACK_BAR.labelText = 'Your message has been sent.';
 
+      MESSAGE_TEXT_FIELD_CHARACTER_COUNTER.getDefaultFoundation().setCounterValue(0, 500);
       CONTACT_FORM.reset();
     } else if (sendContactFormResponse.status === 429) {
       SNACK_BAR.labelText = 'Too many request, please try again in 12 hours.';
+
+      SEND_CONTACT_FORM_BUTTON.removeAttribute('disabled', '');
     } else {
       SNACK_BAR.labelText = 'En error has occoured, please try again.';
+
+      SEND_CONTACT_FORM_BUTTON.removeAttribute('disabled', '');
     }
 
-    SEND_BUTTON_LABLE.textContent = 'Send';
+    SEND_CONTACT_FORM_BUTTON_LABLE.textContent = 'Send';
+
     SNACK_BAR.open();
   } else {
     SNACK_BAR.labelText = 'Please fill in all fields.';
-    SEND_BUTTON_LABLE.textContent = 'Send';
+    SEND_CONTACT_FORM_BUTTON_LABLE.textContent = 'Send';
     SNACK_BAR.open();
   }
 });

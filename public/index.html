@@ -53,6 +53,7 @@
                 </div>
                 <div class="mdc-card__actions">
                   <button class="mdc-button mdc-card__action mdc-card__action--button ks-project-demo-button" data-projectdemolink='https://codepen.io/kynsonszetau/pen/wZzKRM/'>
+                    <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label">Demo on CodePen</span>
                   </button>
                 </div>
@@ -65,6 +66,7 @@
                 </div>
                 <div class="mdc-card__actions">
                   <button class="mdc-button mdc-card__action mdc-card__action--button ks-project-demo-button" data-projectdemolink='https://codepen.io/kynsonszetau/pen/MRjWPv/'>
+                    <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label">Demo on CodePen</span>
                   </button>
                 </div>
@@ -77,6 +79,7 @@
                 </div>
                 <div class="mdc-card__actions">
                   <button class="mdc-button mdc-card__action mdc-card__action--button ks-project-demo-button" data-projectdemolink='https://codepen.io/kynsonszetau/pen/OGZMGy/'>
+                    <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label">Demo on CodePen</span>
                   </button>
                 </div>
@@ -121,7 +124,7 @@
                 </div>
               </div>
               <div id="ks-message-text-field" class="mdc-text-field mdc-text-field--textarea">
-                <div class="mdc-text-field-character-counter">0 / 500</div>
+                <div id="ks-message-text-field-character-counter" class="mdc-text-field-character-counter">0 / 500</div>
                 <textarea id="ks-message-text-field-outlined" class="mdc-text-field__input" rows="8" cols="55" maxlength="500" name="message" required></textarea>
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -134,8 +137,9 @@
               <div class="mdc-text-field-helper-line">
                 <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" aria-hidden="true">This field is required.</div>
               </div>
-              <button id="ks-send-button" class="mdc-button mdc-button--raised" type="button" disabled>
-                <span class="mdc-button__label">Send</span>
+              <button id="ks-send-contact-form-button" class="mdc-button mdc-button--raised" type="button" disabled>
+                <div class="mdc-button__ripple"></div>
+                <span id="ks-send-contact-form-button-label" class="mdc-button__label">Send</span>
                 <span class="material-icons mdc-button__icon">send</span>
               </button>
             </form>
@@ -170,7 +174,7 @@
             Your message has been sent.
           </div>
           <div class="mdc-snackbar__actions">
-            <button type="button" class="mdc-button mdc-snackbar__action">Done</button>
+            <button type="button" class="mdc-button mdc-snackbar__action"><div class="mdc-button__ripple"></div>Done</button>
           </div>
         </div>
       </div>
