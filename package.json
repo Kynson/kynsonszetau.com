@@ -1,6 +1,6 @@
 {
   "name": "kynsonszetau.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The personal website of Kynson Szetau",
   "main": "index.js",
   "scripts": {
@@ -8,32 +8,5 @@
     "test": "webpack-dev-server"
   },
   "author": "Kynson Szetau",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@material/theme": "^3.1.0",
-    "autoprefixer": "^9.7.5",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^2.1.1",
-    "extract-loader": "^3.1.0",
-    "file-loader": "^3.0.1",
-    "image-webpack-loader": "^4.6.0",
-    "node-sass": "^4.14.1",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.3.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.9.2",
-    "@material/button": "^3.2.0",
-    "@material/card": "^3.2.0",
-    "@material/snackbar": "^3.2.0",
-    "@material/tab-bar": "^3.2.0",
-    "@material/textfield": "^3.2.0",
-    "@material/typography": "^3.1.0",
-    "animejs": "^3.1.0"
-  }
+  "license": "MIT"
 }
