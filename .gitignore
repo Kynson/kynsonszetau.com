@@ -49,13 +49,7 @@ build/Release
 node_modules/
 functions/node_modules
 
-# Function source code
-functions/src
-
-# Compiled files
-functions/lib
-functions/**/*.js
-functions/**/*.js.map
+functions
 
 # Optional npm cache directory
 .npm
