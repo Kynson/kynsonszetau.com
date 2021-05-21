@@ -4,7 +4,7 @@
   "description": "The personal website of Kynson Szetau",
   "main": "src/main.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "routify -b && rollup -c",
     "serve": "serve public",
     "dev": "run-p dev:*",
     "dev:rollup": "rollup -cw",
