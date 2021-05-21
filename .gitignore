@@ -11,3 +11,12 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# public files
+public/
+
+# serve configuation
+serve.json
+
+# Routify folder
+.routify/

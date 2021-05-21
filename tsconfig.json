@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "checkJs": true,
+    "target": "ESNext",
+    // If the path alias(es) below is/are changed,
+		// please also update the `entries` property of the alias plugin in rollup.config.js
+    "paths": {
+      "@components/*": ["src/components/*"]
+    }
+  },
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "rollup.config.js",
+    "tailwind.config.js",
+    "public/*"
+  ]
+}
