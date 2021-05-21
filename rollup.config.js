@@ -56,6 +56,10 @@ function serve() {
 }
 
 function cleanPublicDirectory() {
+	if (!existsSync('public')) {
+		return;
+	}
+
 	rmSync('public', { recursive: true });
 	mkdirSync('public');
 }
