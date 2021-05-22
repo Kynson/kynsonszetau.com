@@ -96,7 +96,7 @@ function generateHTMLTemplate({ attributes, files, publicPath }) {
 			}
 
 			// Note: Assumed all files generated is module
-			scriptPreloads += `<link rel="modulepreload" src="${publicPath}${fileName}"/>\n`
+			scriptPreloads += `<link rel="modulepreload" href="${publicPath}${fileName}"/>\n`
 
 			const scriptAttributes = generateHTMLAttributes(attributes.script || {});
 			return `		<script src="${publicPath}${fileName}"${scriptAttributes}></script>\n`
