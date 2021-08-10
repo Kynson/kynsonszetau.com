@@ -4,7 +4,7 @@
     "checkJs": true,
     "target": "ESNext",
     // If the path alias(es) below is/are changed,
-		// please also update the `entries` property of the alias plugin in rollup.config.js
+		// please also update the `alias` property in snowpack.config.mjs
     "paths": {
       "@components/*": ["src/components/*"]
     }
@@ -12,8 +12,9 @@
   "extends": "@tsconfig/svelte/tsconfig.json",
   "exclude": [
     "node_modules",
-    "rollup.config.js",
     "tailwind.config.js",
+    "postcss.config.js",
+    "routify.config.js",
     "public/*"
   ]
 }
