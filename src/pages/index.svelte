@@ -1,1 +1,1 @@
-<p class="font-black">Hello world</p>
+<p class="font-bold">Hello world</p>
