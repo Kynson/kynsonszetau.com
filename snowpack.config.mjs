@@ -32,9 +32,6 @@ const config = {
       }
     ]
   ],
-  packageOptions: {
-    knownEntrypoints: ['@roxi/routify/runtime/buildRoutes']
-  },
   devOptions: {
     open: 'none',
     port: 5000,
