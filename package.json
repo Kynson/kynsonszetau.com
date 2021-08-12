@@ -5,7 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "build": "routify -b && snowpack build && rm -r public/.routify",
-    "serve": "serve public",
+    "serve": "cp serve.json public/serve.json && serve public",
     "dev": "run-p dev:*",
     "dev:routify": "routify",
     "dev:snowpack": "snowpack dev"
@@ -25,11 +25,12 @@
     "@snowpack/plugin-optimize": "^0.2.13",
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-svelte": "^3.7.0",
-    "@tsconfig/svelte": "^1.0.10",
+    "@tsconfig/svelte": "^2.0.1",
+    "@types/tailwindcss": "^2.2.1",
     "autoprefixer": "^10.3.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.3.6",
-    "serve": "^11.3.2",
+    "serve": "^12.0.0",
     "snowpack": "^3.8.3",
     "svelte": "^3.38.2",
     "tailwindcss": "^2.2.7",
