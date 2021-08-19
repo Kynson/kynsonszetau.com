@@ -6,7 +6,8 @@
     // If the path alias(es) below is/are changed,
 		// please also update the `alias` property in snowpack.config.mjs
     "paths": {
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@stores/*": ["src/stores/*"]
     }
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
