@@ -4,3 +4,13 @@
 /* purgecss end ignore */
 
 @tailwind utilities;
+
+
+@layer base {
+  html, body {
+    @apply bg-twelve-back;
+    @apply text-white;
+    @apply w-full;
+    @apply overflow-hidden;
+  }
+}
