@@ -31,6 +31,12 @@ const config = {
       {
         preloadModules: true
       }
+    ],
+    [
+      './plugins/pages-css-bundler.js',
+      {
+        target: 'main.css'
+      }
     ]
   ],
   devOptions: {

@@ -16,6 +16,7 @@
     "tailwind.config.js",
     "postcss.config.js",
     "routify.config.js",
-    "public/*"
+    "public/*",
+    "plugins"
   ]
 }
