@@ -6,14 +6,25 @@
   let scrollWrapper: HTMLDivElement;
 
   onMount(() => {
-    // 382 is computed from 200 + half height of section indicator + 30 delta
-    const scrollStart = window.innerWidth >= 768 ? 382 : 296;
-    const scrollMaxPixels = window.innerWidth >= 768 ? 200 : 150;
-    const scrollPixels = Math.min(scrollMaxPixels, Math.max(0, scrollStart - window.innerHeight / 2));
+    // The following code scroll the content to a target which is above the middle of the screen
+    const isLargeScreen = window.innerWidth >= 768;
+
+    // The maxium scrollable pixels before the text being covered
+    // It is essentially the difference between the text and the screen top
+    const scrollMaxPixels = isLargeScreen ? 200 : 150;
+    // scrollPixels is computed with the formula: scrollMaxPixels - (middle of the screen - offset)
+    // scrollStart is the sum of scrollMaxPixels and offset
+    const scrollStart = isLargeScreen ? 382 : 296;
+    // Clamp the value between scrollMaxPixels and 0
+    // So only scroll when the content is below the target
+    const scrollPixels = Math.min(
+        scrollMaxPixels,
+        Math.max(0, scrollStart - window.innerHeight / 2)
+      );
 
     scrollWrapper
       .scrollTo(0, scrollPixels);
-  })
+  });
 </script>
 
 <style>
@@ -54,7 +65,7 @@
       </h1>
       <Button>contact me</Button>
     </div>
-    <svg class="text-thirty-gray col-start-3 md:col-start-10 col-end-last row-start-7 max-h-60 xs:max-h-64 sm:max-h-72 md:max-h-80" viewBox="0 0 920 920" xmlns="http://www.w3.org/2000/svg">
+    <svg class="text-thirty-gray col-start-3 md:col-start-10 col-end-last row-start-7 max-w-full max-h-60 xs:max-h-64 sm:max-h-72 md:max-h-80" viewBox="0 0 920 920" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0)">
         <path d="M319.71 252.536C321.662 250.583 324.828 250.583 326.781 252.536L434.615 360.369C436.567 362.322 436.567 365.488 434.615 367.44L226.018 576.037L114.649 464.668C112.696 462.715 112.696 459.549 114.649 457.596L319.71 252.536Z" fill="currentColor"/>
         <path d="M114.649 464.44C112.696 462.488 112.696 459.322 114.649 457.369L226.018 346L434.615 554.596C436.567 556.549 436.567 559.715 434.615 561.668L326.781 669.501C324.828 671.454 321.662 671.454 319.71 669.501L114.649 464.44Z" fill="currentColor"/>
