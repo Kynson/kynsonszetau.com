@@ -7,10 +7,15 @@
 
 
 @layer base {
+  *, ::after, ::before {
+    @apply border-none;
+  }
   html, body {
     @apply bg-twelve-back;
     @apply text-white;
     @apply w-full;
+  }
+  body {
     @apply overflow-hidden;
   }
 }
