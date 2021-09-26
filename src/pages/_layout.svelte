@@ -1,19 +1,5 @@
-<script lang="ts">
-  import SectionIndicator from '@components/SectionIndicator.svelte';
-</script>
-
-<style>
-  /* Styles for medium (md) sized device */
-  @media (min-width: 768px) {
-    main {
-      grid-template-columns: 3rem auto;
-      grid-template-rows: repeat(12, 1fr);
-    }
-  }
-</style>
-
-<main class="grid w-screen xl:max-w-screen-xl h-screen xl:mx-auto overflow-hidden">
-  <header class="col-span-full row-start-1 row-end-2 h-14 md:h-20">
+<main class="w-screen xl:max-w-screen-xl h-screen xl:mx-auto overflow-hidden">
+  <header class="w-full h-14 md:h-20 absolute z-10 bg-twelve-back">
     <nav class="mx-6 xs:mx-10 sm:mx-12 md:mx-6 h-full flex flex-row">
       <svg class="h-6 my-auto text-thirty-gray" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
         <g>
@@ -44,6 +30,5 @@
       </svg>
     </nav>
   </header>
-  <SectionIndicator class="row-span-full col-start-1 col-span-1 self-center hidden md:flex md:pl-6" sections={['hero', 'about', 'projects', 'contact']}></SectionIndicator>
   <slot></slot>
 </main>
