@@ -85,7 +85,7 @@ function pagesCssBundler(_snowpackConfig, pluginOptions) {
   const pluginDefination = {
     name: 'pages-css-bundler',
     async optimize(pluginOptimizeOptions) {
-      bundleCss(pluginOptimizeOptions, pluginOptions)
+      await bundleCss(pluginOptimizeOptions, pluginOptions)
     }
   }
 
