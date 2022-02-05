@@ -1,7 +1,6 @@
 /** @type { import('@types/tailwindcss/tailwind-config').TailwindConfig } */
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './src/**/*.svelte'
   ],
   future: {

@@ -6,11 +6,14 @@
   import SectionIndicator from '@components/SectionIndicator.svelte';
   import Button from '@components/Button.svelte';
 
+  import LazySection from '@components/LazySection.svelte';
+
   let scrollWrapper: HTMLDivElement;
 
   let sections: Map<string, Element> = new Map();
   let sectionIds: string[] = [];
   let sectionsIntersectionStatus = {};
+
 
   function nextSectionOf(currentSection: string): string | null {
     const nextIndex = sectionIds.indexOf(currentSection) + 1;
@@ -195,8 +198,8 @@
     </section>
     <section id="about">
       <div class="px-6 xs:px-10 sm:px-12 md:px-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus feugiat massa tempus pellentesque. Sed vel leo vel lectus condimentum vehicula. Suspendisse eget luctus velit. Sed faucibus velit sollicitudin ante elementum, sed gravida risus consectetur. Vestibulum non leo magna. Nunc consequat quam in felis volutpat suscipit. Cras ultricies sagittis arcu in ornare. Praesent eu ligula placerat, luctus arcu eu, vehicula odio. Sed sodales ex a bibendum dapibus. Donec vitae quam eu dui finibus venenatis ac maximus felis. Ut sit amet laoreet elit. Etiam eleifend mattis augue sed commodo. Vestibulum non sapien sem. Sed congue arcu non ipsum molestie ornare. Nam vestibulum, tortor sed gravida varius, augue urna imperdiet tortor, at eleifend sapien nibh eu libero. Integer bibendum ultricies nunc at pellentesque.
-
+        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus feugiat massa tempus pellentesque. Sed vel leo vel lectus condimentum vehicula. Suspendisse eget luctus velit. Sed faucibus velit sollicitudin ante elementum, sed gravida risus consectetur. Vestibulum non leo magna. Nunc consequat quam in felis volutpat suscipit. Cras ultricies sagittis arcu in ornare. Praesent eu ligula placerat, luctus arcu eu, vehicula odio. Sed sodales ex a bibendum dapibus. Donec vitae quam eu dui finibus venenatis ac maximus felis. Ut sit amet laoreet elit. Etiam eleifend mattis augue sed commodo. Vestibulum non sapien sem. Sed congue arcu non ipsum molestie ornare. Nam vestibulum, tortor sed gravida varius, augue urna imperdiet tortor, at eleifend sapien nibh eu libero. Integer bibendum ultricies nunc at pellentesque. -->
+        <LazySection section='about' placeholderComponent={Button}></LazySection>
       </div>
     </section>
     <section id="projects">
