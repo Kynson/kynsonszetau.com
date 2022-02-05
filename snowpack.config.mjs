@@ -5,7 +5,8 @@ const config = {
   root: 'src',
   alias: {
     '@components/': './src/components',
-    '@stores/': './src/stores'
+    '@stores/': './src/stores',
+    '@sections/': './src/sections'
   },
   routes: [
     {
@@ -41,8 +42,11 @@ const config = {
   ],
   devOptions: {
     open: 'none',
-    port: 5000,
+    port: 5001,
   },
+  // packageOptions: {
+  //   knownEntrypoints: ['./public/sections/*']
+  // },
   buildOptions: {
     out: 'public',
   }

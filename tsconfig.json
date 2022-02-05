@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "checkJs": true,
     "target": "ESNext",
     // If the path alias(es) below is/are changed,
 		// please also update the `alias` property in snowpack.config.mjs
     "paths": {
       "@components/*": ["src/components/*"],
-      "@stores/*": ["src/stores/*"]
+      "@stores/*": ["src/stores/*"],
+      "@sections/*": ["src/sections/*"]
     }
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
