@@ -20,3 +20,6 @@ serve.json
 
 # Routify folder
 .routify/
+
+# Miniflare
+.mf

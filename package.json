@@ -8,7 +8,8 @@
     "serve": "cp serve.json public/serve.json && serve public",
     "dev": "run-p dev:*",
     "dev:routify": "routify",
-    "dev:snowpack": "snowpack dev"
+    "dev:snowpack": "snowpack dev",
+    "preinstall": "[[ -z '${CF_PAGES}' ]] && mv .npmrc-pages.txt .npmrc"
   },
   "repository": {
     "type": "git",
@@ -38,5 +39,8 @@
     "tailwindcss": "^3.0.18",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@kynson/about": "^1.1.0"
   }
 }
