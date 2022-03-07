@@ -9,7 +9,7 @@
     "dev": "run-p dev:*",
     "dev:routify": "routify",
     "dev:snowpack": "snowpack dev",
-    "preinstall": "if [ -z '${CF_PAGES}' ]; then mv .npmrc-pages.txt .npmrc; fi"
+    "preinstall": "if [ -n '${CF_PAGES}' ]; then mv .npmrc-pages.txt .npmrc; fi"
   },
   "repository": {
     "type": "git",
