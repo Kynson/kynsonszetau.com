@@ -15,11 +15,5 @@ node_modules/
 # public files
 public/
 
-# serve configuation
-serve.json
-
-# Routify folder
-.routify/
-
 # Miniflare
 .mf
