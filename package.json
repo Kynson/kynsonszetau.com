@@ -1,0 +1,28 @@
+{
+  "name": "kynsonszetau.com",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "The personal website of Kynson Szetau",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kynson/kynsonszetau.com.git"
+  },
+  "author": "Kynson Szetau (https://kynsonszetau.com)",
+  "bugs": {
+    "url": "https://github.com/Kynson/kynsonszetau.com/issues"
+  },
+  "homepage": "https://github.com/Kynson/kynsonszetau.com#readme",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.1.0",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.1.1",
+    "tailwindcss": "^3.4.17"
+  }
+}
