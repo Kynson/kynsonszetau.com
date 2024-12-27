@@ -1,0 +1,18 @@
+---
+interface Props {
+	extraClasses: string;
+}
+
+import Head from '../components/Head.astro';
+
+const { extraClasses } = Astro.props;
+---
+
+<!-- BaseLayout Content -->
+<!DOCTYPE html>
+<html lang="en" class="font-sans m-0 h-dvh bg-gray-950 text-blue-50">
+	<Head />
+	<body class="m-0 h-dvh" class:list={extraClasses}>
+		<slot />
+	</body>
+</html>

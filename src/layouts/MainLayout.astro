@@ -1,0 +1,11 @@
+---
+import BaseLayout from './BaseLayout.astro';
+---
+
+<!-- MainLayout Content -->
+<BaseLayout extraClasses="flex flex-col lg:flex-row">
+  <slot name="aside" />
+  <main class="flex-grow px-6 lg:h-dvh lg:overflow-y-scroll lg:px-0 lg:py-14 lg:text-clip">
+    <slot />
+  </main>
+</BaseLayout>
