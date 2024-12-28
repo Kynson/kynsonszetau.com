@@ -10,9 +10,9 @@ const { extraClasses } = Astro.props;
 
 <!-- BaseLayout Content -->
 <!DOCTYPE html>
-<html lang="en" class="font-sans m-0 h-dvh bg-gray-950 text-blue-50">
+<html lang="en" class="m-auto bg-gray-950 text-blue-50 min-h-dvh max-w-screen-2xl">
 	<Head />
-	<body class="m-0 h-dvh" class:list={extraClasses}>
+	<body class="min-h-dvh p-6" class:list={extraClasses}>
 		<slot />
 	</body>
 </html>
