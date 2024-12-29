@@ -1,0 +1,20 @@
+---
+interface Props {
+  id: string;
+  class?: string;
+}
+
+const DEFAULT_THEME = 'bg-blue-100 text-gray-950 hover:bg-blue-100 focus:outline-blue-100 focus:outline-2';
+
+const { id, class: clazz = DEFAULT_THEME } = Astro.props;
+---
+
+{/* Button content */}
+<button
+  {id}
+  class="py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ease-in-out focus:outline focus:outline-offset-2"
+  class:list={clazz}
+  type="button"
+>
+  <slot />
+</button>
