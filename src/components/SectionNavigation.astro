@@ -6,7 +6,7 @@ interface Props {
 const { numberOfSections } = Astro.props;
 ---
 
-<!-- SectionNavigation Logic -->
+{/* SectionNavigation logic */}
 <script>
   import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
   import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
@@ -51,8 +51,10 @@ const { numberOfSections } = Astro.props;
   }
 </script>
 
-<!-- SectionNavigation content -->
-<!-- Note: This component is not standalone and is context-dependent -->
+{
+/* SectionNavigation content
+Note: This component is not standalone and is context-dependent */
+}
 <div class="w-3 hidden flex-col justify-center gap-8 md:flex">
   {
     // The constructor creates a sparse array
