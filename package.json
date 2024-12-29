@@ -14,9 +14,9 @@
   "homepage": "https://github.com/Kynson/kynsonszetau.com#readme",
   "license": "MIT",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "wrangler types --experimental-include-runtime && astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro"
   },
   "dependencies": {
