@@ -8,5 +8,9 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://kynsonszetau.com',
   integrations: [tailwind()],
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });
