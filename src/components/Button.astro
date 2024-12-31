@@ -1,20 +1,18 @@
 ---
-interface Props {
-  id: string;
-  class?: string;
-}
+import type { HTMLAttributes } from 'astro/types';
 
-const DEFAULT_THEME = 'bg-blue-100 text-gray-950 hover:bg-blue-100 focus:outline-blue-100 focus:outline-2';
+type Props = HTMLAttributes<'button'>;
 
-const { id, class: clazz = DEFAULT_THEME } = Astro.props;
+const { class: clazz = '', ...attributes } = Astro.props;
 ---
 
 {/* Button content */}
 <button
-  {id}
-  class="py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ease-in-out focus:outline focus:outline-offset-2"
-  class:list={clazz}
-  type="button"
+  class:list={[
+    'py-2 px-4 rounded-lg text-sm font-medium inline-flex items-center transition-[filter] focus:outline focus:outline-offset-2 bg-blue-50 text-gray-950 hover:brightness-95 focus:outline-blue-100 focus:outline-2',
+    clazz,
+  ]}
+  {...attributes}
 >
   <slot />
 </button>
