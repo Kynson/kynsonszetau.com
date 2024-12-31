@@ -1,18 +1,17 @@
 ---
 interface Props {
-	extraClasses: string;
+	class: string;
 }
 
 import Head from '../components/Head.astro';
 
-const { extraClasses } = Astro.props;
+const { class: clazz } = Astro.props;
 ---
 
-{/* BaseLayout content */}
 <!DOCTYPE html>
-<html lang="en" class="m-auto bg-gray-950 text-blue-50 min-h-dvh max-w-screen-2xl">
+<html lang="en" class="bg-gray-950 text-blue-50 min-h-dvh">
 	<Head />
-	<body class="min-h-dvh p-6" class:list={extraClasses}>
+	<body class="min-h-dvh" class:list={clazz}>
 		<slot />
 	</body>
 </html>
