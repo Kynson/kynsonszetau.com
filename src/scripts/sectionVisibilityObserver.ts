@@ -38,7 +38,7 @@ class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserve
 
   #observer: IntersectionObserver;
 
-  #currentSection: HTMLElement | null = this.#sections[0];
+  #currentSection: HTMLElement | null = null;
   #previousSection: HTMLElement | null = null;
 
   constructor(intersectionThreshold: number) {
@@ -87,7 +87,8 @@ class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserve
 
       if (
         !entries[i].isIntersecting &&
-        entries[i].target.isSameNode(this.#currentSection)
+        entries[i].target.isSameNode(this.#currentSection) &&
+        !!this.#previousSection
       ) {
         [this.#currentSection, this.#previousSection] = [
           this.#previousSection,
