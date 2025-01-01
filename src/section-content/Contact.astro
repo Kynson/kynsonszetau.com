@@ -1,0 +1,78 @@
+---
+import Input from '../components/Input.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<script>
+  import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
+
+  import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
+
+  const contactForm = document.querySelector('#contact-form') as HTMLFormElement;
+  const contactFormSubmitButton = contactForm.querySelector('#contact-form-submit-button') as HTMLButtonElement;
+  const contactFormSumbitButtonSpanElement = contactFormSubmitButton.children[0] as HTMLSpanElement;
+
+  async function sectionVisibilityChangeHandler({ detail }: SectionChangeEvent) {
+    const { newSection } = detail;
+
+    if (newSection.id !== 'contact') {
+      return;
+    }
+
+    const { default: initializeTurnstile } = await import('../scripts/turnstile');
+    initializeTurnstile();
+
+    // Remove the event listener after turnstile is initialized
+    sectionVisibilityObserver.removeEventListener('change', sectionVisibilityChangeHandler);
+  }
+
+  function contactFormInputHandler() {
+    contactFormSubmitButton.disabled = !contactForm.checkValidity();
+  }
+
+  function contactFormSubmitButtonClickHandler(event: MouseEvent) {
+    event.preventDefault();
+
+    const contactFormSubmitButtonOldContent = contactFormSumbitButtonSpanElement.innerHTML;
+
+    contactFormSubmitButton.disabled = true;
+    contactFormSumbitButtonSpanElement.innerHTML = 'Sending...';
+
+    setTimeout(() => {
+      contactForm.reset();
+      window.turnstile.reset();
+      contactFormSubmitButton.disabled = true;
+      contactFormSumbitButtonSpanElement.innerHTML = contactFormSubmitButtonOldContent;
+    }, 3000);
+  }
+
+  for (const formControls of contactForm.elements) {
+    formControls.addEventListener('invalid', (event) => event.preventDefault());
+  }
+
+  sectionVisibilityObserver.addEventListener('change', sectionVisibilityChangeHandler);
+  contactForm.addEventListener('input', contactFormInputHandler);
+  contactFormSubmitButton.addEventListener('click', contactFormSubmitButtonClickHandler);
+</script>
+
+<header class="mb-12">
+  <p class="font-mono text-blue-300">04</p>
+  <h1 class="text-2xl">Contact</h1>
+</header>
+<form id="contact-form" class="max-w-prose">
+  <div class="flex flex-wrap gap-4 mb-3">
+    <Input class="flex-grow max-w-half-prose" label="Name" type="text" autocomplete="name" error-message="Name is required" required />
+    <Input class="flex-grow max-w-half-prose" label="Email" type="email" autocomplete="email" error-message="Invalid email" />
+  </div>
+  <Textarea class="w-full mb-3" label="Message" rows="8" required error-message="Message is required" />
+  <div id="turnstile-widget" class="content-center h-[65px] w-full max-w-half-prose bg-gray-800 mb-8">
+    <svg id="turnstile-spinner" class="size-6 fill-none mx-auto animate-spin" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 23C5.925 23 1 18.075 1 12S5.925 1 12 1s11 4.925 11 11" class="stroke-gray-500 stroke-2" />
+    </svg>
+  </div>
+  <input id="turnstile-status-checkbox" class="hidden" type="checkbox" name="turnstile-status" required />
+  <Button id="contact-form-submit-button" type="submit" class="w-fit" disabled>
+    <span>Send <span class="font-mono">-></span></span> 
+  </Button>
+</form>

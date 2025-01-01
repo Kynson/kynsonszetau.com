@@ -1,0 +1,45 @@
+---
+import Button from '../components/Button.astro';
+---
+{/* Hero logic */}
+<script>
+  const exploreProjectsButton = document.querySelector('#explore-projects-button')!;
+  const projectsSection = document.querySelector('#projects')!;
+
+  exploreProjectsButton.addEventListener('click', () => {
+    projectsSection.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+{/* Hero content */}
+<div class="h-full grid grid-cols-5 grid-rows-[1fr_auto_1fr] md:h-dvh md:grid-cols-12 md:grid-rows-4">
+  <div
+    class="col-span-5 row-start-2 md:row-start-2 md:col-span-8 md:row-span-2 md:self-center"
+  >
+    <p class="font-mono mb-3 ml-1 text-gray-200 animate-typewriter animate-typewriter-duration-700 animate-typewriter-start-[3] animate-typewriter-end-[10] md:animate-typewriter-duration-[2.5s] md:animate-typewriter-start-[21] md:animate-typewriter-end-[34]">
+      <span class="md:hidden"><span class="text-blue-300">~# </span>./hello</span>
+      <span class="hidden md:inline-block"><span class="text-blue-300">root@kynsonszetau:~# </span>./hello_world</span>
+    </p>
+    <h1 class="text-3xl font-medium mb-11 sm:text-4xl lg:text-6xl">
+      I am Kynson Szetau<br />A self-taught developer
+    </h1>
+    <Button id="explore-projects-button">
+      <span>Explore Projects <span class="font-mono">-></span></span>
+    </Button>
+  </div>
+  <svg
+    class="w-full col-start-4 row-start-3 col-span-2 row-span-1 justify-self-end md:col-start-9 md:row-start-2 md:col-span-3 md:row-span-3 md:self-center"
+    viewBox="0 0 690 920"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M208.71 252.536a5 5 0 0 1 7.071 0l107.834 107.833a5 5 0 0 1 0 7.071L115.018 576.037 3.649 464.668a5.001 5.001 0 0 1 0-7.072l205.061-205.06Z"
+      class="fill-gray-800"></path>
+    <path
+      d="M3.65 464.44a5 5 0 0 1 0-7.071L115.017 346l208.597 208.596a5.002 5.002 0 0 1 0 7.072L215.781 669.501a5 5 0 0 1-7.071 0L3.65 464.44ZM456.198 4.536a5 5 0 0 1 7.071 0l107.834 107.833a5 5 0 0 1 0 7.071L344.829 345.715l-111.37-111.37a5.001 5.001 0 0 1 0-7.071L456.198 4.536ZM571.103 801.798a5 5 0 0 1 0 7.071L463.269 916.703a5 5 0 0 1-7.071 0L229.924 690.429l114.905-114.905 226.274 226.274ZM686.008 457.084a5 5 0 0 1 0 7.071L574.639 575.524l-229.81-229.809L459.734 230.81l226.274 226.274Z"
+      class="fill-gray-800"></path>
+    <path
+      d="m574.638 345.715 111.37 111.369a5.001 5.001 0 0 1 0 7.071L459.734 690.429 344.829 575.524l229.809-229.809Z"
+      class="fill-gray-800"></path>
+  </svg>
+</div>
