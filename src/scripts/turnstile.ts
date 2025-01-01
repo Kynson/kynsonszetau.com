@@ -14,10 +14,18 @@ export default function initializeTurnstile() {
 
   function markTurnstileVerified() {
     turnstileStatusCheckbox.checked = true;
+
+    turnstileStatusCheckbox.dispatchEvent(
+      new InputEvent('input', { bubbles: true }),
+    );
   }
 
   function resetTurnstileStatus() {
     turnstileStatusCheckbox.checked = false;
+
+    turnstileStatusCheckbox.dispatchEvent(
+      new InputEvent('input', { bubbles: true }),
+    );
   }
 
   window.turnstileLoadHandler = () => {
@@ -29,6 +37,7 @@ export default function initializeTurnstile() {
       'expired-callback': resetTurnstileStatus,
       'error-callback': resetTurnstileStatus,
       theme: 'dark',
+      size: 'flexible',
     });
   };
 }
