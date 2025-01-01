@@ -4,4 +4,7 @@ declare namespace App {
   interface Locals extends Runtime {}
 }
 
-declare var myString: string;
+interface Window {
+  turnstile: Turnstile.Turnstile;
+  turnstileLoadHandler(): void;
+}

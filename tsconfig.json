@@ -1,8 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
-  "compilerOptions": {
-    "types": ["./.wrangler/types/runtime"]
-  }
+  "include": [
+    ".astro/types.d.ts",
+    "./.wrangler/types/runtime.d.ts",
+    "/@types/cloudflare-turnstile",
+    "**/*"
+  ],
+  "exclude": ["dist"]
 }
