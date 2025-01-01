@@ -3,14 +3,16 @@ import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'input'> {
   label: string;
-  errorMessage?: string;
+  // Note: While it is more appropriate for this to be a client-side dynamic properity,
+  // it is not necessary for this project and we can minimize the amount of JavaScript
+  'error-message'?: string;
 }
 
-const { label, class: clazz = '', errorMessage = '', ...attributes } = Astro.props;
+const { label, class: clazz = '', ['error-message']: errorMessage = '', required, ...attributes } = Astro.props;
 ---
 <label class:list={["inline-flex flex-col gap-2", clazz]}>
-  <span>{label}</span>
-  <input class="peer rounded-lg bg-gray-900 transition-border mb-5 focus:border-blue-50 user-invalid:mb-0" name={label.toLowerCase()} {...attributes} />
-  <span class="hidden leading-3 text-xs peer-user-invalid:block">{errorMessage}</span>
+  <span>{label}{required ? '*' : ''}</span>
+  <input class="peer rounded-lg bg-gray-900 transition-border mb-5 focus:border-blue-50 user-invalid:mb-0 user-invalid:border-red-400" name={label.toLowerCase()} {required} {...attributes} />
+  <span class="hidden leading-3 text-xs text-red-400 peer-user-invalid:block">{errorMessage}</span>
 </label>
 
