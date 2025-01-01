@@ -3,13 +3,14 @@ import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'input'> {
   label: string;
+  errorMessage?: string;
 }
 
-const { label, class: clazz = '', ...attributes } = Astro.props;
+const { label, class: clazz = '', errorMessage = '', ...attributes } = Astro.props;
 ---
 <label class:list={["inline-flex flex-col gap-2", clazz]}>
   <span>{label}</span>
   <input class="peer rounded-lg bg-gray-900 transition-border mb-5 focus:border-blue-50 user-invalid:mb-0" name={label.toLowerCase()} {...attributes} />
-  <span class="hidden leading-3 text-xs peer-user-invalid:block">ERRROR</span>
+  <span class="hidden leading-3 text-xs peer-user-invalid:block">{errorMessage}</span>
 </label>
 
