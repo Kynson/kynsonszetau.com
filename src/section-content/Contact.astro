@@ -8,6 +8,7 @@ import Button from '../components/Button.astro';
   import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
 
   import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
+  import { actions } from 'astro:actions';
 
   const contactForm = document.querySelector('#contact-form') as HTMLFormElement;
   const contactFormSubmitButton = contactForm.querySelector('#contact-form-submit-button') as HTMLButtonElement;
@@ -20,7 +21,7 @@ import Button from '../components/Button.astro';
       return;
     }
 
-    const { default: initializeTurnstile } = await import('../scripts/turnstile');
+    const { initializeTurnstile } = await import('../scripts/turnstile');
     initializeTurnstile();
 
     // Remove the event listener after turnstile is initialized
@@ -31,7 +32,7 @@ import Button from '../components/Button.astro';
     contactFormSubmitButton.disabled = !contactForm.checkValidity();
   }
 
-  function contactFormSubmitButtonClickHandler(event: MouseEvent) {
+  async function contactFormSubmitButtonClickHandler(event: MouseEvent) {
     event.preventDefault();
 
     const contactFormSubmitButtonOldContent = contactFormSumbitButtonSpanElement.innerHTML;
@@ -39,12 +40,28 @@ import Button from '../components/Button.astro';
     contactFormSubmitButton.disabled = true;
     contactFormSumbitButtonSpanElement.innerHTML = 'Sending...';
 
-    setTimeout(() => {
-      contactForm.reset();
+    const contactFormData = new FormData(contactForm);
+
+    const { error } = await actions.submitContactForm(contactFormData);
+
+    if (error) {
+      // This module should be cached, so it should be imported instantly
+      const { resetTurnstileStatus } = await import('../scripts/turnstile');
+
       window.turnstile.reset();
-      contactFormSubmitButton.disabled = true;
+      resetTurnstileStatus();
       contactFormSumbitButtonSpanElement.innerHTML = contactFormSubmitButtonOldContent;
-    }, 3000);
+
+      alert('Sorry, your message cannot be sent. Please try again later.');
+
+      return;
+    }
+
+    contactForm.reset();
+    window.turnstile.reset();
+    contactFormSumbitButtonSpanElement.innerHTML = contactFormSubmitButtonOldContent;
+
+    alert('Your message has been sent! I will get back to you as soon as possible.');
   }
 
   for (const formControls of contactForm.elements) {
@@ -60,6 +77,7 @@ import Button from '../components/Button.astro';
   <p class="font-mono text-blue-300">04</p>
   <h1 class="text-2xl">Contact</h1>
 </header>
+<p class="max-w-prose mb-4 text-justify">Fell free to leave a message below! If you prefer sending an email, you may also reach me at <a href="mailto:hi@kynsonszetau.com" class="font-medium hover:underline hover:underline-offset-4 hover:decoration-blue-300">hi@kynsonszetau.com</a></p>
 <form id="contact-form" class="max-w-prose">
   <div class="flex flex-wrap gap-4 mb-3">
     <Input class="flex-grow max-w-half-prose" label="Name" type="text" autocomplete="name" error-message="Name is required" required />
