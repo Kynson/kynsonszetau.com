@@ -12,6 +12,7 @@ export default defineConfig({
     platformProxy: {
       enabled: true,
     },
+    imageService: 'passthrough',
   }),
   env: {
     schema: {
