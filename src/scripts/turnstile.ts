@@ -1,3 +1,5 @@
+import { TURNSTILE_SITEKEY } from 'astro:env/client';
+
 // Creating side effects in modules are not recommended.
 // Therefore, we wrap the initialization code inside a function
 export default function initializeTurnstile() {
@@ -32,7 +34,7 @@ export default function initializeTurnstile() {
     turnstileSpinner.classList.add('hidden');
 
     window.turnstile.render('#turnstile-widget', {
-      sitekey: '3x00000000000000000000FF',
+      sitekey: TURNSTILE_SITEKEY,
       callback: markTurnstileVerified,
       'expired-callback': resetTurnstileStatus,
       'error-callback': resetTurnstileStatus,
