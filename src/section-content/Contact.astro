@@ -2,6 +2,7 @@
 import Input from '../components/Input.astro';
 import Textarea from '../components/Textarea.astro';
 import Button from '../components/Button.astro';
+import Spinner from '../assets/spinner.svg';
 ---
 
 <script>
@@ -85,9 +86,7 @@ import Button from '../components/Button.astro';
   </div>
   <Textarea class="w-full mb-3" label="Message" rows="8" required error-message="Message is required" />
   <div id="turnstile-widget" class="content-center h-[65px] w-full max-w-half-prose bg-gray-800 mb-8">
-    <svg id="turnstile-spinner" class="size-6 fill-none mx-auto animate-spin" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 23C5.925 23 1 18.075 1 12S5.925 1 12 1s11 4.925 11 11" class="stroke-gray-500 stroke-2" />
-    </svg>
+    <Spinner id="turnstile-spinner" class="size-6 fill-none mx-auto animate-spin" mode="sprite" />
   </div>
   <input id="turnstile-status-checkbox" class="hidden" type="checkbox" name="turnstile-status" required />
   <Button id="contact-form-submit-button" type="submit" class="w-fit" disabled>
