@@ -9,7 +9,7 @@ import {
   verifyTurnstileResponseErrorHandler,
 } from './verifyTurnstileResponse';
 import { generateNotificationMessageFromTemplate } from './notificationMessage';
-import { postJSON } from './utils';
+import { escape, postJSON } from './utils';
 
 const schema = z.object({
   name: z.string(),
@@ -53,7 +53,7 @@ async function contactFormSubmitHandler(
   await postJSON(NOTIFICATION_WEBHOOK_URL, {
     content: generateNotificationMessageFromTemplate(
       name,
-      message,
+      escape(message),
       email,
       requestIP,
       location,
