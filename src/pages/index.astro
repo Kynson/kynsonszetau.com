@@ -1,11 +1,34 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SectionNavigation from '../components/SectionNavigation.astro';
+
+import Hero from '../section-content/Hero.astro';
+import About from '../section-content/About.astro';
+import Projects from '../section-content/Projects.astro';
+import Contact from '../section-content/Contact.astro';
+
+import Logo from '../assets/logo.svg';
+import GithubLogo from '../assets/github-logo.svg';
+
+const NUMBER_OF_SECTIONS = 4;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout>
+	<Logo class="w-11" slot="nav" />
+	<SectionNavigation numberOfSections={NUMBER_OF_SECTIONS} slot="nav" />
+	<GithubLogo class="size-6 self-center justify-self-end md:justify-self-auto md:self-end" slot="nav" />
+	<section id="hero" class="min-h-dvh mb-12">
+		<Hero />
+	</section>
+	<section id="about" class="min-h-dvh mb-12 py-5">
+		<About server:defer />
+	</section>
+	<section id="projects" class="min-h-dvh py-5 mb-12">
+		<Projects server:defer />
+	</section>
+	<section id="contact" class="min-h-dvh py-5">
+		<Contact />
+	</section>
+</MainLayout>
+
