@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
@@ -13,4 +13,20 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  env: {
+    schema: {
+      TURNSTILE_SITEKEY: envField.string({
+        context: 'client',
+        access: 'public',
+      }),
+      TURNSTILE_SECRET: envField.string({
+        context: 'server',
+        access: 'secret',
+      }),
+      NOTIFICATION_WEBHOOK_URL: envField.string({
+        context: 'server',
+        access: 'secret',
+      }),
+    },
+  },
 });
