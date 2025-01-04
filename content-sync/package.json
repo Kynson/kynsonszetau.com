@@ -7,10 +7,13 @@
     "dev": "doppler run --mount .dev.vars --mount-format env -- wrangler dev",
     "test": "vitest",
     "wrangler:types": "wrangler types --experimental-include-runtime",
-    "smee": "smee"
+    "smee": "smee",
+    "lint": "eslint"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.5.2",
+    "@kynsonszetau/lint": "^1.0.1",
+    "eslint": "^9.17.0",
     "smee-client": "^2.0.4",
     "typescript": "^5.5.2",
     "vitest": "2.1.8",
@@ -21,5 +24,6 @@
     "@octokit/request": "^9.1.4",
     "@octokit/webhooks": "^13.4.1",
     "cf-workers-utils": "^1.1.0"
-  }
+  },
+  "type": "module"
 }
