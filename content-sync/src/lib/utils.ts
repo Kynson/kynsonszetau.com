@@ -12,7 +12,9 @@ export async function parseRequestAsVerifyAndReceiveOptions(request: Request) {
   const deliveryID = headers.get('X-Github-Delivery') ?? '';
   const signature = headers.get('X-Hub-Signature-256') ?? '';
   // The correct type cannot be imported directly
-  const name = (headers.get('X-Github-Event') ?? '') as Parameters<Webhooks['verifyAndReceive']>[0]['name'] | ''
+  const name = (headers.get('X-Github-Event') ?? '') as
+    | Parameters<Webhooks['verifyAndReceive']>[0]['name']
+    | '';
   const payload = await request.text();
 
   if (!(deliveryID && signature && name && payload)) {

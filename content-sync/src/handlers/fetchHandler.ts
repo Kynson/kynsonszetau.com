@@ -1,5 +1,5 @@
-import { initializeOctokit } from '../octokit';
-import { parseRequestAsVerifyAndReceiveOptions } from '../utils';
+import { initializeOctokit } from '../lib/octokit';
+import { parseRequestAsVerifyAndReceiveOptions } from '../lib/utils';
 
 import pushHandler from './pushHandler';
 

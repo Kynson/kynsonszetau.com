@@ -1,6 +1,6 @@
 import type { EmitterWebhookEvent } from '@octokit/webhooks';
 
-import parseAboutResponse from '../aboutParser';
+import parseAboutResponse from './aboutParser';
 
 export default async function pushHandler(
   { payload }: EmitterWebhookEvent<'push'>,
