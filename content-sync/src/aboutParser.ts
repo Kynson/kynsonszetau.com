@@ -27,12 +27,10 @@ const htmlRewriter = new HTMLRewriter()
 
 /**
  * Parses the rawAboutResponse by removing all the unnecessary elements, and extract the content of the about element
- * @param rawReadmeResponse The raw HTML of the readme page fetched from GitHub
+ * @param rawAboutResponse The raw HTML of the readme page fetched from GitHub
  */
-async function parseAboutResponse(
-  rawReadmeResponse: Response
-): Promise<string> {
-  const parsedResponse = htmlRewriter.transform(rawReadmeResponse);
+async function parseAboutResponse(rawAboutResponse: Response): Promise<string> {
+  const parsedResponse = htmlRewriter.transform(rawAboutResponse);
 
   // Get the text from the response and remove whitespace and newlines
   // Errors should be handled outside of this function
