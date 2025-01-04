@@ -1,5 +1,5 @@
-import { BadRequestError, UnauthorizedError } from '../errors';
-import { createResponseFromError } from '../utils';
+import { BadRequestError, UnauthorizedError } from '../lib/errors';
+import { createResponseFromError } from '../lib/utils';
 
 export default function errorHandler(error: Error): Response {
   if (error instanceof AggregateError) {
