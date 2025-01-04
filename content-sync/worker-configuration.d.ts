@@ -3,4 +3,5 @@ interface Env {
   PRIVATE_KEY: string;
   WEBHOOK_SECRET: string;
   INSTALLATION_ID: string;
+  CONTENT: KVNamespace;
 }
