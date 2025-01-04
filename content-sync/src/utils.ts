@@ -1,3 +1,5 @@
+import type { Webhooks } from '@octokit/webhooks';
+
 import { BadRequestError } from './errors';
 
 /**
@@ -9,9 +11,8 @@ export async function parseRequestAsVerifyAndReceiveOptions(request: Request) {
   const { headers } = request;
   const deliveryID = headers.get('X-Github-Delivery') ?? '';
   const signature = headers.get('X-Hub-Signature-256') ?? '';
-  // The correct type cannot be imported
-  // Ref: https://github.com/octokit/webhooks.js/blob/ab71230cc6b30ccc939270a6c029863f5184803b/src/middleware/node/middleware.ts#L98
-  const name = (headers.get('X-Github-Event') ?? '') as any;
+  // The correct type cannot be imported directly
+  const name = (headers.get('X-Github-Event') ?? '') as Parameters<Webhooks['verifyAndReceive']>[0]['name'] | ''
   const payload = await request.text();
 
   if (!(deliveryID && signature && name && payload)) {

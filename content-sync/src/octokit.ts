@@ -16,7 +16,7 @@ interface OctokitConstructOptions {
 
 type HandlerFunction<K extends EmitterWebhookEventName> = (
   event: EmitterWebhookEvent<K>
-) => any;
+) => unknown;
 
 interface OctokitInitializeOptions<K extends EmitterWebhookEventName>
   extends OctokitConstructOptions {
@@ -42,7 +42,7 @@ class Octokit {
 
     this.request = request.defaults({
       request: {
-        hook: auth.hook,
+        hook: auth.hook.bind(auth),
       },
     });
 
