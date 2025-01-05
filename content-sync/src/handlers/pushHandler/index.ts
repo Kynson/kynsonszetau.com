@@ -1,13 +1,11 @@
-import type { EmitterWebhookEvent } from '@octokit/webhooks';
+import type { EmitterWebhookEventPayload } from '../../lib/octokit';
 
 import parseAboutResponse from './aboutParser';
 
 export default async function pushHandler(
-  { payload }: EmitterWebhookEvent<'push'>,
+  { repository }: EmitterWebhookEventPayload<'push'>,
   environment: Env
 ) {
-  const { repository } = payload;
-
   const aboutResponse = await fetch(
     'https://raw.githubusercontent.com/Kynson/Kynson/main/README.md'
   );
