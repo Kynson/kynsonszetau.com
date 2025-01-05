@@ -1,13 +1,15 @@
 import type { Webhooks } from '@octokit/webhooks';
 
-import { BadRequestError } from './errors';
+import { BadRequestError } from '../../lib/errors';
 
 /**
  * Parses the incomming request to options for `verifyAndReceive()` (`EmitterWebhookEventWithStringPayloadAndSignature`)
  * @param request The incomming request
  * @returns The parsed options to be passed to `verifyAndReceive()`
  */
-export async function parseRequestAsVerifyAndReceiveOptions(request: Request) {
+export default async function parseRequestAsVerifyAndReceiveOptions(
+  request: Request
+) {
   const { headers } = request;
   const deliveryID = headers.get('X-Github-Delivery') ?? '';
   const signature = headers.get('X-Hub-Signature-256') ?? '';
@@ -28,5 +30,3 @@ export async function parseRequestAsVerifyAndReceiveOptions(request: Request) {
     payload,
   };
 }
-
-export { createResponse, createResponseFromError } from 'cf-workers-utils';
