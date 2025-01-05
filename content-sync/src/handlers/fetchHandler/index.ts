@@ -1,7 +1,8 @@
-import { initializeOctokit } from '../lib/octokit';
-import { parseRequestAsVerifyAndReceiveOptions } from '../lib/utils';
+import { initializeOctokit } from '../../lib/octokit';
+import parseRequestAsVerifyAndReceiveOptions from './parseRequestAsVerifyAndReceiveOptions';
 
-import pushHandler from './pushHandler';
+import pushHandler from '../pushHandler';
+import repositoryHandler from '../repositoryHandler';
 
 export default async function fetchHandler(
   request: Request,
@@ -16,6 +17,7 @@ export default async function fetchHandler(
     installationID: INSTALLATION_ID,
     webhookHandlerMappings: {
       push: (event) => pushHandler(event, environment),
+      repository: (event) => repositoryHandler(event, environment),
     },
   });
 
