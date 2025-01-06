@@ -1,16 +1,17 @@
 interface ProjectDetails {
   description?: string | null;
-  language?: string | null;
-  tags?: string[];
+  topics?: string[] | null;
 }
 
 interface RepositoryLike {
   name: string;
+  private: boolean;
+  is_template?: boolean;
   description?: string | null;
-  language?: string | null;
+  topics?: string[] | null;
 }
 
-type Projects = Record<string, ProjectDetails>;
+type Projects = Map<string, ProjectDetails>;
 
 // Octokit should be initialized at this point
 import { octokit } from '../../lib/octokit';
@@ -20,44 +21,50 @@ export type { Projects };
 export function parseRepositoryAsProject({
   name,
   description,
-  language,
-}: RepositoryLike): Record<string, ProjectDetails> {
-  return {
-    [name]: {
-      description,
-      language,
-    },
-  };
+  topics,
+}: RepositoryLike): Projects {
+  return new Map([[name, { description, topics }]]);
 }
 
 export function parseRepositoriesAsProjects(repositories: RepositoryLike[]) {
-  const projectEntries: [string, ProjectDetails][] = repositories.map(
-    ({ name, description, language }) => {
-      return [name, { description, language }];
-    }
-  );
+  const projects: Projects = new Map();
 
-  return Object.fromEntries<ProjectDetails>(projectEntries);
+  for (const { name, description, topics } of repositories) {
+    projects.set(name, { description, topics });
+  }
+
+  return projects;
 }
 
-export async function fetchProjects({ CONTENT }: Env) {
-  const projects = await CONTENT.get<Record<string, ProjectDetails>>(
+export async function fetchPublicProjects({ CONTENT }: Env) {
+  const rawProjects = await CONTENT.get<Record<string, ProjectDetails>>(
     'projects',
     'json'
   );
 
-  if (projects) {
-    return projects;
+  if (rawProjects) {
+    return {
+      isStale: true,
+      projects: new Map(Object.entries(rawProjects)),
+    };
   }
 
   if (!octokit) {
-    throw new Error('An unexpected error occured');
+    throw new Error('An unexpected error occurred');
   }
 
-  const { data: repositories } = await octokit.request(
+  // As the octokit does not have permission to list private repo, this API request will only return the public ones
+  const { data: rawRepositories } = await octokit.request(
     'GET /users/{username}/repos',
     { username: 'Kynson' }
   );
 
-  return parseRepositoriesAsProjects(repositories);
+  const repositories = rawRepositories.filter(
+    ({ is_template: isTemplate }) => !isTemplate
+  );
+
+  return {
+    isStale: false,
+    projects: parseRepositoriesAsProjects(repositories),
+  };
 }
