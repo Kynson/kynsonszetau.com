@@ -11,14 +11,14 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "doppler run --mount .dev.vars --mount-format env -- wrangler dev",
-    "test": "vitest",
+    "test": "doppler run --mount .dev.vars --mount-format env -- vitest",
     "wrangler:types": "wrangler types --experimental-include-runtime",
     "smee": "smee",
     "lint": "eslint",
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.5.2",
+    "@cloudflare/vitest-pool-workers": "^0.5.41",
     "@kynsonszetau/lint": "^1.0.1",
     "eslint": "^9.17.0",
     "smee-client": "^2.0.4",
