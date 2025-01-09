@@ -2,7 +2,7 @@ import parseAboutResponse from '../../src/handlers/pushHandler/aboutParser';
 
 import { test, expect } from 'vitest';
 
-test('parseAboutResponse should extracts the introduction and languages correctly', () => {
+test('parseAboutResponse should extracts the introduction and languages correctly', async () => {
   // These can be set to anything by the user
   const introduction = `This is a test message: ${Math.random()}`;
   const javascriptDisplayName = `Javascript-${Math.random()}`;
@@ -23,7 +23,7 @@ test('parseAboutResponse should extracts the introduction and languages correctl
 			`
   );
 
-  expect(parseAboutResponse(response)).resolves.toBe(
+  await expect(parseAboutResponse(response)).resolves.toBe(
     JSON.stringify({
       introduction,
       languages: [
