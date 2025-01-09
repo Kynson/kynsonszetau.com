@@ -2,21 +2,22 @@ import type { EmitterWebhookEventPayload } from '../../lib/octokit';
 
 import { fetchPublicProjects, Projects } from './projects';
 
-import createdOrEditedHandler from './createdOrEditedHandler';
+import genericUpdatedHandler from './genericUpdatedHandler';
 import renamedHandler from './renamedHandler';
-import deletedHandler from './deletedHandler';
+import genericRemovedHandler from './genericRemovedHandler';
 
 export default async function repositoryHandler(
   eventPayload: EmitterWebhookEventPayload<'repository'>,
   environment: Env
 ) {
   const { repository, action } = eventPayload;
+  const { private: isPrivate, is_template: isTemplate } = repository;
 
-  if (repository.private) {
+  if (isPrivate || isTemplate) {
     return;
   }
 
-  if (!['created', 'edited', 'renamed', 'deleted'].includes(action)) {
+  if (action === 'archived' || action === 'unarchived') {
     return;
   }
 
@@ -36,16 +37,25 @@ export default async function repositoryHandler(
   let newProjects: Projects;
   switch (action) {
     case 'created':
-      newProjects = createdOrEditedHandler(eventPayload, existingProjects);
+      newProjects = genericUpdatedHandler(eventPayload, existingProjects);
       break;
     case 'edited':
-      newProjects = createdOrEditedHandler(eventPayload, existingProjects);
+      newProjects = genericUpdatedHandler(eventPayload, existingProjects);
+      break;
+    case 'publicized':
+      newProjects = genericUpdatedHandler(eventPayload, existingProjects);
       break;
     case 'renamed':
       newProjects = renamedHandler(eventPayload, existingProjects);
       break;
     case 'deleted':
-      newProjects = deletedHandler(eventPayload, existingProjects);
+      newProjects = genericRemovedHandler(eventPayload, existingProjects);
+      break;
+    case 'privatized':
+      newProjects = genericRemovedHandler(eventPayload, existingProjects);
+      break;
+    case 'transferred':
+      newProjects = genericRemovedHandler(eventPayload, existingProjects);
       break;
     default:
       // This clause should be redundent
