@@ -1,5 +1,6 @@
 import { initializeOctokit } from '../../lib/octokit';
 import parseRequestAsVerifyAndReceiveOptions from './parseRequestAsVerifyAndReceiveOptions';
+import { createResponse } from 'cf-workers-utils';
 
 import pushHandler from '../pushHandler';
 import repositoryHandler from '../repositoryHandler';
@@ -27,5 +28,5 @@ export default async function fetchHandler(
 
   await octokit.webhooks.verifyAndReceive(verifyAndReceiveOptions);
 
-  return new Response(null, { status: 204 });
+  return createResponse(null, 204);
 }
