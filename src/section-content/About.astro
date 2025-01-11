@@ -1,7 +1,58 @@
 ---
-// const { env } = Astro.locals.runtime;
+const { env } = Astro.locals.runtime;
 
-// const cachedAboutContent = await env.ABOUT_CONTENT_CACHE.get('cached-value');
+const LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD = 0.4;
+const LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE = 50;
+
+const aboutContent = await env.DYNAMIC_CONTENT.get('about', 'json');
+
+const languageData = [
+  {
+    slug: 'css',
+    displayName: 'CSS',
+    iconColor: '8b4ad3',
+    iconColorBrightness: 0.24623997700314584,
+  },
+  {
+    slug: 'javascript',
+    displayName: 'JavaScript',
+    iconColor: 'e8d502',
+    iconColorBrightness: 0.6174323402562502,
+  },
+  {
+    slug: 'typescript',
+    displayName: 'TypeScript',
+    iconColor: '3178c6',
+    iconColorBrightness: 0.3326742775801513,
+  },
+  {
+    slug: 'rust',
+    displayName: 'Rust',
+    iconColor: 'f46623',
+    iconColorBrightness: 0.36008643372659954,
+  },
+  {
+    slug: 'cplusplus',
+    displayName: 'C++',
+    iconColor: '0076cb',
+    iconColorBrightness: 0.3243067514720673,
+  },
+  {
+    slug: 'python',
+    displayName: 'Python',
+    iconColor: '3776ab',
+    iconColorBrightness: 0.3271479366301562,
+  },
+];
+const languages = languageData.map(
+  ({ slug, displayName, iconColor, iconColorBrightness }) => {
+    return {
+      displayName,
+      shadowColor: `color-mix(in srgb, ${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
+      iconURL: `https://cdn.simpleicons.org/${slug}/${iconColor}?viewbox=auto`,
+    };
+  },
+);
 ---
 
 <div class="h-full">
@@ -9,5 +60,24 @@
     <p class="font-mono text-blue-300">02</p>
     <h1 class="text-2xl">About</h1>
   </header>
-  <!-- <p class="max-w-[70ch] text-justify">{`${cachedAboutContent}Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, modi non reprehenderit accusantium corrupti vel tenetur a consectetur. Optio illo eaque voluptate, dolor architecto repellat reiciendis ab dolorum recusandae atque?Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, modi non reprehenderit accusantium corrupti vel tenetur a consectetur. Optio illo eaque voluptate, dolor architecto repellat reiciendis ab dolorum recusandae atque?`}</p> -->
+  <p class="max-w-prose text-justify mb-8">{aboutContent}</p>
+  <h2 class="text-xl mb-6">Languages</h2>
+  <div class="flex flex-wrap gap-8">
+    {
+      languages.map(({ displayName, iconURL, shadowColor }) => {
+        return (
+          <div class="text-center">
+            <img
+              src={iconURL}
+              alt={displayName}
+              class="size-12 mx-auto mb-2 drop-shadow-[2px_4px_12px_var(--shadow-color)]"
+              style={`--shadow-color: ${shadowColor}`}
+              loading="lazy"
+            />
+            <span>{displayName}</span>
+          </div>
+        );
+      })
+    }
+  </div>
 </div>

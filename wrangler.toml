@@ -2,3 +2,7 @@
 name = "kynsonszetau"
 pages_build_output_dir = "dist"
 compatibility_date = "2024-11-11"
+
+[[kv_namespaces]]
+binding = "DYNAMIC_CONTENT"
+id = "efb9d715af9b4d36ab74617a3c336df1"
