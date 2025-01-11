@@ -1,0 +1,16 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "content-sync"
+main = "src/index.ts"
+compatibility_date = "2024-12-30"
+
+# Workers Logs
+# Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
+# Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
+[observability]
+enabled = true
+
+# Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces
+[[kv_namespaces]]
+binding = "CONTENT"
+id = "efb9d715af9b4d36ab74617a3c336df1"
