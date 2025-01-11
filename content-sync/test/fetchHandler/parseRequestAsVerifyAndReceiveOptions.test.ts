@@ -1,8 +1,8 @@
-import type { GenerateWebhookEventRequestOptions } from '../generateWebhookRequest';
+import type { GenerateWebhookEventRequestOptions } from '../mockDataGenerator';
 
 import parseRequestAsVerifyAndReceiveOptions from '../../src/handlers/fetchHandler/parseRequestAsVerifyAndReceiveOptions';
 
-import { generateWebhookEventRequest } from '../generateWebhookRequest';
+import { generateWebhookEventRequest } from '../mockDataGenerator';
 
 import { test, expect } from 'vitest';
 

@@ -27,6 +27,8 @@ test.for([
 ])(
   'errorHandler should return $expectedStatus for $error',
   ({ error, expectedStatus }) => {
-    expect(error).toBe(createResponseFromError(error, expectedStatus));
+    expect(errorHandler(error)).toEqual(
+      createResponseFromError(error, expectedStatus)
+    );
   }
 );
