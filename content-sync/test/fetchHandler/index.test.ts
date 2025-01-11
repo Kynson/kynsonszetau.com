@@ -1,11 +1,11 @@
 import type {
   SupportedEventName,
   GenerateWebhookEventRequestOptions,
-} from '../generateWebhookRequest';
+} from '../mockDataGenerator';
 
 import fetchHandler from '../../src/handlers/fetchHandler';
 
-import { generateWebhookEventRequest } from '../generateWebhookRequest';
+import { generateWebhookEventRequest } from '../mockDataGenerator';
 import { createResponse } from 'cf-workers-utils';
 
 import { env } from 'cloudflare:test';
@@ -47,11 +47,7 @@ test('fetchHandler should reject unsigned request', async () => {
 
   // The message is dependent on @octokit/webhooks
   await expect(fetchHandler(request, env)).rejects.toThrow(
-    new AggregateError([
-      new Error(
-        '[@octokit/webhooks] signature does not match event payload and secret'
-      ),
-    ])
+    '[@octokit/webhooks] signature does not match event payload and secret'
   );
 });
 

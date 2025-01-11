@@ -1,12 +1,13 @@
 import parseAboutResponse from '../../src/handlers/pushHandler/aboutParser';
 
 import { test, expect } from 'vitest';
+import { faker } from '@faker-js/faker';
 
 test('parseAboutResponse should extracts the introduction and languages correctly', async () => {
   // These can be set to anything by the user
-  const introduction = `This is a test message: ${Math.random()}`;
-  const javascriptDisplayName = `Javascript-${Math.random()}`;
-  const rustDisplayName = `Rust-${Math.random()}`;
+  const introduction = faker.lorem.paragraph();
+  const javascriptDisplayName = faker.internet.displayName();
+  const rustDisplayName = faker.internet.displayName();
 
   const response = new Response(
     `
