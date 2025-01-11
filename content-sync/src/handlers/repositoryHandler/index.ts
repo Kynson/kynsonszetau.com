@@ -3,8 +3,9 @@ import type { EmitterWebhookEventPayload } from '../../lib/octokit';
 import { fetchPublicProjects, Projects } from './projects';
 
 import genericUpdatedHandler from './genericUpdatedHandler';
-import renamedHandler from './renamedHandler';
 import genericRemovedHandler from './genericRemovedHandler';
+import renamedHandler from './renamedHandler';
+import transferredHandler from './transferredHandler';
 
 export default async function repositoryHandler(
   eventPayload: EmitterWebhookEventPayload<'repository'>,
@@ -55,7 +56,7 @@ export default async function repositoryHandler(
       newProjects = genericRemovedHandler(eventPayload, existingProjects);
       break;
     case 'transferred':
-      newProjects = genericRemovedHandler(eventPayload, existingProjects);
+      newProjects = transferredHandler(eventPayload, existingProjects);
       break;
     default:
       // This clause should be redundent
