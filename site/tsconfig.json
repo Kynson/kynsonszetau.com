@@ -6,5 +6,6 @@
     "/@types/cloudflare-turnstile",
     "**/*"
   ],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "references": [{ "path": "../common" }]
 }
