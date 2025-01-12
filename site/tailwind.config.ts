@@ -19,6 +19,9 @@ export default {
         prose: '70ch',
         'half-prose': '35ch',
       },
+      dropShadow: {
+        'slant-color-variable': '2px 4px 12px var(--shadow-color)',
+      },
     },
     fontFamily: {
       sans: ['Montserrat', ...defaultTheme.fontFamily.sans],

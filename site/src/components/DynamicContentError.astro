@@ -1,0 +1,15 @@
+---
+interface Props {
+  'content-name': string;
+}
+
+const { 'content-name': contentName } = Astro.props;
+---
+
+<p class="max-w-prose text-justify text-red-400 mb-8">
+  Oops! Something went wrong while fetching the content for {contentName}. If
+  the issue persist, please report the issue on
+  <a href="https://github.com/Kynson/kynsonszetau.com/issues" class="underline"
+    >Github</a
+  >.
+</p>
