@@ -1,8 +1,8 @@
 {
-  "name": "kynsonszetau.com",
+  "name": "site",
   "type": "module",
   "version": "2.0.0",
-  "description": "The personal website of Kynson Szetau",
+  "description": "The personal site of Kynson Szetau",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kynson/kynsonszetau.com.git"

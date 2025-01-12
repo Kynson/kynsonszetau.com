@@ -1,0 +1,22 @@
+{
+  "name": "kynsonszetau.com",
+  "description": "Monorepo for the personal site of Kynson Szetau",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kynson/kynsonszetau.com.git"
+  },
+  "author": "Kynson Szetau (https://kynsonszetau.com)",
+  "bugs": {
+    "url": "https://github.com/Kynson/kynsonszetau.com/issues"
+  },
+  "homepage": "https://github.com/Kynson/kynsonszetau.com#readme",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "site",
+    "content-sync"
+  ],
+  "devDependencies": {
+    "@kynsonszetau/lint": "^1.0.2"
+  }
+}
