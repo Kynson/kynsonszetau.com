@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@common/*": ["./common/*"]
-    }
+    "strict": true
   }
 }
