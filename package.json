@@ -14,7 +14,8 @@
   "type": "module",
   "workspaces": [
     "site",
-    "content-sync"
+    "content-sync",
+    "common"
   ],
   "devDependencies": {
     "@kynsonszetau/lint": "^1.0.2"
