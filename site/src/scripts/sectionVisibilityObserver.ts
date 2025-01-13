@@ -5,6 +5,8 @@ interface SectionVisibilityObserverEventMap {
 }
 
 interface SectionVisibilityObserverEventTarget extends EventTarget {
+  // EventTarget is a constructable class
+  // eslint-disable-next-line @typescript-eslint/no-misused-new
   new (): SectionVisibilityObserverEventTarget;
 
   addEventListener<K extends keyof SectionVisibilityObserverEventMap>(
@@ -33,7 +35,6 @@ interface SectionVisibilityObserverEventTarget extends EventTarget {
 }
 
 class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserverEventTarget) {
-  #rootContainer = document.querySelector('main');
   #sections = document.querySelectorAll('section');
 
   #observer: IntersectionObserver;
@@ -47,13 +48,12 @@ class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserve
     this.#observer = new IntersectionObserver(
       this.#intersectionHandler.bind(this),
       {
-        root: this.#rootContainer,
         threshold: intersectionThreshold,
       },
     );
 
-    for (let i = 0; i < this.#sections.length; i++) {
-      this.#observer.observe(this.#sections[i]);
+    for (const section of this.#sections) {
+      this.#observer.observe(section);
     }
   }
 
@@ -71,14 +71,11 @@ class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserve
     this.dispatchEvent(sectionChangedEvent);
   }
 
-  #intersectionHandler(
-    entries: IntersectionObserverEntry[],
-    _observer: IntersectionObserver,
-  ) {
-    for (let i = 0; i < entries.length; i++) {
-      if (entries[i].isIntersecting) {
+  #intersectionHandler(entries: IntersectionObserverEntry[]) {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
         this.#previousSection = this.#currentSection;
-        this.#currentSection = entries[i].target as HTMLElement;
+        this.#currentSection = entry.target as HTMLElement;
 
         this.#dispatchSectionChangedEvent();
 
@@ -86,8 +83,7 @@ class SectionVisibilityObserver extends (EventTarget as SectionVisibilityObserve
       }
 
       if (
-        !entries[i].isIntersecting &&
-        entries[i].target.isSameNode(this.#currentSection) &&
+        entry.target.isSameNode(this.#currentSection) &&
         !!this.#previousSection
       ) {
         [this.#currentSection, this.#previousSection] = [
