@@ -14,7 +14,7 @@ function fetchAboutErrorHandler(error: unknown) {
   logError('fetchAbout', error);
 }
 
-const about = (await env.DYNAMIC_CONTENT.get<About>('about-', 'json').catch(
+const about = (await env.DYNAMIC_CONTENT.get<About>('about', 'json').catch(
   fetchAboutErrorHandler
 )) ?? { introduction: '', languages: [] };
 
