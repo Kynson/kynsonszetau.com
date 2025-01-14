@@ -4,6 +4,7 @@ import type { About } from 'common';
 import { logError } from 'common';
 
 import DynamicContentError from '../components/DynamicContentError.astro';
+import { Image } from 'astro:assets';
 
 const { env } = Astro.locals.runtime;
 
@@ -50,12 +51,15 @@ const languageRenderData = languages.map(
       languageRenderData.map(({ displayName, iconURL, shadowColor }) => {
         return (
           <div class="text-center">
-            <img
+            <Image
               src={iconURL}
               alt={displayName}
-              class="size-12 mx-auto mb-2 drop-shadow-slant-color-variable"
+              width="48"
+              height="48"
+              class="mx-auto mb-2 drop-shadow-slant-color-variable"
               style={`--shadow-color: ${shadowColor}`}
               loading="lazy"
+              format="svg"
             />
             <span>{displayName}</span>
           </div>
