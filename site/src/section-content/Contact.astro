@@ -5,17 +5,25 @@ import Button from '../components/Button.astro';
 import Spinner from '../assets/spinner.svg';
 ---
 
+{/* Content logic */}
 <script>
   import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
 
   import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
   import { actions } from 'astro:actions';
 
-  const contactForm = document.querySelector('#contact-form') as HTMLFormElement;
-  const contactFormSubmitButton = contactForm.querySelector('#contact-form-submit-button') as HTMLButtonElement;
-  const contactFormSumbitButtonSpanElement = contactFormSubmitButton.children[0] as HTMLSpanElement;
+  const contactForm = document.querySelector(
+    '#contact-form'
+  ) as HTMLFormElement;
+  const contactFormSubmitButton = contactForm.querySelector(
+    '#contact-form-submit-button'
+  ) as HTMLButtonElement;
+  const contactFormSumbitButtonSpanElement = contactFormSubmitButton
+    .children[0] as HTMLSpanElement;
 
-  async function sectionVisibilityChangeHandler({ detail }: SectionChangeEvent) {
+  async function sectionVisibilityChangeHandler({
+    detail,
+  }: SectionChangeEvent) {
     const { newSection } = detail;
 
     if (newSection.id !== 'contact') {
@@ -26,7 +34,10 @@ import Spinner from '../assets/spinner.svg';
     initializeTurnstile();
 
     // Remove the event listener after turnstile is initialized
-    sectionVisibilityObserver.removeEventListener('change', sectionVisibilityChangeHandler);
+    sectionVisibilityObserver.removeEventListener(
+      'change',
+      sectionVisibilityChangeHandler
+    );
   }
 
   function contactFormInputHandler() {
@@ -36,7 +47,8 @@ import Spinner from '../assets/spinner.svg';
   async function contactFormSubmitButtonClickHandler(event: MouseEvent) {
     event.preventDefault();
 
-    const contactFormSubmitButtonOldContent = contactFormSumbitButtonSpanElement.innerHTML;
+    const contactFormSubmitButtonOldContent =
+      contactFormSumbitButtonSpanElement.innerHTML;
 
     contactFormSubmitButton.disabled = true;
     contactFormSumbitButtonSpanElement.innerHTML = 'Sending...';
@@ -51,7 +63,8 @@ import Spinner from '../assets/spinner.svg';
 
       window.turnstile.reset();
       resetTurnstileStatus();
-      contactFormSumbitButtonSpanElement.innerHTML = contactFormSubmitButtonOldContent;
+      contactFormSumbitButtonSpanElement.innerHTML =
+        contactFormSubmitButtonOldContent;
 
       alert('Sorry, your message cannot be sent. Please try again later.');
 
@@ -60,36 +73,80 @@ import Spinner from '../assets/spinner.svg';
 
     contactForm.reset();
     window.turnstile.reset();
-    contactFormSumbitButtonSpanElement.innerHTML = contactFormSubmitButtonOldContent;
+    contactFormSumbitButtonSpanElement.innerHTML =
+      contactFormSubmitButtonOldContent;
 
-    alert('Your message has been sent! I will get back to you as soon as possible.');
+    alert(
+      'Your message has been sent! I will get back to you as soon as possible.'
+    );
   }
 
   for (const formControls of contactForm.elements) {
     formControls.addEventListener('invalid', (event) => event.preventDefault());
   }
 
-  sectionVisibilityObserver.addEventListener('change', sectionVisibilityChangeHandler);
+  sectionVisibilityObserver.addEventListener(
+    'change',
+    sectionVisibilityChangeHandler
+  );
   contactForm.addEventListener('input', contactFormInputHandler);
-  contactFormSubmitButton.addEventListener('click', contactFormSubmitButtonClickHandler);
+  contactFormSubmitButton.addEventListener(
+    'click',
+    contactFormSubmitButtonClickHandler
+  );
 </script>
 
-<header class="mb-12">
-  <p class="font-mono text-blue-300">04</p>
-  <h1 class="text-2xl">Contact</h1>
-</header>
-<p class="max-w-prose mb-4 text-justify">Fell free to leave a message below! If you prefer sending an email, you may also reach me at <a href="mailto:hi@kynsonszetau.com" class="font-medium hover:underline hover:underline-offset-4 hover:decoration-blue-300">hi@kynsonszetau.com</a></p>
+{/* Contact content */}
+<p class="max-w-prose mb-4 text-justify">
+  Fell free to leave a message below! If you prefer sending an email, you may
+  also reach me at <a
+    href="mailto:hi@kynsonszetau.com"
+    class="font-medium hover:underline hover:underline-offset-4 hover:decoration-blue-300"
+    >hi@kynsonszetau.com</a
+  >
+</p>
 <form id="contact-form" class="max-w-prose">
   <div class="flex flex-wrap gap-4 mb-3">
-    <Input class="flex-grow max-w-half-prose" label="Name" type="text" autocomplete="name" error-message="Name is required" required />
-    <Input class="flex-grow max-w-half-prose" label="Email" type="email" autocomplete="email" error-message="Invalid email" />
+    <Input
+      class="flex-grow max-w-half-prose"
+      label="Name"
+      type="text"
+      autocomplete="name"
+      error-message="Name is required"
+      required
+    />
+    <Input
+      class="flex-grow max-w-half-prose"
+      label="Email"
+      type="email"
+      autocomplete="email"
+      error-message="Invalid email"
+    />
   </div>
-  <Textarea class="w-full mb-3" label="Message" rows="8" required error-message="Message is required" />
-  <div id="turnstile-widget" class="content-center h-[65px] w-full max-w-half-prose bg-gray-800 mb-8">
-    <Spinner id="turnstile-spinner" class="size-6 fill-none mx-auto animate-spin" />
+  <Textarea
+    class="w-full mb-3"
+    label="Message"
+    rows="8"
+    required
+    error-message="Message is required"
+  />
+  <div
+    id="turnstile-widget"
+    class="content-center h-[65px] w-full max-w-half-prose bg-gray-800 mb-8"
+  >
+    <Spinner
+      id="turnstile-spinner"
+      class="size-6 fill-none mx-auto animate-spin"
+    />
   </div>
-  <input id="turnstile-status-checkbox" class="hidden" type="checkbox" name="turnstile-status" required />
+  <input
+    id="turnstile-status-checkbox"
+    class="hidden"
+    type="checkbox"
+    name="turnstile-status"
+    required
+  />
   <Button id="contact-form-submit-button" type="submit" class="w-fit" disabled>
-    <span>Send <span class="font-mono">-></span></span> 
+    <span>Send <span class="font-mono">-></span></span>
   </Button>
 </form>
