@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 import SectionNavigation from '../components/SectionNavigation.astro';
 import Section from '../components/Section.astro';
+import SectionContentFallback from '../components/SectionContentFallback.astro';
 
 import Hero from '../section-content/Hero.astro';
 import About from '../section-content/About.astro';
@@ -12,12 +13,12 @@ import Contact from '../section-content/Contact.astro';
 import Logo from '../assets/logo.svg';
 import GithubLogo from '../assets/github-logo.svg';
 
-const NUMBER_OF_SECTIONS = 4;
+const SECTION_COUNT = 4;
 ---
 
 <MainLayout>
   <Logo class="w-11" slot="nav" />
-  <SectionNavigation numberOfSections={NUMBER_OF_SECTIONS} slot="nav" />
+  <SectionNavigation section-count={SECTION_COUNT} slot="nav" />
   <a
     href="https://github.com/Kynson"
     class="self-center justify-self-end md:justify-self-auto md:self-end"
@@ -28,18 +29,17 @@ const NUMBER_OF_SECTIONS = 4;
   <Section id="hero" with-header={false} class="mb-12">
     <Hero />
   </Section>
-  <Section id="about" section-number="02" title="About" class="mb-12 py-5">
-    <About server:defer />
+  <Section section-number="02" title="About" class="mb-12 py-5">
+    <About server:defer>
+      <SectionContentFallback slot="fallback" section="About" />
+    </About>
   </Section>
-  <Section
-    id="projects"
-    section-number="03"
-    title="Projects"
-    class="mb-12 py-5"
-  >
-    <Projects server:defer />
+  <Section section-number="03" title="Projects" class="mb-12 py-5">
+    <Projects server:defer>
+      <SectionContentFallback slot="fallback" section="Projects" />
+    </Projects>
   </Section>
-  <Section id="contact" section-number="04" title="Contact" class="py-5">
+  <Section section-number="04" title="Contact" class="py-5">
     <Contact />
   </Section>
 </MainLayout>
