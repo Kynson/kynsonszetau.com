@@ -2,6 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 
 import SectionNavigation from '../components/SectionNavigation.astro';
+import Section from '../components/Section.astro';
 
 import Hero from '../section-content/Hero.astro';
 import About from '../section-content/About.astro';
@@ -15,22 +16,30 @@ const NUMBER_OF_SECTIONS = 4;
 ---
 
 <MainLayout>
-	<Logo class="w-11" slot="nav" />
-	<SectionNavigation numberOfSections={NUMBER_OF_SECTIONS} slot="nav" />
-	<a href="https://github.com/Kynson" class="self-center justify-self-end md:justify-self-auto md:self-end" slot="nav">
-		<GithubLogo class="size-6" />
-	</a>
-	<section id="hero" class="min-h-dvh mb-12">
-		<Hero />
-	</section>
-	<section id="about" class="min-h-dvh mb-12 py-5">
-		<About server:defer />
-	</section>
-	<section id="projects" class="min-h-dvh py-5 mb-12">
-		<Projects server:defer />
-	</section>
-	<section id="contact" class="min-h-dvh py-5">
-		<Contact />
-	</section>
+  <Logo class="w-11" slot="nav" />
+  <SectionNavigation numberOfSections={NUMBER_OF_SECTIONS} slot="nav" />
+  <a
+    href="https://github.com/Kynson"
+    class="self-center justify-self-end md:justify-self-auto md:self-end"
+    slot="nav"
+  >
+    <GithubLogo class="size-6" title="Github Logo" />
+  </a>
+  <Section id="hero" with-header={false} class="mb-12">
+    <Hero />
+  </Section>
+  <Section id="about" section-number="02" title="About" class="mb-12 py-5">
+    <About server:defer />
+  </Section>
+  <Section
+    id="projects"
+    section-number="03"
+    title="Projects"
+    class="mb-12 py-5"
+  >
+    <Projects server:defer />
+  </Section>
+  <Section id="contact" section-number="04" title="Contact" class="py-5">
+    <Contact />
+  </Section>
 </MainLayout>
-

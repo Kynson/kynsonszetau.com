@@ -26,50 +26,41 @@ const languageRenderData = languages.map(
     return {
       displayName,
       shadowColor: `color-mix(in srgb, ${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
-      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}?viewbox=auto`,
+      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}`,
     };
   }
 );
 ---
 
-<div class="h-full">
-  <header class="mb-12">
-    <p class="font-mono text-blue-300">02</p>
-    <h1 class="text-2xl">About</h1>
-  </header>
+{/* About content */}
+{!!introduction && <p class="max-w-prose text-justify mb-8">{introduction}</p>}
+{!introduction && <DynamicContentError content-name="introduction" />}
+<h2 class="text-xl mb-6">Languages</h2>
+<div class="flex flex-wrap gap-8">
   {
-    !!introduction && (
-      <p class="max-w-prose text-justify mb-8">{introduction}</p>
+    // This will not render anything if the languages array is empty
+    // Therefore, no need to check for the length of the array
+    languageRenderData.map(({ displayName, iconURL, shadowColor }) => {
+      return (
+        <div class="text-center">
+          <Image
+            src={iconURL}
+            alt={displayName}
+            width="48"
+            height="48"
+            class="mx-auto mb-2 drop-shadow-slant-color-variable"
+            style={`--shadow-color: ${shadowColor}`}
+            loading="lazy"
+            format="svg"
+          />
+          <span>{displayName}</span>
+        </div>
+      );
+    })
+  }
+  {
+    languageRenderData.length === 0 && (
+      <DynamicContentError content-name="languages" />
     )
   }
-  {!introduction && <DynamicContentError content-name="introduction" />}
-  <h2 class="text-xl mb-6">Languages</h2>
-  <div class="flex flex-wrap gap-8">
-    {
-      // This will not render anything if the languages array is empty
-      // Therefore, no need to check for the length of the array
-      languageRenderData.map(({ displayName, iconURL, shadowColor }) => {
-        return (
-          <div class="text-center">
-            <Image
-              src={iconURL}
-              alt={displayName}
-              width="48"
-              height="48"
-              class="mx-auto mb-2 drop-shadow-slant-color-variable"
-              style={`--shadow-color: ${shadowColor}`}
-              loading="lazy"
-              format="svg"
-            />
-            <span>{displayName}</span>
-          </div>
-        );
-      })
-    }
-    {
-      languageRenderData.length === 0 && (
-        <DynamicContentError content-name="languages" />
-      )
-    }
-  </div>
 </div>
