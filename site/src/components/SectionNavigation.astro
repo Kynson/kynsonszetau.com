@@ -12,7 +12,8 @@ const { numberOfSections } = Astro.props;
   import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
 
   const sections = document.querySelectorAll('section');
-  const sectionIndicators: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.section-indicator');
+  const sectionIndicators: NodeListOf<HTMLAnchorElement> =
+    document.querySelectorAll('.section-indicator');
 
   const sectionIndicatorMappings = new Map<HTMLElement, HTMLElement>();
 
@@ -28,38 +29,45 @@ const { numberOfSections } = Astro.props;
     currentSectionIndicator.classList.remove('bg-gray-500');
     currentSectionIndicator.classList.add('bg-transparent');
 
-    currentSectionIndicator = sectionIndicatorMappings.get(newSection) as HTMLButtonElement;
+    currentSectionIndicator = sectionIndicatorMappings.get(
+      newSection
+    ) as HTMLAnchorElement;
 
     currentSectionIndicator.classList.remove('bg-transparent');
     currentSectionIndicator.classList.add('bg-gray-500');
   }
 
-  function sectionIndicatorClickHandler({ target }: MouseEvent) {
-    const targetSection = sectionIndicatorMappings.get(target as HTMLElement)!;
-
-    targetSection.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  sectionVisibilityObserver.addEventListener('change', sectionVisibilityChangeHandler);
+  sectionVisibilityObserver.addEventListener(
+    'change',
+    sectionVisibilityChangeHandler
+  );
 
   for (let i = 0; i < sections.length; i++) {
-    // Set up a bidirectional mapping between sections and section indicators
-    sectionIndicatorMappings.set(sections[i], sectionIndicators[i]);
-    sectionIndicatorMappings.set(sectionIndicators[i], sections[i]);
+    const currentSection = sections[i];
+    const currentSectionIndicator = sectionIndicators[i];
 
-    sectionIndicators[i].addEventListener('click', sectionIndicatorClickHandler);
+    // Set up a bidirectional mapping between sections and section indicators
+    sectionIndicatorMappings.set(currentSection, currentSectionIndicator);
+    sectionIndicatorMappings.set(currentSectionIndicator, currentSection);
+
+    const { id } = currentSection;
+    currentSectionIndicator.href = `#${id}`;
+    currentSectionIndicator.ariaLabel = id;
   }
 </script>
 
 {
-/* SectionNavigation content
+  /* SectionNavigation content
 Note: This component is not standalone and is context-dependent */
 }
 <div class="w-3 hidden flex-col justify-center gap-8 md:flex">
   {
     // The constructor creates a sparse array
     [...Array(numberOfSections)].map(() => (
-      <button class="section-indicator transition duration-[.4s] size-3 rounded-full bg-transparent border-2 border-gray-500" />
+      <a
+        href="#"
+        class="section-indicator transition duration-[.4s] size-3 rounded-full bg-transparent border-2 border-gray-500"
+      />
     ))
   }
 </div>
