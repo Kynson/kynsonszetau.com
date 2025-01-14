@@ -2,21 +2,23 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'section'> {
-  'section-number'?: string;
   title?: string;
+  id?: string;
+  'section-number'?: string;
   'with-header'?: boolean;
 }
 
 const {
-  'section-number': sectionNumber,
   title,
+  id = title?.toLowerCase(),
+  'section-number': sectionNumber,
   'with-header': withHeader = true,
   class: clazz,
   ...attributes
 } = Astro.props;
 ---
 
-<section class:list={['min-h-dvh', clazz]} {...attributes}>
+<section {id} class:list={['min-h-dvh', clazz]} {...attributes}>
   {
     withHeader && (
       <header class="mb-12">
