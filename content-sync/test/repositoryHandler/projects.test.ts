@@ -38,10 +38,7 @@ test('fetchPublicProjects should use stored projects from KV if available', asyn
     faker.helpers.multiple(() => generateProjectEntry())
   );
 
-  await env.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(projects))
-  );
+  await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
   await expect(fetchPublicProjects(env)).resolves.toEqual({
     isStale: true,

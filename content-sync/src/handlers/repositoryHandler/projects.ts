@@ -37,15 +37,15 @@ export function parseRepositoriesAsProjects(repositories: RepositoryLike[]) {
 }
 
 export async function fetchPublicProjects({ CONTENT }: Env) {
-  const rawProjects = await CONTENT.get<Record<string, ProjectDetails>>(
+  const rawProjects = await CONTENT.get<[string, ProjectDetails][]>(
     'projects',
-    'json'
+    'json',
   );
 
   if (rawProjects) {
     return {
       isStale: true,
-      projects: new Map(Object.entries(rawProjects)),
+      projects: new Map(rawProjects),
     };
   }
 
