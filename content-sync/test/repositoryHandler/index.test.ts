@@ -18,10 +18,7 @@ test.for<'created' | 'publicized' | 'transferred'>([
   const otherProjects = faker.helpers.multiple(() => generateProjectEntry());
   const projects = new Map([...otherProjects]);
 
-  await env.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(projects))
-  );
+  await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
   const payload = generateRepositoryWebhookEvent({
     action,
@@ -37,9 +34,7 @@ test.for<'created' | 'publicized' | 'transferred'>([
   await repositoryHandler(payload, env);
 
   await expect(env.CONTENT.get('projects')).resolves.toEqual(
-    JSON.stringify(
-      Object.fromEntries(new Map([...otherProjects, projectToBeCreated]))
-    )
+    JSON.stringify([...new Map([...otherProjects, projectToBeCreated])]),
   );
 });
 
@@ -52,10 +47,7 @@ test.for<'deleted' | 'privatized' | 'transferred'>([
   const otherProjects = faker.helpers.multiple(() => generateProjectEntry());
   const projects = new Map([...otherProjects, projectToBeRemoved]);
 
-  await env.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(projects))
-  );
+  await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
   const payload = generateRepositoryWebhookEvent({
     action,
@@ -70,7 +62,7 @@ test.for<'deleted' | 'privatized' | 'transferred'>([
   await repositoryHandler(payload, env);
 
   await expect(env.CONTENT.get('projects')).resolves.toEqual(
-    JSON.stringify(Object.fromEntries(new Map([...otherProjects])))
+    JSON.stringify([...new Map([...otherProjects])]),
   );
 });
 
@@ -81,10 +73,7 @@ test('repositoryHandler should rename project for rename event', async () => {
 
   const newName = faker.lorem.slug();
 
-  await env.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(projects))
-  );
+  await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
   const payload = generateRepositoryWebhookEvent({
     action: 'renamed',
@@ -99,11 +88,9 @@ test('repositoryHandler should rename project for rename event', async () => {
   await repositoryHandler(payload, env);
 
   await expect(env.CONTENT.get('projects')).resolves.toEqual(
-    JSON.stringify(
-      Object.fromEntries(
-        new Map([...otherProjects, [newName, projectToBeRenamed[1]]])
-      )
-    )
+    JSON.stringify([
+      ...new Map([...otherProjects, [newName, projectToBeRenamed[1]]]),
+    ]),
   );
 });
 
@@ -114,10 +101,7 @@ test('repositoryHandler should update project for edited event', async () => {
 
   const newDetails = generateProjectEntry()[1];
 
-  await env.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(projects))
-  );
+  await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
   const payload = generateRepositoryWebhookEvent({
     action: 'edited',
@@ -132,11 +116,9 @@ test('repositoryHandler should update project for edited event', async () => {
   await repositoryHandler(payload, env);
 
   await expect(env.CONTENT.get('projects')).resolves.toEqual(
-    JSON.stringify(
-      Object.fromEntries(
-        new Map([...otherProjects, [projectToBeUpdated[0], newDetails]])
-      )
-    )
+    JSON.stringify([
+      ...new Map([...otherProjects, [projectToBeUpdated[0], newDetails]]),
+    ]),
   );
 });
 
@@ -149,10 +131,7 @@ test.for(['private', 'template'])(
 
     const newDetails = generateProjectEntry()[1];
 
-    await env.CONTENT.put(
-      'projects',
-      JSON.stringify(Object.fromEntries(projects))
-    );
+    await env.CONTENT.put('projects', JSON.stringify([...projects]));
 
     const payload = generateRepositoryWebhookEvent({
       action: 'edited',
@@ -167,7 +146,7 @@ test.for(['private', 'template'])(
     await repositoryHandler(payload, env);
 
     await expect(env.CONTENT.get('projects')).resolves.toEqual(
-      JSON.stringify(Object.fromEntries(projects))
+      JSON.stringify([...projects]),
     );
   }
 );

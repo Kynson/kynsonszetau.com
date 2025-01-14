@@ -29,7 +29,7 @@ export default async function repositoryHandler(
   if (!isStale) {
     await environment.CONTENT.put(
       'projects',
-      JSON.stringify(Object.fromEntries(existingProjects))
+      JSON.stringify([...existingProjects]),
     );
 
     return;
@@ -64,8 +64,5 @@ export default async function repositoryHandler(
       break;
   }
 
-  await environment.CONTENT.put(
-    'projects',
-    JSON.stringify(Object.fromEntries(newProjects))
-  );
+  await environment.CONTENT.put('projects', JSON.stringify([...newProjects]));
 }
