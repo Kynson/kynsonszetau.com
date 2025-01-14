@@ -12,7 +12,7 @@
     "deploy": "wrangler deploy",
     "dev": "doppler run --mount .dev.vars --mount-format env -- wrangler dev",
     "test": "doppler run --mount .dev.vars --mount-format env -- vitest",
-    "wrangler:types": "wrangler types --experimental-include-runtime",
+    "wrangler:types": "doppler run --mount .dev.vars --mount-format env -- wrangler types --experimental-include-runtime",
     "smee": "smee",
     "lint": "eslint",
     "format": "prettier --write ."
