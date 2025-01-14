@@ -1,9 +1,9 @@
 ---
 interface Props {
-  numberOfSections: number;
+  'section-count': number;
 }
 
-const { numberOfSections } = Astro.props;
+const { 'section-count': sectionCount } = Astro.props;
 ---
 
 {/* SectionNavigation logic */}
@@ -46,13 +46,11 @@ const { numberOfSections } = Astro.props;
     const currentSection = sections[i];
     const currentSectionIndicator = sectionIndicators[i];
 
-    // Set up a bidirectional mapping between sections and section indicators
     sectionIndicatorMappings.set(currentSection, currentSectionIndicator);
-    sectionIndicatorMappings.set(currentSectionIndicator, currentSection);
 
     const { id } = currentSection;
     currentSectionIndicator.href = `#${id}`;
-    currentSectionIndicator.ariaLabel = id;
+    currentSectionIndicator.ariaLabel = `Go to ${id}`;
   }
 </script>
 
@@ -63,7 +61,7 @@ Note: This component is not standalone and is context-dependent */
 <div class="w-3 hidden flex-col justify-center gap-8 md:flex">
   {
     // The constructor creates a sparse array
-    [...Array(numberOfSections)].map(() => (
+    [...Array(sectionCount)].map(() => (
       <a
         href="#"
         class="section-indicator transition duration-[.4s] size-3 rounded-full bg-transparent border-2 border-gray-500"
