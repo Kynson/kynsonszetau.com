@@ -11,7 +11,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
-.dev.varss
+.dev.vars
 
 # Miniflare
 .mf
