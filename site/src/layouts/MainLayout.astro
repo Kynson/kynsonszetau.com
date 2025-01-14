@@ -3,11 +3,18 @@ import BaseLayout from './BaseLayout.astro';
 ---
 
 {/* MainLayout content */}
-<BaseLayout class="px-6 py-8 grid grid-cols-2 grid-rows-[min-content_auto] md:gap-x-14 md:px-6 md:py-0 md:h-dvh md:grid-cols-[min-content_auto] md:grid-rows-3">
-  <nav class="col-span-2 grid grid-cols-subgrid md:col-span-1 md:grid-rows-subgrid md:row-span-3 md:justify-items-center md:py-10">
+<BaseLayout
+  html-class="scroll-smooth"
+  body-class="px-6 py-8 grid grid-cols-2 grid-rows-[min-content_auto] md:gap-x-14 md:px-0 md:py-0 md:pl-6 md:h-dvh md:grid-cols-[min-content_auto] md:grid-rows-3"
+>
+  <nav
+    class="col-span-2 grid grid-cols-subgrid md:col-span-1 md:grid-rows-subgrid md:row-span-3 md:justify-items-center md:py-10"
+  >
     <slot name="nav" />
   </nav>
-  <main class="max-w-screen-xl col-span-2 w-full justify-self-center md:pl-4 md:col-start-2 md:h-dvh md:overflow-y-scroll md:text-clip">
+  <main
+    class="max-w-screen-xl col-span-2 w-full justify-self-center md:scroll-smooth md:pl-4 md:pr-8 md:col-start-2 md:h-dvh md:overflow-y-scroll md:text-clip"
+  >
     <slot />
   </main>
 </BaseLayout>
