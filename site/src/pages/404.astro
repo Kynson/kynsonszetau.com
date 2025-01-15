@@ -1,6 +1,60 @@
 ---
+import NotFoundLayout from '../layouts/NotFoundLayout.astro';
+
+import Footer from '../components/Footer.astro';
+
+import Logo from '../assets/logo.svg';
+import GithubLogo from '../assets/github-logo.svg';
+
 // Disable prerendering so that server:defer will be respected
 // See https://github.com/withastro/astro/issues/12744
 export const prerender = false;
 ---
-<h1>404</h1>
+
+<script>
+  const EMBED_URL_TEMPLATE =
+    'https://embed.music.apple.com/hk/album/:segment&theme=dark';
+  const SONG_URL_SEGMENTS = [
+    'everythings-alright-from-to-the-moon/1496623954?i=1496624106',
+    'ring-of-fortune/1333423969?i=1333423970',
+    'journey/15899978?i=15899974',
+  ];
+
+  const iframe = document.querySelector('iframe')!;
+
+  const randomSongIndex = Math.floor(Math.random() * SONG_URL_SEGMENTS.length);
+  const randomSongURL = EMBED_URL_TEMPLATE.replace(
+    ':segment',
+    SONG_URL_SEGMENTS[randomSongIndex]
+  );
+
+  iframe.src = randomSongURL;
+</script>
+
+{/* 404 content */}
+<NotFoundLayout>
+  <Logo class="w-14" slot="header" />
+  <a href="https://github.com/Kynson" slot="header">
+    <GithubLogo class="size-7" title="Github Logo" />
+  </a>
+  <h1 class="text-5xl font-medium w-full text-right mb-6">404</h1>
+  <p class="mb-4">
+    Opps! Page not found... <a
+      href="/"
+      class="font-medium hover:underline hover:underline-offset-4 hover:decoration-blue-300"
+      >back to home <span class="font-mono">-></span></a
+    >
+  </p>
+  <p class="mb-4">Or, Enjoy one of my favourite songs (not sponsored 😜)</p>
+  <iframe
+    title="Apple Music Player"
+    allow="autoplay *; encrypted-media *;"
+    height="175"
+    class="w-full max-w-screen-sm overflow-hidden bg-transparent rounded-xl mb-auto"
+    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+  ></iframe>
+  {
+    /* Putting Footer in main as there is clsing remarks that related to the content in main */
+  }
+  <Footer closing-remarks="Don't get lost again!" class="justify-end" />
+</NotFoundLayout>
