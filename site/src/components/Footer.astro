@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'footer'> {
+  'closing-remarks': string;
+}
+
+const {
+  'closing-remarks': closingRemarks,
+  class: clazz,
+  ...attributes
+} = Astro.props;
+---
+
+<footer class:list={['py-8', clazz]} {...attributes}>
+  <p class="text-gray-500 text-sm">
+    {closingRemarks} &middot; Created with ❤️ by Kynson Szetau <br /> License: <a
+      href="https://github.com/Kynson/kynsonszetau.com/blob/master/LICENSE"
+      class="text-blue-50 font-medium hover:underline hover:underline-offset-4 hover:decoration-blue-300"
+      >MIT</a
+    >
+  </p>
+</footer>
