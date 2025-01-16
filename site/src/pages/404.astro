@@ -1,8 +1,6 @@
 ---
 import NotFoundLayout from '../layouts/NotFoundLayout.astro';
 
-import Footer from '../components/Footer.astro';
-
 import Logo from '../assets/logo.svg';
 import GithubLogo from '../assets/github-logo.svg';
 ---
@@ -49,8 +47,4 @@ import GithubLogo from '../assets/github-logo.svg';
     class="w-full max-w-screen-sm overflow-hidden bg-transparent rounded-xl mb-auto"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
   ></iframe>
-  {
-    /* Putting Footer in main as there is clsing remarks that related to the content in main */
-  }
-  <Footer closing-remarks="Don't get lost again!" class="justify-end" />
 </NotFoundLayout>
