@@ -61,7 +61,7 @@ async function contactFormSubmitHandler(
     ),
   });
 
-  if (webhookTriggerResponse.status !== 200) {
+  if (webhookTriggerResponse.status !== 204) {
     logError(
       'webhookTrigger',
       `Fail to trigger webhook, response: ${await webhookTriggerResponse.text()}`,
