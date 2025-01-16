@@ -1,9 +1,12 @@
 import { TURNSTILE_SITEKEY } from 'astro:env/client';
 
-const turnstileStatusCheckbox = document.querySelector(
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// All scripts are loaded as modules, the elements must be available
+const turnstileStatusCheckbox = document.querySelector<HTMLInputElement>(
   '#turnstile-status-checkbox',
-)! as HTMLInputElement;
+)!;
 const turnstileSpinner = document.querySelector('#turnstile-spinner')!;
+/* eslint-enable @typescript-eslint/no-non-null-assertion */
 
 function markTurnstileVerified() {
   turnstileStatusCheckbox.checked = true;

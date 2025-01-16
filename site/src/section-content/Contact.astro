@@ -12,12 +12,10 @@ import Spinner from '../assets/spinner.svg';
   import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
   import { actions } from 'astro:actions';
 
-  const contactForm = document.querySelector(
-    '#contact-form'
-  ) as HTMLFormElement;
-  const contactFormSubmitButton = contactForm.querySelector(
+  const contactForm = document.querySelector<HTMLFormElement>('#contact-form')!;
+  const contactFormSubmitButton = contactForm.querySelector<HTMLButtonElement>(
     '#contact-form-submit-button'
-  ) as HTMLButtonElement;
+  )!;
   const contactFormSumbitButtonSpanElement = contactFormSubmitButton
     .children[0] as HTMLSpanElement;
 
