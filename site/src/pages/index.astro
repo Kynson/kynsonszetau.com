@@ -13,18 +13,18 @@ import Contact from '../section-content/Contact.astro';
 import Logo from '../assets/logo.svg';
 import GithubLogo from '../assets/github-logo.svg';
 
-import Footer from '../components/Footer.astro';
+// import Footer from '../components/Footer.astro';
 
 const SECTION_COUNT = 4;
 ---
 
 <IndexLayout>
-  <Logo class="w-14" slot="nav" />
-  <SectionNavigation section-count={SECTION_COUNT} slot="nav" />
+  <Logo class="w-14" slot="header" />
+  <SectionNavigation section-count={SECTION_COUNT} slot="header" />
   <a
     href="https://github.com/Kynson"
     class="self-center justify-self-end md:justify-self-auto md:self-end"
-    slot="nav"
+    slot="header"
   >
     <GithubLogo class="size-7" title="Github Logo" />
   </a>
@@ -47,5 +47,5 @@ const SECTION_COUNT = 4;
   {
     /* Putting Footer in main as there is clsing remarks that related to the content in main */
   }
-  <Footer closing-remarks="That's it! Thanks for visiting!" />
+  <!-- <Footer closing-remarks="That's it! Thanks for visiting!" /> -->
 </IndexLayout>

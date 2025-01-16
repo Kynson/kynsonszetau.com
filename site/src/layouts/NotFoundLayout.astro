@@ -2,11 +2,14 @@
 import BaseLayout from './BaseLayout.astro';
 ---
 
-<BaseLayout title="404 Not Found" body-class="px-6 h-dvh flex flex-col">
-  <header class="flex justify-between items-center py-10">
-    <slot name="header" />
-  </header>
-  <main class="h-full flex flex-col">
-    <slot />
-  </main>
+<BaseLayout
+  title="404 Not Found"
+  closing-remarks="Don't get lost again!"
+  body-class="px-6 pt-8 gap-y-10 h-dvh flex flex-col md:pt-10"
+  header-class="flex justify-between items-center"
+  main-class="h-full flex flex-col"
+>
+  {/* Transfer the slotted element to BaseLayout */}
+  <slot name="header" slot="header" />
+  <slot />
 </BaseLayout>
