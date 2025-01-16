@@ -1,5 +1,5 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import IndexLayout from '../layouts/IndexLayout.astro';
 
 import SectionNavigation from '../components/SectionNavigation.astro';
 import Section from '../components/Section.astro';
@@ -18,7 +18,7 @@ import Footer from '../components/Footer.astro';
 const SECTION_COUNT = 4;
 ---
 
-<MainLayout>
+<IndexLayout>
   <Logo class="w-14" slot="nav" />
   <SectionNavigation section-count={SECTION_COUNT} slot="nav" />
   <a
@@ -48,4 +48,4 @@ const SECTION_COUNT = 4;
     /* Putting Footer in main as there is clsing remarks that related to the content in main */
   }
   <Footer closing-remarks="That's it! Thanks for visiting!" />
-</MainLayout>
+</IndexLayout>
