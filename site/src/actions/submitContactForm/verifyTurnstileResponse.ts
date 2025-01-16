@@ -1,6 +1,8 @@
 import { ActionError } from 'astro:actions';
 import { TURNSTILE_SECRET } from 'astro:env/server';
-import { postJSON, logError } from './utils';
+import { postJSON } from './utils';
+
+import { logError } from 'common';
 
 export async function verifyTurnstileResponse(
   turnstileResponse: string,

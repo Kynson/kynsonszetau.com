@@ -6,9 +6,9 @@ export function generateNotificationMessageFromTemplate(
   location?: string | null,
 ) {
   return `
-  Recevied new message from ${name} **(${email || 'N/A'})**
-  Location: _${location || 'N/A'}_
-  IP address: _${ip || 'N/A'}_
+  Recevied new message from ${name} **(${email ?? 'N/A'})**
+  Location: _${location ?? 'N/A'}_
+  IP address: _${ip ?? 'N/A'}_
 
   >>> ${incomingMessage}
   `

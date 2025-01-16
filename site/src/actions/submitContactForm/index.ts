@@ -10,6 +10,7 @@ import {
 } from './verifyTurnstileResponse';
 import { generateNotificationMessageFromTemplate } from './notificationMessage';
 import { escape, postJSON } from './utils';
+import { logError } from 'common';
 
 const schema = z.object({
   name: z.string(),
@@ -18,7 +19,7 @@ const schema = z.object({
   email: z
     .string()
     .regex(
-      /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
     )
     .optional(),
   message: z.string(),
@@ -50,7 +51,7 @@ async function contactFormSubmitHandler(
 
   const location = request.cf?.country as string | undefined;
 
-  await postJSON(NOTIFICATION_WEBHOOK_URL, {
+  const webhookTriggerResponse = await postJSON(NOTIFICATION_WEBHOOK_URL, {
     content: generateNotificationMessageFromTemplate(
       name,
       escape(message),
@@ -59,6 +60,18 @@ async function contactFormSubmitHandler(
       location,
     ),
   });
+
+  if (webhookTriggerResponse.status !== 200) {
+    logError(
+      'webhookTrigger',
+      `Fail to trigger webhook, response: ${await webhookTriggerResponse.text()}`,
+    );
+
+    throw new ActionError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: 'Fail to send message',
+    });
+  }
 }
 
 export default defineAction({
