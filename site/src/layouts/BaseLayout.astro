@@ -1,12 +1,13 @@
 ---
 interface Props {
+  title?: string;
   'html-class'?: string;
   'body-class'?: string;
 }
 
 import Head from '../components/Head.astro';
 
-const { 'html-class': htmlClass, 'body-class': bodyClass } = Astro.props;
+const { title, 'html-class': htmlClass, 'body-class': bodyClass } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ const { 'html-class': htmlClass, 'body-class': bodyClass } = Astro.props;
   class="bg-gray-950 text-blue-50 min-h-dvh"
   class:list={htmlClass}
 >
-  <Head />
+  <Head {title} />
   <body class="min-h-dvh" class:list={bodyClass}>
     <slot />
   </body>
