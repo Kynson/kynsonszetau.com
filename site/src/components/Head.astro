@@ -1,3 +1,11 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Kynson Szetau' } = Astro.props;
+---
+
 {/* Head content */}
 
 <meta charset="UTF-8" />
@@ -18,4 +26,4 @@
   href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:wght@100..900&display=swap"
 />
 
-<title>Kynson Szetau</title>
+<title>{title}</title>
