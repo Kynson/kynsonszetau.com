@@ -3,7 +3,8 @@ import { generateTSESLintConfigurations } from '@kynsonszetau/lint';
 /** @type { import('eslint').Linter.Config } */
 export default [
   ...generateTSESLintConfigurations([
-    '{content-sync,site,common}/{src,test}/**/*.ts',
+    '{content-sync,site,common}/src/**/*.ts',
+    'content-sync/test/**/*.ts',
   ]),
   {
     files: ['content-sync/test/**/*.ts'],
