@@ -1,0 +1,11 @@
+allowBuilds:
+  esbuild: true
+  workerd: true
+
+catalog:
+  '@kynsonszetau/lint': ^4.0.0
+
+packages:
+  - site/*
+  - content-sync/*
+  - common/*

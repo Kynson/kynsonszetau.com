@@ -11,13 +11,5 @@
   },
   "homepage": "https://github.com/Kynson/kynsonszetau.com#readme",
   "license": "MIT",
-  "type": "module",
-  "workspaces": [
-    "site",
-    "content-sync",
-    "common"
-  ],
-  "devDependencies": {
-    "@kynsonszetau/lint": "^1.0.2"
-  }
+  "type": "module"
 }
