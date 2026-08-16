@@ -6,6 +6,6 @@ catalog:
   '@kynsonszetau/lint': ^4.0.0
 
 packages:
-  - site/*
-  - content-sync/*
-  - common/*
+  - site
+  # - content-sync
+  # - common
