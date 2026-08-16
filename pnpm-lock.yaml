@@ -14,6 +14,8 @@ importers:
 
   .: {}
 
+  common: {}
+
   site:
     dependencies:
       '@astrojs/cloudflare':
@@ -28,6 +30,9 @@ importers:
       astro:
         specifier: ^7.2.2
         version: 7.2.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(jiti@2.7.0)
+      common:
+        specifier: workspace:*
+        version: link:../common
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3

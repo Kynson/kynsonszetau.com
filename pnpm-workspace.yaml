@@ -8,4 +8,4 @@ catalog:
 packages:
   - site
   # - content-sync
-  # - common
+  - common
