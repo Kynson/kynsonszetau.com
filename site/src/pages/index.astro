@@ -31,7 +31,9 @@ const SECTION_COUNT = 4;
     <Hero />
   </Section>
   <Section section-number="02" title="About" class="mb-12 py-5">
-    <About />
+    <About server:defer>
+      <SectionContentFallback slot="fallback" section="About" />
+    </About>
   </Section>
   <Section section-number="03" title="Projects" class="mb-12 py-5">
     <Projects server:defer>
@@ -39,8 +41,6 @@ const SECTION_COUNT = 4;
     </Projects>
   </Section>
   <Section section-number="04" title="Contact" class="py-5">
-    <Contact server:defer>
-      <SectionContentFallback slot="fallback" section="Contact" />
-    </Contact>
+    <Contact />
   </Section>
 </IndexLayout>
