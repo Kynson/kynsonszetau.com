@@ -1,0 +1,14 @@
+{
+  "name": "kynsonszetau",
+  "compatibility_date": "2026-08-14",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+  },
+  "kv_namespaces": [
+    {
+      "binding": "DYNAMIC_CONTENT",
+      "id": "efb9d715af9b4d36ab74617a3c336df1",
+    },
+  ],
+}
