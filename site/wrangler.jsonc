@@ -5,6 +5,7 @@
     "binding": "ASSETS",
     "directory": "./dist"
   },
+  "compatibility_flags": ["nodejs_compat"],
   "kv_namespaces": [
     {
       "binding": "DYNAMIC_CONTENT",
