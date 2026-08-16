@@ -24,15 +24,14 @@ const SECTION_COUNT = 4;
     class="self-center justify-self-end md:justify-self-auto md:self-end"
     slot="header"
   >
-    <GithubLogo class="size-7" title="Github Logo" />
+    <title>Github Logo</title>
+    <GithubLogo class="size-7" />
   </a>
   <Section id="hero" with-header={false} class="mb-12">
     <Hero />
   </Section>
   <Section section-number="02" title="About" class="mb-12 py-5">
-    <About server:defer>
-      <SectionContentFallback slot="fallback" section="About" />
-    </About>
+    <About />
   </Section>
   <Section section-number="03" title="Projects" class="mb-12 py-5">
     <Projects server:defer>
@@ -40,6 +39,8 @@ const SECTION_COUNT = 4;
     </Projects>
   </Section>
   <Section section-number="04" title="Contact" class="py-5">
-    <Contact />
+    <Contact server:defer>
+      <SectionContentFallback slot="fallback" section="Contact" />
+    </Contact>
   </Section>
 </IndexLayout>

@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --max-width-prose: 70ch;
+  --max-width-half-prose: 35ch;
+  --drop-shadow-slant-color: 2px 4px 12px;
+
+  --color-blue-50: oklch(97.289% 0.01208 248.163);
+  --color-blue-100: oklch(93.83% 0.02838 246.573);
+  --color-blue-200: oklch(89.317% 0.05085 245.724);
+  --color-blue-300: oklch(81.634% 0.0897 243.654);
+  --color-blue-400: oklch(74.158% 0.12408 246.707);
+  --color-blue-500: oklch(65.525% 0.16117 254.213);
+  --color-blue-600: oklch(57.897% 0.18369 259.045);
+  --color-blue-700: oklch(51.737% 0.18837 261.737);
+  --color-blue-800: oklch(45.008% 0.15569 262.892);
+  --color-blue-900: oklch(39.969% 0.11774 262.043);
+  --color-blue-950: oklch(29.648% 0.07486 263.806);
+}
+
+/* Design tokens that reference other CSS variables: https://tailwindcss.com/docs/theme#referencing-other-variables */
+@theme inline {
+  --font-sans: var(--font-montserrat);
+  --font-mono: var(--font-fira-code);
+
+  --animate-typewriter: var(--typewriter-animation-duration, 1s)
+      steps(
+        calc(
+          var(--typewriter-animation-end) - var(--typewriter-animation-start)
+        )
+      )
+      typing,
+    0.8s steps(2, jump-none) var(--typewriter-animation-duration, 1s) infinite
+      cursor-blink;
+
+  @keyframes typing {
+    from {
+      width: calc(var(--typewriter-animation-start) * 1ch + 2px);
+    }
+    to {
+      width: calc(var(--typewriter-animation-end) * 1ch + 2px);
+    }
+  }
+
+  @keyframes cursor-blink {
+    from {
+      border-right-color: #fff;
+    }
+    to {
+      border-right-color: transparent;
+    }
+  }
+}
+
+@utility typewriter-animation-start-* {
+  --typewriter-animation-start: --value(number);
+}
+
+@utility typewriter-animation-end-* {
+  --typewriter-animation-end: --value(number);
+}
+
+@utility typewriter-animation-duration-* {
+  --typewriter-animation-duration: --value([ *]);
+}
+
+@utility typewriter {
+  @apply overflow-hidden text-nowrap text-clip border-r-2 border-white;
+  /* This one is too complicated and unlikely to be reused by others so we do not use utility class here */
+  width: calc(var(--typewriter-animation-end) * 1ch + 2px);
+}

@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   'closing-remarks': string;
   title?: string;
@@ -29,14 +31,13 @@ const {
 >
   <Head {title} />
   <body class:list={['min-h-dvh', bodyClass]}>
-    <!-- <slot /> -->
     <header class:list={headerClass}>
       <slot name="header" />
     </header>
     <main class:list={mainClass}>
       <slot />
       {
-        /* Putting Footer in main as there is clsing remarks that related to the content in main */
+        /* Putting Footer in main as there is closing remarks that related to the content in main */
       }
       <Footer closing-remarks={closingRemarks} />
     </main>

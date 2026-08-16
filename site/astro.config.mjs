@@ -1,19 +1,25 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import {
+  defineConfig,
+  envField,
+  svgoOptimizer,
+  fontProviders,
+} from 'astro/config';
 
-import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
+
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kynsonszetau.com',
-  integrations: [tailwind()],
+  session: false,
+  integrations: [],
+
   adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
-    imageService: 'passthrough',
+    imageService: 'compile',
   }),
+
   env: {
     schema: {
       TURNSTILE_SITEKEY: envField.string({
@@ -30,7 +36,29 @@ export default defineConfig({
       }),
     },
   },
+
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Montserrat',
+      cssVariable: '--font-montserrat',
+      styles: ['normal'],
+      weights: ['100 900'],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Fira Code',
+      cssVariable: '--font-fira-code',
+      styles: ['normal'],
+      weights: ['300 700'],
+    },
+  ],
+
   experimental: {
-    svg: true,
+    svgOptimizer: svgoOptimizer(),
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

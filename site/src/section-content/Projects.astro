@@ -7,7 +7,7 @@ import Button from '../components/Button.astro';
 import DynamicContentError from '../components/DynamicContentError.astro';
 import DownArrow from '../assets/down-arrow.svg';
 
-const { env } = Astro.locals.runtime;
+import { env } from 'cloudflare:workers';
 
 // Remember to update the DEFAULT_RENDER_COUNT in the placeholder if this is changed
 const DEFAULT_RENDER_COUNT = 3;
@@ -19,14 +19,14 @@ function fetchProjectsErrorHandler(error: unknown) {
 const projects =
   (await env.DYNAMIC_CONTENT.get<[string, ProjectDetails][]>(
     'projects',
-    'json'
+    'json',
   ).catch(fetchProjectsErrorHandler)) ?? [];
 ---
 
 {/* Projects logic */}
 <script>
   const showAllProjectsButton = document.querySelector<HTMLButtonElement>(
-    '#show-all-projects-button'
+    '#show-all-projects-button',
   );
   const hiddenProjectCards = document.querySelectorAll('.project-card.hidden');
 
@@ -40,7 +40,7 @@ const projects =
 
   showAllProjectsButton?.addEventListener(
     'click',
-    showAllProjectsButtonClickHandler
+    showAllProjectsButtonClickHandler,
   );
 </script>
 
@@ -74,7 +74,7 @@ const projects =
   projects.length > DEFAULT_RENDER_COUNT && (
     <Button
       id="show-all-projects-button"
-      class="!block mx-auto w-fit bg-transparent !text-blue-50 transition-[background-color] hover:bg-blue-300/25 focus-within:bg-blue-300/25"
+      class="block! mx-auto w-fit bg-transparent text-blue-50! transition-[background-color] hover:bg-blue-300/25 focus-within:bg-blue-300/25"
     >
       <span class="inline-flex justify-between w-ful">
         <span>Show All</span>

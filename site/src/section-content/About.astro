@@ -6,7 +6,7 @@ import { logError } from 'common';
 import DynamicContentError from '../components/DynamicContentError.astro';
 import { Image } from 'astro:assets';
 
-const { env } = Astro.locals.runtime;
+import { env } from 'cloudflare:workers';
 
 const LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD = 0.4;
 const LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE = 50;
@@ -16,7 +16,7 @@ function fetchAboutErrorHandler(error: unknown) {
 }
 
 const about = (await env.DYNAMIC_CONTENT.get<About>('about', 'json').catch(
-  fetchAboutErrorHandler
+  fetchAboutErrorHandler,
 )) ?? { introduction: '', languages: [] };
 
 const { introduction, languages } = about;
@@ -28,7 +28,7 @@ const languageRenderData = languages.map(
       shadowColor: `color-mix(in srgb, ${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
       iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}`,
     };
-  }
+  },
 );
 ---
 
@@ -48,7 +48,7 @@ const languageRenderData = languages.map(
             alt={displayName}
             width="48"
             height="48"
-            class="mx-auto mb-2 drop-shadow-slant-color-variable"
+            class="mx-auto mb-2 drop-shadow-slant-color drop-shadow-(color:--shadow-color)"
             style={`--shadow-color: ${shadowColor}`}
             loading="lazy"
             format="svg"

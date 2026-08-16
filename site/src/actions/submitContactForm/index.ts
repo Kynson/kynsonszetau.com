@@ -1,7 +1,7 @@
 import type { ActionAPIContext } from 'astro:actions';
 
 import { defineAction, ActionError } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 import { NOTIFICATION_WEBHOOK_URL } from 'astro:env/server';
 
 import {

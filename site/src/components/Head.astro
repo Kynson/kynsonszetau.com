@@ -1,4 +1,6 @@
 ---
+import { Font } from 'astro:assets';
+
 interface Props {
   title?: string;
 }
@@ -19,11 +21,13 @@ const { title = 'Kynson Szetau' } = Astro.props;
   content="The personal site of Kynson Szetau, a self taught developer from Hong Kong."
 />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:wght@100..900&display=swap"
-/>
+/> -->
+<Font cssVariable="--font-montserrat" />
+<Font cssVariable="--font-fira-code" />
 
 <title>{title}</title>
