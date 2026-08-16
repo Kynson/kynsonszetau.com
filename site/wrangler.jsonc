@@ -1,5 +1,6 @@
 {
   "name": "kynsonszetau",
+  "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-08-14",
   "assets": {
     "binding": "ASSETS",
