@@ -18,6 +18,7 @@
     "build": "doppler run -- astro build",
     "preview": "doppler run --mount .dev.vars --format env -- astro preview",
     "astro": "astro",
+    "wrangler": "wrangler",
     "wrangler:types": "doppler run --mount .dev.vars --format env -- wrangler types"
   },
   "dependencies": {
