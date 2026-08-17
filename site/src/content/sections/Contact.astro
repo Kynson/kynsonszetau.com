@@ -1,15 +1,15 @@
 ---
-import Input from '../components/Input.astro';
-import Textarea from '../components/Textarea.astro';
-import Button from '../components/Button.astro';
-import Spinner from '../assets/spinner.svg';
+import Input from '@components/Input.astro';
+import Textarea from '@components/Textarea.astro';
+import Button from '@components/Button.astro';
+import Spinner from '@assets/spinner.svg';
 ---
 
 {/* Content logic */}
 <script>
-  import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
+  import type { SectionChangeEvent } from '@scripts/sectionVisibilityObserver';
 
-  import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
+  import { sectionVisibilityObserver } from '@scripts/sectionVisibilityObserver';
   import { actions } from 'astro:actions';
 
   const contactForm = document.querySelector<HTMLFormElement>('#contact-form')!;
@@ -28,7 +28,7 @@ import Spinner from '../assets/spinner.svg';
       return;
     }
 
-    const { initializeTurnstile } = await import('../scripts/turnstile');
+    const { initializeTurnstile } = await import('@scripts/turnstile');
     initializeTurnstile();
 
     // Remove the event listener after turnstile is initialized
@@ -57,7 +57,7 @@ import Spinner from '../assets/spinner.svg';
 
     if (error) {
       // This module should be cached, so it should be imported instantly
-      const { resetTurnstileStatus } = await import('../scripts/turnstile');
+      const { resetTurnstileStatus } = await import('@scripts/turnstile');
 
       window.turnstile.reset();
       resetTurnstileStatus();

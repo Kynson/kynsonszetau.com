@@ -3,9 +3,9 @@ import type { ProjectDetails } from 'common';
 
 import { logError } from 'common';
 
-import Button from '../components/Button.astro';
-import DynamicContentError from '../components/DynamicContentError.astro';
-import DownArrow from '../assets/down-arrow.svg';
+import Button from '@components/Button.astro';
+import DynamicContentError from '@components/DynamicContentError.astro';
+import DownArrow from '@assets/down-arrow.svg';
 
 import { env } from 'cloudflare:workers';
 
@@ -19,14 +19,14 @@ function fetchProjectsErrorHandler(error: unknown) {
 const projects =
   (await env.DYNAMIC_CONTENT.get<[string, ProjectDetails][]>(
     'projects',
-    'json',
+    'json'
   ).catch(fetchProjectsErrorHandler)) ?? [];
 ---
 
 {/* Projects logic */}
 <script>
   const showAllProjectsButton = document.querySelector<HTMLButtonElement>(
-    '#show-all-projects-button',
+    '#show-all-projects-button'
   );
   const hiddenProjectCards = document.querySelectorAll('.project-card.hidden');
 
@@ -40,7 +40,7 @@ const projects =
 
   showAllProjectsButton?.addEventListener(
     'click',
-    showAllProjectsButtonClickHandler,
+    showAllProjectsButtonClickHandler
   );
 </script>
 

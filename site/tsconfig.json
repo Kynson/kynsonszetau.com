@@ -1,17 +1,21 @@
 {
-  "extends": [
-    "../tsconfig.json",
-    "astro/tsconfigs/strict"
-  ],
+  "extends": ["../tsconfig.json", "astro/tsconfigs/strict"],
   "include": [
     ".astro/types.d.ts",
     "/@types/cloudflare-turnstile",
     "**/*",
     "./worker-configuration.d.ts"
   ],
-  "exclude": [
-    "dist"
-  ],
+  "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@content/*": ["./src/content/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@layouts/*": ["./src/layouts/*"]
+    }
+  },
+  "exclude": ["dist"],
   "references": [
     {
       "path": "../common"
