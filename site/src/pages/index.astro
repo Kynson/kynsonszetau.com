@@ -1,6 +1,7 @@
 ---
 import IndexLayout from '../layouts/IndexLayout.astro';
 
+import Navigation from '../components/Navigation.astro';
 import SectionNavigation from '../components/SectionNavigation.astro';
 import Section from '../components/Section.astro';
 import SectionContentFallback from '../components/SectionContentFallback.astro';
@@ -11,7 +12,6 @@ import Projects from '../section-content/Projects.astro';
 import Contact from '../section-content/Contact.astro';
 
 import Logo from '../assets/logo.svg';
-import GithubLogo from '../assets/github-logo.svg';
 
 const SECTION_COUNT = 4;
 ---
@@ -19,14 +19,7 @@ const SECTION_COUNT = 4;
 <IndexLayout>
   <Logo class="w-14" slot="header" />
   <SectionNavigation section-count={SECTION_COUNT} slot="header" />
-  <a
-    href="https://github.com/Kynson"
-    class="self-center justify-self-end md:justify-self-auto md:self-end"
-    slot="header"
-  >
-    <title>Github Logo</title>
-    <GithubLogo class="size-7" />
-  </a>
+  <Navigation slot="header" />
   <Section id="hero" with-header={false} class="mb-12">
     <Hero />
   </Section>

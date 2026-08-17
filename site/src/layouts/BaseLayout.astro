@@ -1,8 +1,11 @@
 ---
+import type { fontData } from 'astro:assets';
+
 import '../styles/global.css';
 
 interface Props {
   'closing-remarks': string;
+  'font-variables'?: (keyof typeof fontData)[];
   title?: string;
   'html-class'?: string;
   'body-class'?: string;
@@ -16,10 +19,11 @@ import Footer from '../components/Footer.astro';
 const {
   'closing-remarks': closingRemarks,
   title,
+  'font-variables': fontVariables,
   'html-class': htmlClass,
   'body-class': bodyClass,
   'header-class': headerClass,
-  'main-class': mainClass,
+  'main-class': mainClass
 } = Astro.props;
 ---
 
@@ -29,12 +33,14 @@ const {
   class="bg-gray-950 text-blue-50 min-h-dvh"
   class:list={htmlClass}
 >
-  <Head {title} />
+  <head>
+    <Head {title} font-variables={fontVariables} />
+  </head>
   <body class:list={['min-h-dvh', bodyClass]}>
-    <header class:list={headerClass}>
+    <header class={headerClass}>
       <slot name="header" />
     </header>
-    <main class:list={mainClass}>
+    <main class={mainClass}>
       <slot />
       {
         /* Putting Footer in main as there is closing remarks that related to the content in main */

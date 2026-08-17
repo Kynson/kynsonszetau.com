@@ -16,7 +16,7 @@ function fetchAboutErrorHandler(error: unknown) {
 }
 
 const about = (await env.DYNAMIC_CONTENT.get<About>('about', 'json').catch(
-  fetchAboutErrorHandler,
+  fetchAboutErrorHandler
 )) ?? { introduction: '', languages: [] };
 
 const { introduction, languages } = about;
@@ -26,14 +26,25 @@ const languageRenderData = languages.map(
     return {
       displayName,
       shadowColor: `color-mix(in srgb, ${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
-      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}`,
+      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}`
     };
-  },
+  }
 );
+
+const dateOfWeek = new Date().toLocaleString('en-us', {
+  weekday: 'long'
+});
 ---
 
 {/* About content */}
-{!!introduction && <p class="max-w-prose text-justify mb-8">{introduction}</p>}
+{!!introduction && <p class="max-w-prose text-justify mb-3">{introduction}</p>}
+{
+  !!introduction && (
+    <p class="max-w-prose text-justify mb-8">
+      Hope you have a wonderful {dateOfWeek} ✨
+    </p>
+  )
+}
 {!introduction && <DynamicContentError content-name="introduction" />}
 <h2 class="text-xl mb-6">Languages</h2>
 <div class="flex flex-wrap gap-8">

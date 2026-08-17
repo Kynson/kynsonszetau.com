@@ -52,7 +52,6 @@
     }
   }
 }
-
 @utility typewriter-animation-start-* {
   --typewriter-animation-start: --value(number);
 }
@@ -65,8 +64,20 @@
   --typewriter-animation-duration: --value([ *]);
 }
 
-@utility typewriter {
-  @apply overflow-hidden text-nowrap text-clip border-r-2 border-white;
-  /* This one is too complicated and unlikely to be reused by others so we do not use utility class here */
-  width: calc(var(--typewriter-animation-end) * 1ch + 2px);
+@utility sideways-lr {
+  writing-mode: sideways-lr;
+}
+
+@custom-variant tall (@media (height >= 42rem));
+
+@layer components {
+  .typewriter {
+    @apply overflow-hidden text-nowrap text-clip border-r-2 border-white;
+    /* This one is too complicated and unlikely to be reused by others so we do not use utility class here */
+    width: calc(var(--typewriter-animation-end) * 1ch + 2px);
+  }
+
+  .decorated-link {
+    @apply hover:underline hover:underline-offset-4 hover:decoration-blue-300;
+  }
 }
