@@ -1,5 +1,14 @@
 ---
+import SectionNavigation from '@components/SectionNavigation.astro';
+
+import Logo from '@assets/logo.svg';
 import GithubLogo from '@assets/github-logo.svg';
+
+interface Props {
+  'section-count': number;
+}
+
+const { 'section-count': sectionCount } = Astro.props;
 ---
 
 {
@@ -8,6 +17,8 @@ import GithubLogo from '@assets/github-logo.svg';
    * Note: This component is not standalone and is context-dependent
    **/
 }
+<Logo class="w-14" />
+<SectionNavigation section-count={sectionCount} />
 {
   /*
    * If wide and tall enough => vertical and take only one row, hence flex (tall:md:flex)
@@ -15,16 +26,15 @@ import GithubLogo from '@assets/github-logo.svg';
    * If not, then flex
    */
 }
-<nav
+<div
   class="flex gap-4 items-center justify-end ml-auto md:ml-0 md:row-span-2 md:grid md:grid-rows-subgrid md:justify-items-center tall:md:row-span-1 tall:md:flex tall:md:flex-col"
-  aria-label="external-navigation"
 >
-  <div class="flex gap-3 md:sideways-lr">
+  <nav class="flex gap-3 md:sideways-lr" aria-label="site-navigation">
     <a href="/meta" class="decorated-link">meta</a>
     <a href="https://blog.kynsonszetau.com" class="decorated-link">blog</a>
-  </div>
+  </nav>
   <a href="https://github.com/Kynson" class="md:self-end tall:md:mt-4">
     <title>Github Logo</title>
     <GithubLogo class="size-7" />
   </a>
-</nav>
+</div>

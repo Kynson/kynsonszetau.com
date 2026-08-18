@@ -3,6 +3,8 @@ import type { fontData } from 'astro:assets';
 
 import '../styles/global.css';
 
+import Header from '@components/Header.astro';
+
 interface Props {
   'closing-remarks': string;
   'font-variables'?: (keyof typeof fontData)[];
@@ -11,6 +13,7 @@ interface Props {
   'body-class'?: string;
   'header-class'?: string;
   'main-class'?: string;
+  'header-navigation-links'?: Record<string, string>;
 }
 
 import Head from '../components/Head.astro';
@@ -23,7 +26,8 @@ const {
   'html-class': htmlClass,
   'body-class': bodyClass,
   'header-class': headerClass,
-  'main-class': mainClass
+  'main-class': mainClass,
+  'header-navigation-links': headerNavigationLinks = {}
 } = Astro.props;
 ---
 
@@ -36,11 +40,28 @@ const {
   <head>
     <Head {title} font-variables={fontVariables} />
   </head>
-  <body class:list={['min-h-dvh', bodyClass]}>
-    <header class={headerClass}>
-      <slot name="header" />
+  <body
+    class:list={[
+      'min-h-dvh px-6 pt-8 grid grid-rows-[min-content_auto] md:gap-x-14 md:px-0 md:py-0 md:pl-6 md:h-dvh md:grid-cols-[min-content_auto] md:grid-rows-3',
+      bodyClass
+    ]}
+  >
+    <header
+      class:list={[
+        'flex md:grid md:grid-rows-subgrid md:row-span-3 md:justify-items-center md:py-10',
+        headerClass
+      ]}
+    >
+      <slot name="header">
+        <Header links={headerNavigationLinks} />
+      </slot>
     </header>
-    <main class={mainClass}>
+    <main
+      class:list={[
+        'max-w-7xl w-full md:pl-4 md:pr-8 md:col-start-2 md:h-dvh',
+        mainClass
+      ]}
+    >
       <slot />
       {
         /* Putting Footer in main as there is closing remarks that related to the content in main */

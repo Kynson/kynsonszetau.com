@@ -1,16 +1,19 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+
+const NAVIGATION_LINKS = {
+  home: '/',
+  meta: '/meta'
+};
 ---
 
 <BaseLayout
   title="404 Not Found"
   font-variables={['--font-montserrat', '--font-fira-code']}
   closing-remarks="Don't get lost again!"
-  body-class="px-6 pt-8 gap-y-10 h-dvh flex flex-col md:pt-10 w-full max-w-7xl"
-  header-class="flex justify-between items-center"
-  main-class="h-full flex flex-col"
+  body-class="gap-y-8 md:gap-y-0"
+  main-class="md:pt-10 h-full flex flex-col"
+  header-navigation-links={NAVIGATION_LINKS}
 >
-  {/* Transfer the slotted element to BaseLayout */}
-  <slot name="header" slot="header" />
   <slot />
 </BaseLayout>

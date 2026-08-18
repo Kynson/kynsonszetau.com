@@ -1,16 +1,23 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+
+const NAVIGATION_LINKS = {
+  home: '/',
+  blog: 'https://blog.kynsonszetau.com'
+};
 ---
 
 {/* MetaLayout content */}
+<!-- body-class="px-6 py-8 grid grid-rows-[min-content_auto] grid-cols-[min-content_auto] gap-y-8 md:gap-x-14 md:gap-y-0 md:h-dvh md:px-0 md:py-0 md:pl-6 md:grid-rows-3" -->
+<!-- header-class=flex gap-4 col-span-2 items-center md:items-start md:grid md:grid-rows-subgrid md:justify-items-center md:col-span-1 md:row-span-3 md:py-10 -->
+<!-- main-class="max-w-7xl w-full md:pt-10 md:pl-4 md:pr-8 md:col-span-1 md:row-span-3 md:overflow-y-scroll" -->
 <BaseLayout
+  title="Meta"
   closing-remarks="That's it! Thanks for visiting!"
   font-variables={['--font-montserrat']}
-  body-class="px-6 pt-8 grid grid-cols-2 grid-rows-[min-content_auto] md:gap-x-14 md:px-0 md:py-0 md:pl-6 md:h-dvh md:grid-cols-[min-content_auto] md:grid-rows-3"
-  header-class="col-span-2 grid grid-cols-subgrid md:col-span-1 md:grid-rows-subgrid md:row-span-3 md:justify-items-center md:py-10"
-  main-class="max-w-7xl col-span-2 w-full justify-self-center md:scroll-smooth md:pl-4 md:pr-8 md:col-start-2 md:h-dvh md:overflow-y-scroll md:text-clip"
+  body-class="gap-y-8 md:gap-y-0"
+  main-class="md:pt-10 md:overflow-y-scroll"
+  header-navigation-links={NAVIGATION_LINKS}
 >
-  {/* Transfer the slotted element to BaseLayout */}
-  <slot name="header" slot="header" />
   <slot />
 </BaseLayout>

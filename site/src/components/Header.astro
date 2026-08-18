@@ -1,0 +1,41 @@
+---
+import Logo from '@assets/logo.svg';
+import GithubLogo from '@assets/github-logo.svg';
+
+interface Props {
+  links: Record<string, string>;
+}
+
+const { links } = Astro.props;
+const linkEntries = Object.entries(links);
+---
+
+{
+  /*
+   * Header content
+   * Note: This component is not standalone and is context-dependent. It should be put inside the BaseLayout's header slot
+   **/
+}
+<Logo class="w-14" />
+<!-- Note: As the writing mode is sideways flex col and row are swapped -->
+<div
+  class="flex gap-4 items-center ml-auto md:ml-0 md:grid md:grid-rows-subgrid md:row-span-2 md:justify-items-center"
+>
+  {
+    linkEntries.length > 0 && (
+      <nav class="flex gap-3 md:sideways-lr">
+        {linkEntries.map(([title, href]) => {
+          return (
+            <a {href} class="decorated-link">
+              {title}
+            </a>
+          );
+        })}
+      </nav>
+    )
+  }
+  <a href="https://github.com/Kynson" class="md:self-end">
+    <title>Github Logo</title>
+    <GithubLogo class="size-7" />
+  </a>
+</div>

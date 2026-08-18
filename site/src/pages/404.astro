@@ -1,8 +1,5 @@
 ---
 import NotFoundLayout from '@layouts/NotFoundLayout.astro';
-
-import Logo from '@assets/logo.svg';
-import GithubLogo from '@assets/github-logo.svg';
 ---
 
 <script>
@@ -10,7 +7,7 @@ import GithubLogo from '@assets/github-logo.svg';
     'https://embed.music.apple.com/hk/album/:segment&theme=dark';
   const SONG_URL_SEGMENTS = [
     'everythings-alright-from-to-the-moon/1496623954?i=1496624106',
-    'ring-of-fortune/1333423969?i=1333423970',
+    'ring-of-fortune/1384885916?i=1384886560',
     'journey/15899978?i=15899974'
   ];
 
@@ -27,11 +24,6 @@ import GithubLogo from '@assets/github-logo.svg';
 
 {/* 404 content */}
 <NotFoundLayout>
-  <Logo class="w-14" slot="header" />
-  <a href="https://github.com/Kynson" slot="header">
-    <title>Github Logo</title>
-    <GithubLogo class="size-7" />
-  </a>
   <h1 class="text-5xl font-medium w-full text-right mb-6">404</h1>
   <p class="mb-4">
     Opps! Page not found... <a
