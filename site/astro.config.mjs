@@ -10,11 +10,13 @@ import cloudflare from '@astrojs/cloudflare';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kynsonszetau.com',
   session: false,
-  integrations: [],
+  integrations: [mdx()],
 
   adapter: cloudflare({
     imageService: 'compile',
