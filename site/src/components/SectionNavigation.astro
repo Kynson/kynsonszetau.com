@@ -68,7 +68,7 @@ const { 'section-count': sectionCount } = Astro.props;
     [...Array(sectionCount)].map(() => (
       <a
         href="#"
-        class="section-indicator transition duration-[.4s] size-3 rounded-full bg-transparent border-2 border-gray-500"
+        class="section-indicator transition-safe-all duration-400 size-3 rounded-full bg-transparent border-2 border-gray-500"
       />
     ))
   }

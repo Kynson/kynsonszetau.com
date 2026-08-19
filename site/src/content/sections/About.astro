@@ -36,6 +36,13 @@ const dateOfWeek = new Date().toLocaleString('en-us', {
 });
 ---
 
+{/* About styles */}
+<style>
+  .grow-shadow {
+    filter: drop-shadow(2px 4px 12px var(--shadow-color));
+  }
+</style>
+
 {/* About content */}
 {!!introduction && <p class="max-w-prose text-justify mb-3">{introduction}</p>}
 {
@@ -59,7 +66,7 @@ const dateOfWeek = new Date().toLocaleString('en-us', {
             alt={displayName}
             width="48"
             height="48"
-            class="mx-auto mb-2 drop-shadow-slant-color drop-shadow-(color:--shadow-color)"
+            class="mx-auto mb-2 grow-shadow"
             style={`--shadow-color: ${shadowColor}`}
             loading="lazy"
             format="svg"

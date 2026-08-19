@@ -23,6 +23,13 @@ const projects =
   ).catch(fetchProjectsErrorHandler)) ?? [];
 ---
 
+{/* Projects style */}
+<style>
+  :root {
+    --cols-template: repeat(auto-fit, minmax(320px, 1fr));
+  }
+</style>
+
 {/* Projects logic */}
 <script>
   const showAllProjectsButton = document.querySelector<HTMLButtonElement>(
@@ -45,7 +52,7 @@ const projects =
 </script>
 
 {/* Projects content */}
-<div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 mb-8">
+<div class="grid grid-cols-(--cols-template) gap-5 mb-8">
   {
     projects.map(([name, { description, topics }], i) => {
       return (
@@ -74,7 +81,7 @@ const projects =
   projects.length > DEFAULT_RENDER_COUNT && (
     <Button
       id="show-all-projects-button"
-      class="block! mx-auto w-fit bg-transparent text-blue-50! transition-[background-color] hover:bg-blue-300/25 focus-within:bg-blue-300/25"
+      class="block! mx-auto w-fit bg-transparent text-blue-50! transition-safe-all hover:bg-blue-300/25 focus-within:bg-blue-300/25"
     >
       <span class="inline-flex justify-between w-ful">
         <span>Show All</span>
