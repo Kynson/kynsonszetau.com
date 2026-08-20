@@ -24,3 +24,6 @@ node_modules/
 
 # Output directory
 dist/
+
+# WebStorm directory
+.idea
