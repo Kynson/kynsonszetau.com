@@ -7,6 +7,7 @@ import {
 } from 'astro/config';
 
 import cloudflare from '@astrojs/cloudflare';
+import { cacheCloudflare } from '@astrojs/cloudflare/cache';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -53,9 +54,23 @@ export default defineConfig({
       name: 'Fira Code',
       cssVariable: '--font-fira-code',
       styles: ['normal'],
-      weights: ['300 700']
+      weights: ['300 700'],
+      fallbacks: ['monospace']
     }
   ],
+
+  cache: {
+    provider: cacheCloudflare()
+  },
+
+  routeRules: {
+    '/': {
+      maxAge: 60 * 60 * 24
+    },
+    '/meta': {
+      maxAge: 60 * 60 * 24
+    }
+  },
 
   markdown: {
     processor: satteri({
