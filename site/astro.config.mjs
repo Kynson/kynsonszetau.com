@@ -2,8 +2,8 @@
 import {
   defineConfig,
   envField,
-  svgoOptimizer,
   fontProviders,
+  svgoOptimizer
 } from 'astro/config';
 
 import cloudflare from '@astrojs/cloudflare';
@@ -11,6 +11,7 @@ import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
+import { satteri } from '@astrojs/markdown-satteri';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,24 +20,24 @@ export default defineConfig({
   integrations: [mdx()],
 
   adapter: cloudflare({
-    imageService: 'compile',
+    imageService: 'compile'
   }),
 
   env: {
     schema: {
       TURNSTILE_SITEKEY: envField.string({
         context: 'client',
-        access: 'public',
+        access: 'public'
       }),
       TURNSTILE_SECRET: envField.string({
         context: 'server',
-        access: 'secret',
+        access: 'secret'
       }),
       NOTIFICATION_WEBHOOK_URL: envField.string({
         context: 'server',
-        access: 'secret',
-      }),
-    },
+        access: 'secret'
+      })
+    }
   },
 
   fonts: [
@@ -45,22 +46,34 @@ export default defineConfig({
       name: 'Montserrat',
       cssVariable: '--font-montserrat',
       styles: ['normal'],
-      weights: ['100 900'],
+      weights: ['100 900']
     },
     {
       provider: fontProviders.fontsource(),
       name: 'Fira Code',
       cssVariable: '--font-fira-code',
       styles: ['normal'],
-      weights: ['300 700'],
-    },
+      weights: ['300 700']
+    }
   ],
 
+  markdown: {
+    processor: satteri({
+      features: {
+        gfm: {
+          footnotes: {
+            label: 'Notes'
+          }
+        }
+      }
+    })
+  },
+
   experimental: {
-    svgOptimizer: svgoOptimizer(),
+    svgOptimizer: svgoOptimizer()
   },
 
   vite: {
-    plugins: [tailwindcss()],
-  },
+    plugins: [tailwindcss()]
+  }
 });
