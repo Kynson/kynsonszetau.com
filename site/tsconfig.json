@@ -12,7 +12,8 @@
       "@assets/*": ["./src/assets/*"],
       "@content/*": ["./src/content/*"],
       "@scripts/*": ["./src/scripts/*"],
-      "@layouts/*": ["./src/layouts/*"]
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "exclude": ["dist"],
