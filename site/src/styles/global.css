@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
 @theme {
   --max-width-prose: 70ch;
