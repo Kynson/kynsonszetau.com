@@ -8,8 +8,8 @@ const { 'section-count': sectionCount } = Astro.props;
 
 {/* SectionNavigation logic */}
 <script>
-  import type { SectionChangeEvent } from '../scripts/sectionVisibilityObserver';
-  import { sectionVisibilityObserver } from '../scripts/sectionVisibilityObserver';
+  import type { SectionChangeEvent } from '@scripts/sectionVisibilityObserver';
+  import { sectionVisibilityObserver } from '@scripts/sectionVisibilityObserver';
 
   const sections = document.querySelectorAll('section');
   const sectionIndicators: NodeListOf<HTMLAnchorElement> =

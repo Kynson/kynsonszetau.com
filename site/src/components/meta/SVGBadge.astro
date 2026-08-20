@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { SvgComponent } from 'astro/types';
+
+interface Props {
+  link: string;
+  title: string;
+  'svg-component': SvgComponent & ImageMetadata;
+}
+
+const { link, title, 'svg-component': SVGComponent } = Astro.props;
+---
+
+<a href={link} aria-label={title} class="inline-block">
+  <title>{title}</title>
+  <SVGComponent class="inline-block" />
+</a>

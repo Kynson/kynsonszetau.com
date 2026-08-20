@@ -1,0 +1,18 @@
+---
+
+---
+
+<style>
+  .badge-container :global(sup) {
+    vertical-align: super;
+    margin-left: var(--spacing);
+  }
+
+  .badge-container :global(p) {
+    display: inline-block;
+  }
+</style>
+
+<div class="badge-container flex flex-wrap gap-4 not-prose">
+  <slot />
+</div>

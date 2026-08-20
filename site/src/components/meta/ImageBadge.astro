@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  link: string;
+  crips: boolean;
+  alt: string;
+  'image-meta': ImageMetadata;
+  width?: number;
+  height?: number;
+}
+
+const {
+  link,
+  alt,
+  crips,
+  'image-meta': imageMeta,
+  width,
+  height
+} = Astro.props;
+---
+
+<style>
+  .image-rendering-crips {
+    image-rendering: crisp-edges;
+  }
+</style>
+
+<a href={link} aria-label={alt} class="inline-block">
+  <Image
+    src={imageMeta}
+    {alt}
+    class:list={['inline-block', crips && 'image-rendering-crips']}
+    {width}
+    {height}
+  />
+</a>

@@ -2,34 +2,12 @@
 import MetaLayout from '@layouts/MetaLayout.astro';
 import Prose from '@components/Prose.astro';
 
-import { getCollection, render } from 'astro:content';
-
-const metaSections = await getCollection('metaSections');
-const renderedMetaSections = await Promise.all(
-  metaSections
-    .sort((a, b) => a.data.order - b.data.order)
-    .map((section) =>
-      render(section).then(({ Content }) => ({
-        id: section.id,
-        title: section.data.title,
-        Content: Content
-      }))
-    )
-);
+import { Content } from '@content/meta.mdx';
 ---
 
 <MetaLayout>
   <Prose>
     <h1>Meta</h1>
-    {
-      renderedMetaSections.map(({ id, title, Content }) => {
-        return (
-          <section {id}>
-            <h2>{title}</h2>
-            <Content />
-          </section>
-        );
-      })
-    }
+    <Content />
   </Prose>
 </MetaLayout>
