@@ -1,0 +1,55 @@
+---
+---
+
+import Section from '@components/meta/Section.astro';
+
+import ImageBadge from '@components/meta/ImageBadge.astro';
+import SVGBadge from '@components/meta/SVGBadge.astro';
+import BadgeContainer from '@components/meta/BadgeContainer.astro';
+
+import responsiveWebDirectoryBadgeMetadata from '@assets/badges/responsive-web-directory.png';
+import siteCarbonBadgeMetadata from '@assets/badges/site-carbon.png';
+
+import AstroBadge from '@assets/badges/astro.svg';
+import CCByBadge from '@assets/badges/cc-by.svg';
+
+<Section title="Badges">
+  Badges are commonly found in the old days of the Internet, they usually represents the communities and stands of the author and/ or the site itself.
+
+  I think it would be interesting to have a coner for retro and modern style badges related to this site. Feel free to suggest more if you know others that suit here!
+
+  {/* prettier-ignore */}
+  <p className="text-sm italic text-gray-500">Note: Currently limited to a few badges only as loading too many images on the same page hurts performance. Furthermore, animated badges are avoided as some visitors, for example those with vestibular motion disorders, might found them uncomfortable to view.</p>
+
+  ### Retro 88x31
+
+  <BadgeContainer>
+    <ImageBadge
+      image-meta={responsiveWebDirectoryBadgeMetadata}
+      link="https://kalechips.net/responsive"
+      alt="Responsive Web Directory Badge"
+      crips
+    />[^1]
+    <ImageBadge
+      image-meta={siteCarbonBadgeMetadata}
+      link="https://www.websitecarbon.com/website/kynsonszetau-com/"
+      alt="Site Carbon Badge"
+      crips
+    />
+  </BadgeContainer>
+
+  ### Modern
+
+  <BadgeContainer>
+    <SVGBadge svg-component={AstroBadge} link="https://astro.build" title="Astro Badge" />[^2]
+    <SVGBadge
+      svg-component={CCByBadge}
+      link="https://creativecommons.org/licenses/by/4.0"
+      title="Creative Commons BY License Badge"
+    />
+  </BadgeContainer>
+</Section>
+
+[^1]: "Web Responsive Directory Button" by [Devil's Den](https://yourdevilfriends.neocities.org)
+
+[^2]: "Built with Astro Badge" by [Chris Swithinbank](https://github.com/delucis) [licensed](https://github.com/delucis/astro-badge/issues/110) under [Creative Commons BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0).
