@@ -19,5 +19,10 @@
       "TURNSTILE_SECRET",
       "TURNSTILE_SITEKEY"
     ]
+  },
+  "observability": {
+    "trace": {
+      "enabled": true
+    }
   }
 }
