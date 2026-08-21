@@ -63,15 +63,6 @@ export default defineConfig({
     provider: cacheCloudflare()
   },
 
-  routeRules: {
-    '/': {
-      maxAge: 60 * 60 * 24
-    },
-    '/meta': {
-      maxAge: 60 * 60 * 24
-    }
-  },
-
   markdown: {
     processor: satteri({
       features: {
