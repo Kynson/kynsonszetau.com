@@ -10,8 +10,47 @@ import BadgeContainer from '@components/meta/BadgeContainer.astro';
 import responsiveWebDirectoryBadgeMetadata from '@assets/badges/responsive-web-directory.png';
 import siteCarbonBadgeMetadata from '@assets/badges/site-carbon.png';
 
+import ColorBubble from '@components/meta/ColorBubble.astro';
+
 import AstroBadge from '@assets/badges/astro.svg';
 import CCByBadge from '@assets/badges/cc-by.svg';
+
+<Section title="Colophon">
+  This is the personal website of Kynson Szetau. This site started as a really simple static page with minimal content when I was learning how to build a website, gradually expanded to a larger site with more _concrete_ content, including a blog sister site.
+  The current version of the site is created with [Astro](https://astro.build) and hosted on [Cloudflare Workers](https://developers.cloudflare.com/workers), most of the content is prerendered to ensure optimal performance.
+
+  If you are interested in the source code of this site, you can find it on [Github](https://github.com/Kynson/kynsonszetau.com).
+  The code is licensed under [MIT](https://github.com/Kynson/kynsonszetau.com/blob/master/LICENSE), and the content is licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0), feel free to fork it if you wanted to create your own version.
+
+  I also loved the idea of [breaking the fourth wall](https://en.wikipedia.org/wiki/Fourth_wall#Breaking_the_fourth_wall), although I can't do it like in a video game or a drama, I still include some elements (although very subtle) in this site that reflect reality state. 
+
+  ### CSS
+  At first, I was struggling whether or not to use TailwindCSS for this site.
+  On one hand, it is really intutive to write, but on the down side, it can easily bulk up the site, especially those long utility classes in the HTML. Still, after trying to integrate TailwindCSS, I found that it is actually not that bad in terms of size so I decided to keep it.
+  Although there are still room for improvement like CSS variables compression (which are quite long).
+
+  The main color palette is a custom blue shade matching the primary color of my logo and mixing some colors from TailwindCSS's gray palette. The primary blue <ColorBubble color="var(--color-blue-300)" /> and white used for text pass WCAG AAA to ensure enough contrast with the background.
+
+  ### Font
+  The following fonts are used in this site:
+  - Monospace: [Fira code](https://fontsource.org/fonts/fira-code/)
+  - Sans-serf: [Montserrat](https://fontsource.org/fonts/montserrat/)
+
+  ### Performance
+  I am (somewhat) obessed with optimizing the performance of this site. That's why this site is:
+  - Statically prerendered.
+  - Heavily cached by CDN.
+  - Use next-gen image format like WebP.
+  - Lazy load heavy JavaScript library like [Turnstile](https://developers.cloudflare.com/turnstile/).
+  - Self-hosting the web fonts.
+
+  I also try to minimize the amount of CSS and JavaScript used in this site by:
+  - Use built-in browser features like form validation with HTML5 form.
+  - Minimize interactive elements.
+
+  However, this is proven to be challenging as this often result in sacrificing some features like beautify the alert dialog for the contact form.
+  Yet, making the right compromise is the _art_ of computer science and I currently quite satisfied with what I have achieved.
+</Section>
 
 <Section title="Badges">
   Badges are commonly found in the old days of the Internet, they usually represents the communities and stands of the author and/ or the site itself.
@@ -48,6 +87,10 @@ import CCByBadge from '@assets/badges/cc-by.svg';
       title="Creative Commons BY License Badge"
     />
   </BadgeContainer>
+</Section>
+
+<Section title="Prior Art">
+  The idea of creating a meta page about this site is inspired by [~hedy](https://home.hedy.dev/meta/) after I stumbled upon her site.
 </Section>
 
 [^1]: "Web Responsive Directory Button" by [Devil's Den](https://yourdevilfriends.neocities.org)

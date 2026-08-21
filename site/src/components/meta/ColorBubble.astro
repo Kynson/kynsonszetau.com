@@ -1,0 +1,13 @@
+---
+interface Props {
+  color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<span
+  class="inline-block rounded-full size-4 border border-gray-500"
+  style={`background-color: ${color}`}
+>
+</span>
