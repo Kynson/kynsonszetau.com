@@ -34,6 +34,17 @@ const languageRenderData = languages.map(
 const dateOfWeek = new Date().toLocaleString('en-us', {
   weekday: 'long'
 });
+
+const isRecurring = Astro.cookies.has('recurring-visitor');
+
+const greetingText = isRecurring ? 'Hi, again~' : 'Hi,';
+
+if (!isRecurring) {
+  Astro.cookies.set('recurring-visitor', '1', {
+    // 1 week
+    maxAge: 60 * 60 * 24 * 7
+  });
+}
 ---
 
 {/* About styles */}
@@ -44,6 +55,7 @@ const dateOfWeek = new Date().toLocaleString('en-us', {
 </style>
 
 {/* About content */}
+{!!introduction && <p class="max-w-prose text-justify mb-3">{greetingText}</p>}
 {!!introduction && <p class="max-w-prose text-justify mb-3">{introduction}</p>}
 {
   !!introduction && (
