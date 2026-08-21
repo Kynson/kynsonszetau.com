@@ -25,10 +25,17 @@
     margin: 1.25rem 0;
   }
 
-  .prose :global(ol:not(:is(.not-prose, .not-prose *))) {
+  .prose :global(:is(ol, ul):not(:is(.not-prose, .not-prose *))) {
     margin: 1.25rem 0;
     padding-inline-start: 1.625rem;
-    list-style: decimal;
+  }
+
+  .prose :global(ol:not(:is(.not-prose, .not-prose *))) {
+    list-style-type: decimal;
+  }
+
+  .prose :global(ul:not(:is(.not-prose, .not-prose *))) {
+    list-style-type: disc;
   }
 
   .prose :global(li:not(:is(.not-prose, .not-prose *))) {
@@ -41,7 +48,7 @@
 
   .prose
     :global(
-      ol:not(:is(.not-prose, .not-prose *))
+      :is(ol, ul):not(:is(.not-prose, .not-prose *))
         > li:not(:is(.not-prose, .not-prose *))
     ) {
     padding-inline-start: 0.375rem;
