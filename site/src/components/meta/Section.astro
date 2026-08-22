@@ -5,12 +5,14 @@ interface Props extends HTMLAttributes<'section'> {
   title?: string;
 }
 
-const { title, id = title?.toLowerCase(), ...attributes } = Astro.props;
+const {
+  title,
+  id = title?.toLowerCase().replaceAll(' ', '-'),
+  ...attributes
+} = Astro.props;
 ---
 
 <section {id} {...attributes}>
-  <header>
-    <h2>{title}</h2>
-  </header>
+  <h2>{title}</h2>
   <slot />
 </section>
