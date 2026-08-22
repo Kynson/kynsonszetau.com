@@ -7,6 +7,16 @@
     "directory": "./dist"
   },
   "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "kynsonszetau.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "v3.kynsonszetau.com",
+      "custom_domain": true
+    }
+  ],
   "kv_namespaces": [
     {
       "binding": "DYNAMIC_CONTENT",
