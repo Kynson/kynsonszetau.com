@@ -14,11 +14,13 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import { satteri } from '@astrojs/markdown-satteri';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kynsonszetau.com',
   session: false,
-  integrations: [mdx()],
+  integrations: [mdx(), sitemap()],
 
   adapter: cloudflare({
     imageService: 'compile'
