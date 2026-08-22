@@ -11,6 +11,7 @@ interface Props {
 const { link, title, 'svg-component': SVGComponent } = Astro.props;
 ---
 
+{/* SVGBadge content */}
 <a href={link} aria-label={title} class="inline-block">
   <title>{title}</title>
   <SVGComponent class="inline-block" />

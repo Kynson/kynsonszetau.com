@@ -22,12 +22,14 @@ const {
 } = Astro.props;
 ---
 
+{/* ImageBadge styles */}
 <style>
   .image-rendering-crips {
     image-rendering: crisp-edges;
   }
 </style>
 
+{/* ImageBadge content */}
 <a href={link} aria-label={alt} class="inline-block">
   <Image
     src={imageMeta}
