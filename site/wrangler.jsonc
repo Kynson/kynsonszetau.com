@@ -13,6 +13,10 @@
       "custom_domain": true
     },
     {
+      "pattern": "www.kynsonszetau.com",
+      "custom_domain": true
+    },
+    {
       "pattern": "v3.kynsonszetau.com",
       "custom_domain": true
     }
