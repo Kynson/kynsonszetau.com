@@ -17,6 +17,38 @@
   --color-blue-950: oklch(29.648% 0.07486 263.806);
 }
 
+@layer base {
+  :is(ol, ul) {
+    padding-inline-start: 1.625rem;
+
+    & > li {
+      padding-inline-start: 0.375rem;
+    }
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  li {
+    margin: 0.5rem 0;
+
+    &::marker {
+      color: var(--color-gray-500);
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-blue-300);
+    text-underline-offset: 4px;
+  }
+}
+
 /* Design tokens that reference other CSS variables: https://tailwindcss.com/docs/theme#referencing-other-variables */
 @theme inline {
   --font-sans: var(--font-montserrat);
@@ -42,9 +74,3 @@
 }
 
 @custom-variant tall (@media (height >= 42rem));
-
-@layer components {
-  .decorated-link {
-    @apply hover:underline hover:underline-offset-4 hover:decoration-blue-300;
-  }
-}
