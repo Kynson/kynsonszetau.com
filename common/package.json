@@ -16,5 +16,8 @@
     "url": "https://github.com/Kynson/kynsonszetau.com/issues"
   },
   "homepage": "https://github.com/Kynson/kynsonszetau.com#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
 }
