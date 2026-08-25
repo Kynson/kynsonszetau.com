@@ -25,11 +25,7 @@ const linkEntries = Object.entries(links);
     linkEntries.length > 0 && (
       <nav class="flex gap-3 md:sideways-lr">
         {linkEntries.map(([title, href]) => {
-          return (
-            <a {href} class="decorated-link">
-              {title}
-            </a>
-          );
+          return <a {href}>{title}</a>;
         })}
       </nav>
     )

@@ -6,6 +6,13 @@ interface Props {
 const { 'content-name': contentName } = Astro.props;
 ---
 
+<style>
+  a:hover {
+    text-decoration-color: var(--text-red-400);
+    text-underline-offset: initial;
+  }
+</style>
+
 {/* DynamicContentError content */}
 <p class="max-w-prose text-justify text-red-400 mb-8">
   Oops! Something went wrong while fetching the content for {contentName}. If
