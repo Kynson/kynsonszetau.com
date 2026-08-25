@@ -5,11 +5,13 @@ interface Props {
 
 import Spinner from '@assets/spinner.svg';
 
+import '@styles/spin-animation.css';
+
 const { section } = Astro.props;
 ---
 
 {/* SectionContentFallback content */}
 <div class="flex gap-2 items-center" slot="fallback">
   <p class="text-gray-500">Fetching {section}</p>
-  <Spinner class="size-4 fill-none animate-spin" />
+  <Spinner class="size-4 fill-none spin-animation" />
 </div>

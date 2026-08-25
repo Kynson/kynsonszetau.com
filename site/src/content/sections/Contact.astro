@@ -3,6 +3,8 @@ import Input from '@components/Input.astro';
 import Textarea from '@components/Textarea.astro';
 import Button from '@components/Button.astro';
 import Spinner from '@assets/spinner.svg';
+
+import '@styles/spin-animation.css';
 ---
 
 {/* Content logic */}
@@ -97,9 +99,8 @@ import Spinner from '@assets/spinner.svg';
 {/* Contact content */}
 <p class="max-w-prose mb-4 text-justify">
   Fell free to leave a message below! If you prefer sending an email, you may
-  also reach me at <a
-    href="mailto:hi@kynsonszetau.com"
-    class="font-medium decorated-link">hi@kynsonszetau.com</a
+  also reach me at <a href="mailto:hi@kynsonszetau.com" class="font-medium"
+    >hi@kynsonszetau.com</a
   >
 </p>
 <form id="contact-form" class="max-w-prose">
@@ -133,7 +134,7 @@ import Spinner from '@assets/spinner.svg';
   >
     <Spinner
       id="turnstile-spinner"
-      class="size-6 fill-none mx-auto animate-spin"
+      class="size-6 fill-none mx-auto spin-animation"
     />
   </div>
   <input
