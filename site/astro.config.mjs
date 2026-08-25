@@ -70,7 +70,8 @@ export default defineConfig({
       features: {
         gfm: {
           footnotes: {
-            label: 'Notes'
+            label: 'Notes',
+            clobberPrefix: 'note-'
           }
         }
       }
