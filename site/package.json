@@ -32,7 +32,7 @@
     "common": "workspace:*",
     "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^4.3.3",
-    "wrangler": "^4.123.0"
+    "wrangler": "catalog:"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3"
