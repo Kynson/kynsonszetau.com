@@ -10,27 +10,28 @@
   },
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "doppler run --mount .dev.vars --mount-format env -- wrangler dev",
-    "test": "doppler run --mount .dev.vars --mount-format env -- vitest",
-    "wrangler:types": "doppler run --mount .dev.vars --mount-format env -- wrangler types --experimental-include-runtime",
+    "dev": "doppler run --mount .dev.vars --format env -- wrangler dev",
+    "test": "doppler run --mount .dev.vars --format env -- vitest",
+    "wrangler:types": "doppler run --mount .dev.vars --format env -- wrangler types",
     "smee": "smee",
     "lint": "eslint",
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.5.41",
-    "@faker-js/faker": "^9.3.0",
-    "eslint": "^9.17.0",
+    "@cloudflare/vitest-plugin": "^1.0.0",
+    "@faker-js/faker": "^9.9.0",
+    "eslint": "^10.9.0",
     "smee-client": "^2.0.4",
-    "typescript": "^5.5.2",
-    "vitest": "2.1.8",
-    "wrangler": "^3.60.3"
+    "typescript": "^5.9.3",
+    "vitest": "4.1.11",
+    "wrangler": "catalog:"
   },
   "dependencies": {
-    "@octokit/auth-app": "^7.1.3",
-    "@octokit/request": "^9.1.4",
-    "@octokit/webhooks": "^13.4.1",
-    "cf-workers-utils": "^1.1.0"
+    "@octokit/auth-app": "^8.3.0",
+    "@octokit/request": "^10.0.15",
+    "@octokit/webhooks": "^14.2.0",
+    "cf-workers-utils": "^1.1.0",
+    "common": "workspace:^"
   },
   "type": "module"
 }

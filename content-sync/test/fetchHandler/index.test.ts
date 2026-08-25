@@ -8,7 +8,7 @@ import fetchHandler from '../../src/handlers/fetchHandler';
 import { generateWebhookEventRequest } from '../mockDataGenerator';
 import { createResponse } from 'cf-workers-utils';
 
-import { env } from 'cloudflare:test';
+import { env } from 'cloudflare:workers';
 import { test, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 

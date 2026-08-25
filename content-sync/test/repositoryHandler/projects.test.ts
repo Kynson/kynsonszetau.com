@@ -7,9 +7,14 @@ import { initializeOctokit } from '../../src/lib/octokit';
 
 import { generateRepository, generateProjectEntry } from '../mockDataGenerator';
 
-import { test, expect } from 'vitest';
-import { env } from 'cloudflare:test';
+import { test, expect, beforeEach } from 'vitest';
+import { env } from 'cloudflare:workers';
 import { faker } from '@faker-js/faker';
+
+// Isolation is done on per-file basis so we need to clean up the KV before each test
+beforeEach(async () => {
+  await env.CONTENT.delete('projects');
+});
 
 test('parseRepositoryAsProject should parse Repository as Project correctly', () => {
   const repository = generateRepository();

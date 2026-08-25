@@ -1,6 +1,10 @@
 import type { EmitterWebhookEventName } from '@octokit/webhooks';
 import type { EmitterWebhookEventPayload } from '../src/lib/octokit';
 
+import { Webhooks } from '@octokit/webhooks';
+import { env } from 'cloudflare:workers';
+import { faker } from '@faker-js/faker';
+
 interface GenerateRepositoryOptions {
   owner?: string;
   name?: string;
@@ -32,10 +36,6 @@ type GenerateProjectEntryOptions = Pick<
   GenerateRepositoryOptions,
   'name' | 'description' | 'topics'
 >;
-
-import { Webhooks } from '@octokit/webhooks';
-import { env } from 'cloudflare:test';
-import { faker } from '@faker-js/faker';
 
 export type { SupportedEventName, GenerateWebhookEventRequestOptions };
 

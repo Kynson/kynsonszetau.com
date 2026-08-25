@@ -3,6 +3,10 @@ import type {
   EmitterWebhookEventName,
 } from '@octokit/webhooks';
 
+import { createAppAuth } from '@octokit/auth-app';
+import { request } from '@octokit/request';
+import { Webhooks } from '@octokit/webhooks';
+
 type EmitterWebhookEventPayload<K extends EmitterWebhookEventName> =
   EmitterWebhookEvent<K>['payload'];
 
@@ -23,10 +27,6 @@ interface OctokitInitializeOptions<T extends EmitterWebhookEventName>
     [K in T]: HandlerFunction<K>;
   };
 }
-
-import { createAppAuth } from '@octokit/auth-app';
-import { request } from '@octokit/request';
-import { Webhooks } from '@octokit/webhooks';
 
 class Octokit {
   // The type of request is not exported

@@ -6,8 +6,13 @@ import {
 } from '../mockDataGenerator';
 import { faker } from '@faker-js/faker';
 
-import { env } from 'cloudflare:test';
-import { test, expect } from 'vitest';
+import { env } from 'cloudflare:workers';
+import { test, expect, beforeEach } from 'vitest';
+
+// Isolation is done on per-file basis so we need to clean up the KV before each test
+beforeEach(async () => {
+  await env.CONTENT.delete('projects');
+});
 
 test.for<'created' | 'publicized' | 'transferred'>([
   'created',

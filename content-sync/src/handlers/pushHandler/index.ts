@@ -11,7 +11,7 @@ export default async function pushHandler(
   }
 
   const aboutResponse = await fetch(
-    'https://raw.githubusercontent.com/Kynson/Kynson/main/README.md'
+    'https://raw.githubusercontent.com/Kynson/Kynson/main/src/data.json'
   );
 
   const aboutContent = await parseAboutResponse(aboutResponse);

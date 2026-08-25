@@ -1,7 +1,7 @@
 import { BadRequestError, UnauthorizedError } from '../../lib/errors';
 import { createResponseFromError } from 'cf-workers-utils';
 
-import logError from './logError';
+import { logError } from 'common';
 
 export default function errorHandler(error: Error): Response {
   // The full error message is "[@octokit/webhooks] signature does not match event payload and secret"

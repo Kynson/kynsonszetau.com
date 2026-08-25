@@ -1,8 +1,12 @@
 import pushHandler from '../../src/handlers/pushHandler';
 
-import { test, expect } from 'vitest';
-import { env } from 'cloudflare:test';
+import { test, expect, beforeEach } from 'vitest';
+import { env } from 'cloudflare:workers';
 
+// Isolation is done on per-file basis so we need to clean up the KV before each test
+beforeEach(async () => {
+  await env.CONTENT.delete('about');
+});
 
 test('pushHandler should fetch and put the parsed about into KV', async () => {
   // The follow is sufficient for the pushHandler
@@ -18,6 +22,8 @@ test('pushHandler should fetch and put the parsed about into KV', async () => {
 });
 
 test('pushHandler should not act upon repository except Kynson/Kynson', async () => {
+  console.log(await env.CONTENT.get('about'));
+
   // The follow is sufficient for the pushHandler
   const pushEvent = {
     repository: {

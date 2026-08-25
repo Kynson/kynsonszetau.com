@@ -4,8 +4,9 @@ allowBuilds:
 
 catalog:
   '@kynsonszetau/lint': ^4.0.0
+  wrangler: ^4.125.0
 
 packages:
   - site
-  # - content-sync
+  - content-sync
   - common

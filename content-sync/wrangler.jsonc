@@ -1,0 +1,18 @@
+{
+  "name": "content-sync",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-14",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "CONTENT",
+      "id": "efb9d715af9b4d36ab74617a3c336df1"
+    }
+  ],
+  "secrets": {
+    "required": ["APP_ID", "PRIVATE_KEY", "WEBHOOK_SECRET", "INSTALLATION_ID"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
