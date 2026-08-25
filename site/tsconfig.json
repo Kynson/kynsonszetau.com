@@ -16,10 +16,13 @@
       "@styles/*": ["./src/styles/*"]
     }
   },
+  "mdx": {
+    "checkMdx": true
+  },
   "exclude": ["dist"],
   "references": [
     {
-      "path": "../common"
+      "path": "../common/tsconfig.json"
     }
   ]
 }
