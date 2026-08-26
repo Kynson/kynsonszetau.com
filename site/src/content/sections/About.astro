@@ -4,6 +4,8 @@ import type { About } from 'common';
 import { logError } from 'common';
 
 import DynamicContentError from '@components/DynamicContentError.astro';
+import SetupListItem from '@components/index/SetupListItem.astro';
+
 import { Image } from 'astro:assets';
 
 import { env } from 'cloudflare:workers';
@@ -17,16 +19,16 @@ function fetchAboutErrorHandler(error: unknown) {
 
 const about = (await env.DYNAMIC_CONTENT.get<About>('about', 'json').catch(
   fetchAboutErrorHandler
-)) ?? { introduction: '', languages: [] };
+)) ?? { introduction: '', languages: [], setup: [] };
 
-const { introduction, languages } = about;
+const { introduction, languages, setup } = about;
 
 const languageRenderData = languages.map(
   ({ iconSlug, displayName, iconColor, iconColorBrightness }) => {
     return {
       displayName,
-      shadowColor: `color-mix(in srgb, ${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
-      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor.slice(1)}`
+      shadowColor: `color-mix(in srgb, #${iconColor}, #000 ${(iconColorBrightness > LANGUAGE_ICON_COLOR_DARKEN_THRESHOLD ? LANGUAGE_ICON_COLOR_DARKEN_PERCENTAGE : 0) * iconColorBrightness}%)`,
+      iconURL: `https://cdn.simpleicons.org/${iconSlug}/${iconColor}`
     };
   }
 );
@@ -55,10 +57,10 @@ if (!isRecurring) {
 </style>
 
 {/* About content */}
-{!!introduction && <p class="max-w-prose text-justify mb-3">{greetingText}</p>}
-{!!introduction && <p class="max-w-prose text-justify mb-3">{introduction}</p>}
+{introduction && <p class="max-w-prose text-justify mb-3">{greetingText}</p>}
+{introduction && <p class="max-w-prose text-justify mb-3">{introduction}</p>}
 {
-  !!introduction && (
+  introduction && (
     <p class="max-w-prose text-justify mb-8">
       Hope you have a wonderful {dateOfWeek} ✨
     </p>
@@ -66,7 +68,7 @@ if (!isRecurring) {
 }
 {!introduction && <DynamicContentError content-name="introduction" />}
 <h2 class="text-xl mb-6">Languages</h2>
-<div class="flex flex-wrap gap-8">
+<div class="flex flex-wrap gap-8 mb-8">
   {
     // This will not render anything if the languages array is empty
     // Therefore, no need to check for the length of the array
@@ -94,3 +96,20 @@ if (!isRecurring) {
     )
   }
 </div>
+<h2 class="text-xl mb-6">Setup</h2>
+{
+  (setup.length) > 0 && (
+    <ul>
+      {
+        setup.map(({ displayName, values }) => {
+          return <SetupListItem display-name={displayName} {values} />
+        })
+      }
+    </ul>
+  )
+}
+{
+  setup.length === 0 && (
+    <DynamicContentError content-name="setup" />
+  )
+}

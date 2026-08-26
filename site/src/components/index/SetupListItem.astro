@@ -1,0 +1,26 @@
+---
+import type { SetupItem } from 'common';
+
+type Props = Omit<SetupItem, 'displayName'> & {
+  'display-name': SetupItem['displayName']
+};
+
+const { 'display-name': displayName, values } = Astro.props;
+---
+
+<li>
+  {displayName}: {
+    values.map(({ label, link }, index) => {
+      if (link) {
+        return (
+          <>
+            <a href={link} class="font-medium">{label}</a>
+            {index < values.length - 1 && ', '}
+          </>
+        )
+      }
+
+      return label;
+    })
+  }
+</li>
