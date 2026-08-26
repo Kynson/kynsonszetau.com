@@ -1,6 +1,6 @@
 import * as z from 'zod/mini';
 
-import { remoteAboutContentSchema } from '../schemas/remote-about-content';
+import { remoteAboutSchema } from '../schemas/remote-about';
 
 export interface ProjectDetails {
   description?: string | null;
@@ -9,13 +9,17 @@ export interface ProjectDetails {
 
 export type Projects = Map<string, ProjectDetails>;
 
-export type RemoteAboutContent = z.infer<typeof remoteAboutContentSchema>;
+export type RemoteAbout = z.infer<typeof remoteAboutSchema>;
 
-export type Language = RemoteAboutContent['languages'][number] & {
+export type Language = RemoteAbout['languages'][number] & {
   iconColorBrightness: number;
 };
 
+export type SetupItem = RemoteAbout['setup'][string];
+export type Setup = SetupItem[];
+
 export interface About {
-  introduction: RemoteAboutContent['introduction'];
+  introduction: RemoteAbout['introduction'];
   languages: Language[];
+  setup: Setup;
 }

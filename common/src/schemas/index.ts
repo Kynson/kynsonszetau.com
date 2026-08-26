@@ -1,1 +1,1 @@
-export * from './remote-about-content';
+export * from './remote-about';
