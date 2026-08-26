@@ -21,7 +21,6 @@ async function parseAboutResponse(rawAboutResponse: Response): Promise<string> {
     introduction,
     languages: languages.map((language) => ({
       ...language,
-      iconColor: `#${language.iconColor}`,
       iconColorBrightness: computeColorBrightness(language.iconColor)
     })),
     setup: Object.values(setup)
