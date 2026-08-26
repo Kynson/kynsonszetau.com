@@ -1,5 +1,7 @@
+import type { About } from 'common';
+
 import computeColorBrightness from './color';
-import { remoteAboutContentSchema } from 'common';
+import { remoteAboutSchema } from 'common';
 
 /**
  * Parses the rawAboutResponse by first parsing the JSON response and then inject necessary keys into the JSON object
@@ -11,17 +13,18 @@ async function parseAboutResponse(rawAboutResponse: Response): Promise<string> {
   }
 
   // Errors should be handled outside of this function
-  const { introduction, languages } = remoteAboutContentSchema.parse(
+  const { introduction, languages, setup } = remoteAboutSchema.parse(
     await rawAboutResponse.json()
   );
 
-  const aboutContent = {
+  const aboutContent: About = {
     introduction,
     languages: languages.map((language) => ({
       ...language,
       iconColor: `#${language.iconColor}`,
       iconColorBrightness: computeColorBrightness(language.iconColor)
-    }))
+    })),
+    setup: Object.values(setup)
   };
 
   return JSON.stringify(aboutContent);
