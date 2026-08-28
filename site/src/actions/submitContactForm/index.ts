@@ -14,16 +14,10 @@ import { logError } from 'common';
 
 const schema = z.object({
   name: z.string(),
-  // Regex copied from https://web.archive.org/web/20241231060604/https://html.spec.whatwg.org/#valid-e-mail-address
   // Use this regex to ensure validation is consistent with browsers' implementations
-  email: z
-    .string()
-    .regex(
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-    )
-    .optional(),
+  email: z.email({ pattern: z.regexes.html5Email }).optional(),
   message: z.string(),
-  'cf-turnstile-response': z.string(),
+  'cf-turnstile-response': z.string()
 });
 
 async function contactFormSubmitHandler(
