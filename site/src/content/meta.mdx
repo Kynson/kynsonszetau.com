@@ -12,6 +12,9 @@ import siteCarbonBadgeMetadata from '@assets/badges/site-carbon.png';
 
 import ColorBubble from '@components/meta/ColorBubble.astro';
 
+import WebringGrid from '@components/meta/WebringGrid.astro';
+import WebringItem from '@components/meta/WebringItem.astro';
+
 import AstroBadge from '@assets/badges/astro.svg';
 import CCByBadge from '@assets/badges/cc-by.svg';
 
@@ -58,9 +61,9 @@ import CCByBadge from '@assets/badges/cc-by.svg';
   I think it would be interesting to have a coner for retro and modern style badges related to this site. Feel free to suggest more if you know others that suit here!
 
   {/* prettier-ignore */}
-  <p className="text-sm italic text-gray-500">Note: Currently limited to a few badges only as loading too many images on the same page hurts performance. Furthermore, animated badges are avoided as some visitors, for example those with vestibular motion disorders, might found them uncomfortable to view.</p>
+  <p class="text-sm italic text-gray-500">Note: Currently limited to a few badges only as loading too many images on the same page hurts performance. Furthermore, animated badges are avoided as some visitors, for example those with vestibular motion disorders, might found them uncomfortable to view.</p>
 
-  ### Retro 88x31
+  ### Retro 88x31s
 
   <BadgeContainer>
     <ImageBadge
@@ -87,6 +90,13 @@ import CCByBadge from '@assets/badges/cc-by.svg';
       title="Creative Commons BY License Badge"
     />
   </BadgeContainer>
+</Section>
+
+<Section title="Webrings">
+  A list of webrings this site belongs to. More will be added in the future, feel free to contact me if you know some interesting webrings that fit my site!
+  <WebringGrid>
+    <WebringItem label="Meta Ring" base-url="https://meta-ring.hedy.dev" />
+  </WebringGrid>
 </Section>
 
 <Section title="Prior Art">

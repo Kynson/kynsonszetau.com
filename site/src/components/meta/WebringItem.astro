@@ -1,0 +1,19 @@
+---
+interface Props {
+  label: string;
+  'base-url': string;
+}
+
+const { label, 'base-url': baseURL } = Astro.props;
+
+const previousURL = new URL('/previous', baseURL).toString();
+const randomURL = new URL('/random', baseURL).toString();
+const nextURL = new URL('/next', baseURL).toString();
+---
+<div class="border rounded-lg px-4 py-5 border-gray-700">
+  <h3 class="not-prose text-xl mb-3 underline underline-offset-4 decoration-blue-300">
+    <a href={baseURL} class="not-prose">{label}</a>
+  </h3>
+  <a href={previousURL}>previous</a> &middot; <a href={randomURL}>random</a> &middot; <a href={nextURL}>next</a>
+</div>
+
