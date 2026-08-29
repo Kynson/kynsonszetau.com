@@ -37,16 +37,6 @@ import ShadowLogo from '@assets/shadow-logo.svg';
     border-right: 2px solid #fff;
 
     width: calc(var(--typewriter-animation-end) * 1ch + 2px);
-    animation:
-      var(--typewriter-animation-duration, 1s)
-        steps(
-          calc(
-            var(--typewriter-animation-end) - var(--typewriter-animation-start)
-          )
-        )
-        typing,
-      0.8s steps(2, jump-none) var(--typewriter-animation-duration, 1s) infinite
-        cursor-blink;
   }
 
   #explore-projects-button:hover {
@@ -59,6 +49,21 @@ import ShadowLogo from '@assets/shadow-logo.svg';
       --typewriter-animation-start: 21;
       --typewriter-animation-end: 34;
       --typewriter-animation-duration: 2.5s;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    #typewriter {
+      animation:
+      var(--typewriter-animation-duration, 1s)
+        steps(
+          calc(
+            var(--typewriter-animation-end) - var(--typewriter-animation-start)
+          )
+        )
+        typing,
+      0.8s steps(2, jump-none) var(--typewriter-animation-duration, 1s) infinite
+        cursor-blink;
     }
   }
 </style>
