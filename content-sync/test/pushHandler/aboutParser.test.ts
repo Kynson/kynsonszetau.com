@@ -49,13 +49,13 @@ test('parseAboutResponse should extracts the introduction, languages and setup c
         {
           iconSlug: 'js',
           displayName: javascriptDisplayName,
-          iconColor: '#e8d502',
+          iconColor: 'e8d502',
           iconColorBrightness: 0.8255981020247668
         },
         {
           iconSlug: 'rust',
           displayName: rustDisplayName,
-          iconColor: '#f46623',
+          iconColor: 'f46623',
           iconColorBrightness: 0.5766258294372216
         }
       ],
