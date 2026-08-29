@@ -31,7 +31,7 @@
     "@octokit/auth-app": "^8.3.0",
     "@octokit/request": "^10.0.15",
     "@octokit/webhooks": "^14.2.0",
-    "cf-workers-utils": "^1.1.0",
+    "cf-workers-utils": "^2.0.0",
     "common": "workspace:^"
   },
   "type": "module"
