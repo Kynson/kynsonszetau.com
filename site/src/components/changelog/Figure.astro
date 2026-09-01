@@ -1,0 +1,16 @@
+---
+import type { ComponentProps } from 'astro/types';
+import type { ImageMetadata } from 'astro';
+
+import { Image } from 'astro:assets';
+
+type Props = Omit<ComponentProps<typeof Image>, 'src'> & {
+  'image-meta': ImageMetadata,
+}
+
+const { 'image-meta': imageMetadata, layout, alt, width, height } = Astro.props;
+---
+<figure class="space-x">
+  <Image src={imageMetadata} {alt} {width} {height} {layout} class="rounded-lg overflow-hidden mb-2" />
+  <figcaption class="text-center text-gray-500">{alt}</figcaption>
+</figure>

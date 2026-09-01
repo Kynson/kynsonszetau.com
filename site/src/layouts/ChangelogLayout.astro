@@ -1,0 +1,20 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const NAVIGATION_LINKS = {
+  home: '/',
+  more: '/more'
+};
+---
+
+{/* ChangelogLayout content */}
+<BaseLayout
+  title="Changelog | Kynson Szetau"
+  closing-remarks="More will be added in the future~"
+  font-variables={['--font-montserrat']}
+  body-class="gap-y-8 md:gap-y-0"
+  main-class="md:pt-10 md:overflow-y-scroll"
+  header-navigation-links={NAVIGATION_LINKS}
+>
+  <slot />
+</BaseLayout>

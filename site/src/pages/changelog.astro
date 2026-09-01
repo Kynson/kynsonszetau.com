@@ -1,0 +1,15 @@
+---
+import ChangelogLayout from '@layouts/ChangelogLayout.astro';
+import Prose from '@components/Prose.astro';
+
+import { Content } from '@content/changelog.mdx';
+---
+
+<ChangelogLayout>
+  <Prose>
+    <article>
+      <h1>Changelog</h1>
+      <Content />
+    </article>
+  </Prose>
+</ChangelogLayout>

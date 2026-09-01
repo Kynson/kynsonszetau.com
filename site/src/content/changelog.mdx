@@ -1,0 +1,95 @@
+import Section from '@components/Section.astro';
+import Figure from '@components/changelog/Figure.astro';
+
+import V1ScreenshotMetadata from '@assets/images/v1-screenshot.png';
+import V2ScreenshotMetadata from '@assets/images/v2-screenshot.png';
+import V3ScreenshotMetadata from '@assets/images/v3-screenshot.png';
+
+{/* Half-width of 2992x1644 */}
+export const SCREENSHOT_WIDTH = 1496;
+
+A detailed changelog logging significant changes is kept starting from v3. This site is versioned according to the date when the changes are made,
+instead of a SemVer as I feel like this site is not exactly a traditional software and there are no _breaking changes_ or _compactability issues_ with it.
+A major version number (e.g. v1, v2) will be assigned only when there are significant changes in project structure, UI design and/ or framework used.
+
+<Section title="01-Sep-2026">
+  **Major version:** v3
+
+- Publish changelog (finally).
+- Added a directory page called more.
+- Move the link to blog to the directory page instead of the main navigation bar.
+
+</Section>
+
+<Section title="29-Aug-2026">
+  **Major version:** v3
+
+- Improved accessiblity of the typewriter animation by
+  respecting reduce motion settings.
+
+</Section>
+
+<Section title="28-Aug-2026">
+  **Major version:** v3
+
+- Added webrings to the meta page.
+
+</Section>
+
+<Section title="22-Aug-2026">
+  **Major version:** v3
+
+Version 3 of this site is (mostly) live! This is mark the start of this changelog, more entry will be added soon. (Although this page will be published after v3 is live, but anyways)
+
+- Add meta page.
+- Removed TailwindCSS form and typography plugins to reduce CSS bundle size.
+- Refactored CSS and TailwindCSS usage.
+- Extract CSS animations as inline CSS in componets instead of using TailwindCSS.
+- Move components that are not shared across pages into individual folder.
+- Migrated from [Cloudflare Pages](https://developers.cloudflare.com/pages) to [Cloudflare Workers](https://developers.cloudflare.com/workers)
+- Other minor UI changes.
+
+</Section>
+
+<Section title="Major Version History">
+  ### Version 3 (August 2026 - Present)
+  Version 3 is the latest version of this site built on top of version 2. Besides from upgrading from
+  Astro v5 to v7 and TailwindCSS v3 to v4, a significant structural and content overhaul was also performed, refer to the above entries for more info.
+
+<Figure
+  image-meta={V3ScreenshotMetadata}
+  alt="A screenshot of version 3 of kynsonszetau.com"
+  layout="constrained"
+  width={SCREENSHOT_WIDTH}
+/>
+
+### Version 2 (Jan 2025 - August 2026)
+
+Version 2 of this site was a complete overhaul of version 1 hosted on
+[Cloudflare Pages](https://developers.cloudflare.com/pages). Version 2 featurs
+a new interface and design and built with Astro v5 and TailwindCSS v3. It is
+also the first version that syncs all my projects and about introduction
+[Kynson/Kynson](https://github.com/Kynson/Kynson/) from Github.
+
+<Figure
+  image-meta={V2ScreenshotMetadata}
+  alt="A screenshot of version 2 of kynsonszetau.com"
+  layout="constrained"
+  width={SCREENSHOT_WIDTH}
+/>
+
+### Version 1 (August 2018 - Jan 2025)
+
+Version 1 of this site was a really simple static site built with plain HTML
+and CSS hosted [Firebase web
+hosting](https://firebase.google.com/docs/hosting). It was an early attempt to
+build a site when I was in junior secondary and it was really primitive,
+featuring only a simple list of my old projects only.
+
+  <Figure
+    image-meta={V1ScreenshotMetadata}
+    alt="A screenshot of version 1 of kynsonszetau.com"
+    layout="constrained"
+    width={SCREENSHOT_WIDTH}
+  />
+</Section>
