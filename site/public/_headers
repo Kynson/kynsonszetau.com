@@ -1,8 +1,8 @@
 /
   Cache-Control: public, max-age=604800
-/meta
+/meta/
   Cache-Control: public, max-age=604800
-/changelog
+/changelog/
   Cache-Control: public, max-age=604800
-/more
+/more/
   Cache-Control: public, max-age=604800
