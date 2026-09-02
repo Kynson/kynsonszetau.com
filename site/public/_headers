@@ -2,3 +2,7 @@
   Cache-Control: public, max-age=604800
 /meta
   Cache-Control: public, max-age=604800
+/changelog
+  Cache-Control: public, max-age=604800
+/more
+  Cache-Control: public, max-age=604800
