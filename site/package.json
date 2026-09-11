@@ -22,19 +22,19 @@
     "wrangler:types": "doppler run --mount .dev.vars --format env -- wrangler types"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "^14.2.3",
-    "@astrojs/markdown-satteri": "^0.3.7",
-    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/cloudflare": "^14.3.1",
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/mdx": "^8.0.1",
     "@kynsonszetau/lint": "catalog:",
     "@tailwindcss/vite": "^4.3.3",
     "@types/cloudflare-turnstile": "^0.2.2",
-    "astro": "^7.2.4",
+    "astro": "^7.3.2",
     "common": "workspace:*",
-    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-astro": "^1.0.0",
     "tailwindcss": "^4.3.3",
     "wrangler": "catalog:"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3"
+    "@astrojs/sitemap": "^3.7.4"
   }
 }

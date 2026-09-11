@@ -19,17 +19,17 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@cloudflare/vitest-plugin": "^1.0.0",
-    "@faker-js/faker": "^9.9.0",
-    "eslint": "^10.9.0",
-    "smee-client": "^2.0.4",
-    "typescript": "^5.9.3",
+    "@cloudflare/vitest-plugin": "^1.1.6",
+    "@faker-js/faker": "^10.6.0",
+    "eslint": "^10.10.0",
+    "smee-client": "^5.0.0",
+    "typescript": "^7.0.2",
     "vitest": "4.1.11",
     "wrangler": "catalog:"
   },
   "dependencies": {
-    "@octokit/auth-app": "^8.3.0",
-    "@octokit/request": "^10.0.15",
+    "@octokit/auth-app": "^8.3.1",
+    "@octokit/request": "^10.0.16",
     "@octokit/webhooks": "^14.2.0",
     "cf-workers-utils": "^2.0.0",
     "common": "workspace:^"
